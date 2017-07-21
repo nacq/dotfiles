@@ -48,6 +48,7 @@ set statusline+=%F
 set textwidth=120
 set visualbell
 set wildmenu
+set t_Co=256
 " set autochdir
 
 " Syntastic settings
@@ -56,6 +57,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 colorscheme dracula
+hi Search cterm=NONE ctermfg=black ctermbg=blue
 let g:airline_theme='dracula'
 
 let g:syntastic_always_populate_loc_list = 1
@@ -66,8 +68,8 @@ let g:syntastic_check_on_wq = 0                         " dont check on wq
 let g:syntastic_check_on_w = 0                          " dont check on w
 let g:syntastic_check_on_q = 0                          " dont check on q
 let g:syntastic_echo_current_error = 1
-let g:syntastic_javascript_checkers = ['standard']
-" let g:syntastic_javascript_checkers = ['jshint']
+" let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_javascript_checkers = ['jshint']
 " let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_checkers = ['']
 " let g:syntastic_javascript_standard_generic = 1
