@@ -61,7 +61,7 @@ hi Search cterm=NONE ctermfg=black ctermbg=blue
 let g:airline_theme='dracula'
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1 
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_aggregate_errors = 1                    " errors 2gether
 let g:syntastic_check_on_open = 0                       " dont check on open
 let g:syntastic_check_on_wq = 0                         " dont check on wq
@@ -96,6 +96,7 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 nnoremap Q <nop>
 
+autocmd BufWrite * %s/\s\+$//e "remove trailing spaces on :w
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
