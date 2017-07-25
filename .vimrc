@@ -85,6 +85,13 @@ map <C-S-Right> :vertical resize +1 <CR>
 map <C-S-Down> :resize -1 <CR>
 map <C-S-Up> :resize +1 <CR>
 
+" ctrl spacebar remove trailing spaces
+map <C-@> :call RemoveTrailingSpaces() <CR>
+
+function RemoveTrailingSpaces()
+        echo 'Removing trailing spaces'
+        %s/\s\+$//e
+endfunction
 " position cursor inbetween brackets
 imap {<Tab> {}<Esc>i
 imap [<Tab> []<Esc>i
@@ -96,7 +103,6 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 nnoremap Q <nop>
 
-autocmd BufWrite * %s/\s\+$//e "remove trailing spaces on :w
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
