@@ -78,6 +78,8 @@ let g:syntastic_html_checkers = ['']
 let g:NERDSpaceDelims=1       "add space after comments char
 let JSHintUpdateWriteOnly=1
 
+let g:ackprg='ag --column'
+
 " keybinds
 map <C-n> :NERDTreeToggle <CR>
 map <C-S-Left> :vertical resize -1 <CR>
