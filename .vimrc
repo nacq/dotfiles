@@ -60,7 +60,7 @@ colorscheme dracula
 hi Search cterm=NONE ctermfg=black ctermbg=blue
 let g:airline_theme='dracula'
 " show buffer list on airline
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
