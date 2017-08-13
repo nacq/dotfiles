@@ -59,8 +59,8 @@ set statusline+=%*
 colorscheme dracula
 hi Search cterm=NONE ctermfg=black ctermbg=blue
 let g:airline_theme='dracula'
-" show buffer list on airline
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1            " show buffer list on airline
+let g:airline#extensions#tabline#buffer_nr_show = 1     " show buffer number on airline
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -79,8 +79,6 @@ let g:syntastic_html_checkers = ['']
 " NERDCommenter
 let g:NERDSpaceDelims=1       "add space after comments char
 let JSHintUpdateWriteOnly=1
-
-let g:ackprg='ag --column'
 
 " keybinds
 map <C-n> :NERDTreeToggle <CR>
