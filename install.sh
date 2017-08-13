@@ -3,6 +3,7 @@
 TMUX_FILE=~/.tmux.conf
 TMUX_TPM_DIR=~/.tmux/plugins/tpm/
 VIMRC_FILE=~/.vimrc
+BASH_PROFILE_FILE=~/.bash_profile
 
 if [ -f $TMUX_FILE ]; then
     echo "tmux.conf already exists. Moving it to .tmux.conf.bak"
@@ -28,3 +29,11 @@ if [ -f $VIMRC_FILE ]; then
 fi
 
 ln -s ~/dotfiles/.vimrc $VIMRC_FILE
+
+if [ -f $BASH_PROFILE_FILE ]; then
+        echo "bash_profile file already exists. Moving it to .bash_profile.bak"
+        rm ~/.bash_profile.bak
+        mv $BASH_PROFILE_FILE ~/.bash_profile.bak
+fi
+
+ln -s ~/dotfiles/.bash_profile $BASH_PROFILE_FILE
