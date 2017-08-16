@@ -24,6 +24,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'wavded/vim-stylus'
 call vundle#end()
 
 filetype plugin indent on     "filetype detection
@@ -106,13 +107,14 @@ nnoremap <right> <nop>
 nnoremap Q <nop>
 
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
+autocmd BufNewFile,BufRead *.styl set filetype=css
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " tabs
-au FileType javascript setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+au FileType javascript setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
-au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=2
-au FileType css setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
+au FileType css setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
