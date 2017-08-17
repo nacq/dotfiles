@@ -25,6 +25,10 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'wavded/vim-stylus'
+Plugin 'trevordmiller/nova-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'othree/html5.vim'
 call vundle#end()
 
 filetype plugin indent on     "filetype detection
@@ -35,6 +39,7 @@ set colorcolumn=120
 set cursorline
 set expandtab
 set hlsearch
+set incsearch
 set laststatus=2
 set noswapfile
 set nowrap
@@ -49,7 +54,7 @@ set statusline+=%F
 set textwidth=120
 set visualbell
 set wildmenu
-set t_Co=256
+" set t_Co=256
 " set autochdir
 
 " Syntastic settings
