@@ -88,6 +88,7 @@ let JSHintUpdateWriteOnly=1
 
 " keybinds
 map <C-n> :NERDTreeToggle <CR>
+map <C-m> :call RevealFileInNERDTree() <CR>
 map <C-S-Left> :vertical resize -1 <CR>
 map <C-S-Right> :vertical resize +1 <CR>
 map <C-S-Down> :resize -1 <CR>
@@ -99,6 +100,11 @@ map <C-@> :call RemoveTrailingSpaces() <CR>
 function RemoveTrailingSpaces()
         echo 'Removing trailing spaces'
         %s/\s\+$//e
+endfunction
+
+function RevealFileInNERDTree()
+        echo @%
+        :NERDTreeFind
 endfunction
 " position cursor inbetween brackets
 imap {<Tab> {}<Esc>i
