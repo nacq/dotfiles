@@ -2,34 +2,38 @@ set nocompatible
 
 filetype off
 
-syntax on                       "syntax highlighting
+"syntax highlighting
+syntax on
 
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
-" Plugins
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'dracula/vim'
+Plugin 'hail2u/vim-css3-syntax'
 Plugin 'isRuslan/vim-es6'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kien/ctrlp.vim'
+" nunjucks template engine highlighting
+Plugin 'lepture/vim-jinja'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+" git shiet
 Plugin 'tpope/vim-fugitive'
+" session management inside vim
+Plugin 'tpope/vim-obsession'
+Plugin 'trevordmiller/nova-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'wavded/vim-stylus'
-Plugin 'trevordmiller/nova-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'othree/html5.vim'
-Plugin 'lepture/vim-jinja'    "nunjucks template engine highlighting
 call vundle#end()
 
 filetype plugin indent on     "filetype detection
@@ -69,6 +73,7 @@ hi Search cterm=NONE ctermfg=black ctermbg=blue
 let g:airline_theme='dracula'
 let g:airline#extensions#tabline#enabled = 1            " show buffer list on airline
 let g:airline#extensions#tabline#buffer_nr_show = 1     " show buffer number on airline
+let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}'])
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -78,9 +83,7 @@ let g:syntastic_check_on_wq = 0                         " dont check on wq
 let g:syntastic_check_on_w = 0                          " dont check on w
 let g:syntastic_check_on_q = 0                          " dont check on q
 let g:syntastic_echo_current_error = 1
-" let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_javascript_checkers = ['jshint']
-" let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_checkers = ['']
 " let g:syntastic_javascript_standard_generic = 1
 
@@ -108,6 +111,12 @@ function RevealFileInNERDTree()
         echo @%
         :NERDTreeFind
 endfunction
+
+" start session on specific dir
+command! ObsessionStart :Obsession ~/.vim/Session.vim
+
+command! ObsessionRead :source ~/.vim/Session.vim
+
 " position cursor inbetween brackets
 imap {<Tab> {}<Esc>i
 imap [<Tab> []<Esc>i
