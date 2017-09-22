@@ -129,6 +129,8 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 nnoremap Q <nop>
 
+" remove trailing spaces on pre write
+autocmd BufWritePre * %s/\s\+$//e
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd BufNewFile,BufRead *.styl set filetype=css
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
