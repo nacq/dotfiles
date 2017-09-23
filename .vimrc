@@ -59,6 +59,7 @@ set statusline+=%F
 set textwidth=120
 set visualbell
 set wildmenu
+set winfixwidth
 set t_Co=256
 " set autochdir
 
@@ -87,13 +88,16 @@ let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_checkers = ['']
 " let g:syntastic_javascript_standard_generic = 1
 
+" NERDTree window size
+let g:NERDTreeWinSize=30
+
 " NERDCommenter
 let g:NERDSpaceDelims=1       "add space after comments char
 let JSHintUpdateWriteOnly=1
 
 " keybinds
 map <C-n> :NERDTreeToggle <CR>
-map <C-m> :call RevealFileInNERDTree() <CR>
+" map <C-m> :call RevealFileInNERDTree() <CR>
 map <C-S-Left> :vertical resize -1 <CR>
 map <C-S-Right> :vertical resize +1 <CR>
 map <C-S-Down> :resize -1 <CR>
@@ -107,15 +111,26 @@ function RemoveTrailingSpaces()
         %s/\s\+$//e
 endfunction
 
-function RevealFileInNERDTree()
-        echo @%
-        :NERDTreeFind
+" function RevealFileInNERDTree()
+        " echo @%
+        " :NERDTreeFind
+" endfunction
+
+function DeleteAllBuffers()
+        :bufdo bd
+        :NERDTreeToggle
+        " ugly hack to avoid NERDTree to open excesively big
+        :vertical resize -9999
+        :vertical resize +30
 endfunction
 
 " start session on specific dir
 command! ObsessionStart :Obsession ~/.vim/Session.vim
-
+" read saved sesh
 command! ObsessionRead :source ~/.vim/Session.vim
+
+" delete all open buffers (things get messy sometimes)
+command Bda :call DeleteAllBuffers()
 
 " position cursor inbetween brackets
 imap {<Tab> {}<Esc>i
