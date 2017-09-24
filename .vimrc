@@ -1,12 +1,4 @@
-set nocompatible
-
-filetype off
-
-"syntax highlighting
-syntax on
-
 set rtp+=~/.vim/bundle/Vundle.vim
-
 call vundle#begin()
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
@@ -36,46 +28,113 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'wavded/vim-stylus'
 call vundle#end()
 
-filetype plugin indent on     "filetype detection
+set nocompatible
+" ---------------------------------------------------------------------------------
+" new splits positions
+set splitbelow
+set splitright
+" ---------------------------------------------------------------------------------
 
-set background=dark
-set backspace=indent,eol,start
+" ---------------------------------------------------------------------------------
+" remember undo after quitting
+set hidden
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" syntax highlighting
+syntax on
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" filetype detection and applies indentation config
+filetype plugin indent on
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+
+" set max characters per line and draw the visual line
 set colorcolumn=120
-set cursorline
-set expandtab
-set hlsearch
-set incsearch
-set laststatus=2
-set noswapfile
-set nowrap
-set number
-set path+=**
-set ruler
-set showcmd
-set showmatch
-set showmode
-set smarttab
-set statusline+=%F
 set textwidth=120
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" highlight entire line on cursor position
+set cursorline
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" use number of spaces from config when hit tab and C-> C-<
+set expandtab
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" searching stuff
+set matchtime=1                 " 1/10 of a second
+set hlsearch                    " highlight search matches
+set incsearch                   " show matches while writting the term to search
+set showmatch                   " idk
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" show staus line on all windows
+set laststatus=2
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" don't break lines despite window size
+set nowrap
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" show line number in front of each line and show position of cursor separated by a
+" comma
+set number
+set ruler
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" when hit tab it inserts blanks according 'shiftwidth'
+set smarttab
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" use the visual bell instead of beeping
 set visualbell
-set wildmenu
-set winfixwidth
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" status line content
+set statusline+=%F
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" command line
+set wildmenu                        " show possible matches when hitting tab
+set showcmd                         " idk
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" backspace behavior
+set backspace=indent,eol,start
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" no comments needed =D
+set showmode
+set noswapfile
+set background=dark
+colorscheme dracula
+" ---------------------------------------------------------------------------------
+
 set t_Co=256
+set path+=**
 " set autochdir
 
+" ---------------------------------------------------------------------------------
 " Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-let g:solarized_termcolors=256
-colorscheme dracula
-hi Search cterm=NONE ctermfg=black ctermbg=blue
-let g:airline_theme='dracula'
-let g:airline#extensions#tabline#enabled = 1            " show buffer list on airline
-let g:airline#extensions#tabline#buffer_nr_show = 1     " show buffer number on airline
-let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}'])
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_aggregate_errors = 1                    " errors 2gether
@@ -87,50 +146,38 @@ let g:syntastic_echo_current_error = 1
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_checkers = ['']
 " let g:syntastic_javascript_standard_generic = 1
+" ---------------------------------------------------------------------------------
 
-" NERDTree window size
-let g:NERDTreeWinSize=30
+" ---------------------------------------------------------------------------------
+let g:airline_theme='dracula'
+let g:airline#extensions#tabline#enabled = 1            " show buffer list on airline
+let g:airline#extensions#tabline#buffer_nr_show = 1     " show buffer number on airline
+let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}'])
+" ---------------------------------------------------------------------------------
 
-" NERDCommenter
+" ---------------------------------------------------------------------------------
+" NERDTree settings
+let g:NERDTreeDirArrowExpandable = '→'
+let g:NERDTreeDirArrowCollapsible = '↳'
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" NERDCommenter settings
 let g:NERDSpaceDelims=1       "add space after comments char
+" ---------------------------------------------------------------------------------
+
+hi Search cterm=NONE ctermfg=black ctermbg=blue
+let g:solarized_termcolors=256
+
 let JSHintUpdateWriteOnly=1
 
+" ---------------------------------------------------------------------------------
 " keybinds
-map <C-n> :NERDTreeToggle <CR>
-" map <C-m> :call RevealFileInNERDTree() <CR>
+map <C-n> :call NERDTreeOpen() <CR>
 map <C-S-Left> :vertical resize -1 <CR>
 map <C-S-Right> :vertical resize +1 <CR>
 map <C-S-Down> :resize -1 <CR>
 map <C-S-Up> :resize +1 <CR>
-
-" ctrl spacebar remove trailing spaces
-map <C-@> :call RemoveTrailingSpaces() <CR>
-
-function RemoveTrailingSpaces()
-        echo 'Removing trailing spaces'
-        %s/\s\+$//e
-endfunction
-
-" function RevealFileInNERDTree()
-        " echo @%
-        " :NERDTreeFind
-" endfunction
-
-function DeleteAllBuffers()
-        :bufdo bd
-        :NERDTreeToggle
-        " ugly hack to avoid NERDTree to open excesively big
-        :vertical resize -9999
-        :vertical resize +30
-endfunction
-
-" start session on specific dir
-command! ObsessionStart :Obsession ~/.vim/Session.vim
-" read saved sesh
-command! ObsessionRead :source ~/.vim/Session.vim
-
-" delete all open buffers (things get messy sometimes)
-command Bda :call DeleteAllBuffers()
 
 " position cursor inbetween brackets
 imap {<Tab> {}<Esc>i
@@ -143,18 +190,45 @@ nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 nnoremap Q <nop>
+" ---------------------------------------------------------------------------------
 
-" remove trailing spaces on pre write
-autocmd BufWritePre * %s/\s\+$//e
+" ugly hack to avoid nerd tree to open filling the entire screen :S
+function NERDTreeOpen()
+        :NERDTreeToggle
+        :vertical resize -9999
+        :vertical resize +30
+endfunction
+
+" function RevealFileInNERDTree()
+        " echo @%
+        " :NERDTreeFind
+" endfunction
+
+function DeleteAllBuffers()
+        :bufdo bd
+        :call NERDTreeOpen()
+endfunction
+
+" ---------------------------------------------------------------------------------
+" commands
+command! ObsessionStart :Obsession ~/.vim/Session.vim   " start session on specific dir
+command! ObsessionRead :source ~/.vim/Session.vim       " read saved sesh
+command Bda :call DeleteAllBuffers()                    " delete all open buffers (things get messy sometimes)
+
+autocmd BufWritePre * %s/\s\+$//e                       " remove trailing spaces on pre write
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd BufNewFile,BufRead *.styl set filetype=css
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+" ---------------------------------------------------------------------------------
 
+" ---------------------------------------------------------------------------------
 " tabs
 au FileType javascript setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
 au FileType css setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
+" ---------------------------------------------------------------------------------
+
