@@ -17,7 +17,7 @@ fi
 if [ -f $ZSH_FILE ]; then
         echo ".zshrc already exists. Moving it to .zshrc.bak"
         rm ~/.zshrc.bak
-        mv $ZSH_FILE
+        mv $ZSH_FILE ~/.zshrc.bak
 fi
 
 ln -s ~/dotfiles/.zshrc $ZSH_FILE
