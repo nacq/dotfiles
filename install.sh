@@ -4,6 +4,7 @@ TMUX_FILE=~/.tmux.conf
 TMUX_TPM_DIR=~/.tmux/plugins/tpm/
 VIMRC_FILE=~/.vimrc
 ZSH_FILE=~/.zshrc
+OHMYSZH_DIR=~/.oh-my-szh
 
 if [ ! -x "$(command -v zsh)" ]; then
         if [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -11,6 +12,11 @@ if [ ! -x "$(command -v zsh)" ]; then
         elif [[ "$OSTYPE" == "darwin" ]]; then
                 brew install zsh
         fi
+fi
+
+if [ ! -d $OHMYSZH_DIR ]; then
+        echo "oh my zsh not installed. Installing it!"
+        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
 if [ -f $ZSH_FILE ]; then
