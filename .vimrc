@@ -28,6 +28,12 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'wavded/vim-stylus'
 call vundle#end()
 
+" ---------------------------------------------------------------------------------
+" if double spaces, hightlight it
+highlight link DoubleSpace Error
+match DoubleSpace /　/
+" ---------------------------------------------------------------------------------
+
 set nocompatible
 " ---------------------------------------------------------------------------------
 " new splits positions
