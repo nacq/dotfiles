@@ -185,11 +185,16 @@ imap [<Tab> []<Esc>i
 imap (<Tab> ()<Esc>i
 imap '<Tab> ''<Esc>i
 
+" no arrow keys
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
+
 nnoremap Q <nop>
+
+" clear search
+nnoremap <C-L> :nohlsearch<CR><C-L>
 " ---------------------------------------------------------------------------------
 
 " ugly hack to avoid nerd tree to open filling the entire screen :S
