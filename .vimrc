@@ -180,6 +180,7 @@ let JSHintUpdateWriteOnly=1
 " ---------------------------------------------------------------------------------
 " keybinds
 map <C-n> :call NERDTreeOpen() <CR>
+map <C-m> :call RevealFileInNERDTree() <CR>
 map <C-S-Left> :vertical resize -1 <CR>
 map <C-S-Right> :vertical resize +1 <CR>
 map <C-S-Down> :resize -1 <CR>
@@ -210,10 +211,11 @@ function NERDTreeOpen()
         :vertical resize +30
 endfunction
 
-" function RevealFileInNERDTree()
-        " echo @%
-        " :NERDTreeFind
-" endfunction
+" open nerd tree on the current file location
+function RevealFileInNERDTree()
+        echo @%
+        :NERDTreeFind
+endfunction
 
 function DeleteAllBuffers()
         :bufdo bd
