@@ -94,7 +94,7 @@ set nowrap
 " ---------------------------------------------------------------------------------
 " show line number in front of each line and show position of cursor separated by a
 " comma
-set number
+set number relativenumber
 set ruler
 " ---------------------------------------------------------------------------------
 
@@ -241,5 +241,6 @@ au FileType javascript setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 s
 au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
 au FileType css setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
+au FileType ruby setlocal shiftwidth=2 smarttab
 " ---------------------------------------------------------------------------------
 
