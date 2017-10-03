@@ -57,7 +57,6 @@ filetype plugin indent on
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
-
 " set max characters per line and draw the visual line
 set colorcolumn=120
 set textwidth=120
@@ -155,6 +154,13 @@ let g:syntastic_html_checkers = ['']
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
+" CtrlP settings
+let g:ctrlp_max_files = 20000
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" Airline settings
 let g:airline_theme='dracula'
 let g:airline#extensions#tabline#enabled = 1            " show buffer list on airline
 let g:airline#extensions#tabline#buffer_nr_show = 1     " show buffer number on airline
