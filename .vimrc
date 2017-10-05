@@ -186,7 +186,7 @@ let JSHintUpdateWriteOnly=1
 " ---------------------------------------------------------------------------------
 " keybinds
 map <C-n> :call NERDTreeOpen() <CR>
-map <C-m> :call RevealFileInNERDTree() <CR>
+" map <C-m> :call RevealFileInNERDTree() <CR>
 map <C-S-Left> :vertical resize -1 <CR>
 map <C-S-Right> :vertical resize +1 <CR>
 map <C-S-Down> :resize -1 <CR>
@@ -236,7 +236,9 @@ command Bda :call DeleteAllBuffers()                    " delete all open buffer
 
 autocmd BufWritePre * %s/\s\+$//e                       " remove trailing spaces on pre write
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
-autocmd BufNewFile,BufRead *.styl set filetype=css
+autocmd BufNewFile,BufRead *.styl,*.scss set filetype=css
+autocmd BufNewFile,BufRead *.html.erb set filetype=html
+
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
