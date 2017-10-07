@@ -26,6 +26,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'wavded/vim-stylus'
+Plugin 'elixir-editors/vim-elixir'
 call vundle#end()
 
 " ---------------------------------------------------------------------------------
