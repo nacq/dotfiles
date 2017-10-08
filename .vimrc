@@ -48,6 +48,11 @@ set hidden
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
+"
+setlocal nobuflisted
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
 " syntax highlighting
 syntax on
 " ---------------------------------------------------------------------------------
@@ -186,7 +191,7 @@ let JSHintUpdateWriteOnly=1
 
 " ---------------------------------------------------------------------------------
 " keybinds
-map <C-n> :call NERDTreeOpen() <CR>
+map <C-n> :NERDTreeToggle <CR>
 map <C-k> :call RevealFileInNERDTree() <CR>
 map <C-S-Left> :vertical resize -1 <CR>
 map <C-S-Right> :vertical resize +1 <CR>
@@ -210,13 +215,6 @@ nnoremap Q <nop>
 " clear search
 nnoremap <C-L> :nohlsearch<CR><C-L>
 " ---------------------------------------------------------------------------------
-
-" ugly hack to avoid nerd tree to open filling the entire screen :S
-function NERDTreeOpen()
-        :NERDTreeToggle
-        :vertical resize -9999
-        :vertical resize +30
-endfunction
 
 " open nerd tree on the current file location
 function RevealFileInNERDTree()
