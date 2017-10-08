@@ -187,7 +187,7 @@ let JSHintUpdateWriteOnly=1
 " ---------------------------------------------------------------------------------
 " keybinds
 map <C-n> :call NERDTreeOpen() <CR>
-" map <C-m> :call RevealFileInNERDTree() <CR>
+map <C-k> :call RevealFileInNERDTree() <CR>
 map <C-S-Left> :vertical resize -1 <CR>
 map <C-S-Right> :vertical resize +1 <CR>
 map <C-S-Down> :resize -1 <CR>
