@@ -1,0 +1,9 @@
+[user]
+	email = nicolas.acquaviva@globant.com
+        name = Nicolas Acquaviva
+[alias]
+        st = status
+        co = checkout
+        b = branch
+[core]
+	editor = /usr/bin/vim
