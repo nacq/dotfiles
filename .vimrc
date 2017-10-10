@@ -172,9 +172,11 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 " ---------------------------------------------------------------------------------
 " Airline settings
 let g:airline_theme='dracula'
-let g:airline#extensions#tabline#enabled = 1            " show buffer list on airline
-let g:airline#extensions#tabline#buffer_nr_show = 1     " show buffer number on airline
-let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}'])
+" show buffer list on airline
+let g:airline#extensions#tabline#enabled = 1
+" show buffer number on airline
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_section_z=airline#section#create(['%{ObsessionStatus(''$'', '''')}'])
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
@@ -233,11 +235,14 @@ endfunction
 
 " ---------------------------------------------------------------------------------
 " commands
-command! ObsessionStart :Obsession ~/.vim/Session.vim   " start session on specific dir
-command! ObsessionRead :source ~/.vim/Session.vim       " read saved sesh
-command Bda :call DeleteAllBuffers()                    " delete all open buffers (things get messy sometimes)
-
-autocmd BufWritePre * %s/\s\+$//e                       " remove trailing spaces on pre write
+" start session on specific dir
+command! ObsessionStart :Obsession ~/.vim/Session.vim
+" read saved sesh
+command! ObsessionRead :source ~/.vim/Session.vim
+" delete all open buffers (things get messy sometimes)
+command Bda :call DeleteAllBuffers()
+" remove trailing spaces on pre write
+autocmd BufWritePre * %s/\s\+$//e
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd BufNewFile,BufRead *.styl,*.scss set filetype=css
 autocmd BufNewFile,BufRead *.html.erb set filetype=html
@@ -250,7 +255,8 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " ---------------------------------------------------------------------------------
 " tabs
-au FileType javascript setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+au FileType javascript
+        \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
 au FileType css setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
