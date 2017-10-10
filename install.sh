@@ -15,7 +15,19 @@ YELLOW=$(tput setaf 3)
 UNDERLINE=$(tput smul)
 BR="\n%s\n"
 
+if [ "$EUID" -ne 0 ]; then
+        printf ${BR} "${UNDERLINE}${RED}Please run as root."
+
+        exit
+fi
+
 printf "${BR}${UNDERLINE} Installing and configuring dotfiles.${BR}"
+
+
+if [ ! -x "$(command -v vim)" ]; then
+        printf "${BR}" "${RED}Vim not installed... ${NORMAL}What world is this? Installing it."
+        apt-get install -y vim
+fi
 
 if [ ! -x "$(command -v zsh)" ]; then
         printf ${BR} "${RED}zsh not installed. ${NORMAL}Installing it!"
