@@ -27,6 +27,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'wavded/vim-stylus'
 Plugin 'elixir-editors/vim-elixir'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'editorconfig/editorconfig-vim'
 call vundle#end()
 
 " ---------------------------------------------------------------------------------
@@ -40,6 +42,7 @@ set nocompatible
 " new splits positions
 set splitbelow
 set splitright
+set equalalways
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
@@ -114,11 +117,6 @@ set visualbell
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
-" status line content
-set statusline+=%F
-" ---------------------------------------------------------------------------------
-
-" ---------------------------------------------------------------------------------
 " command line
 set wildmenu                        " show possible matches when hitting tab
 set showcmd                         " idk
@@ -176,18 +174,33 @@ let g:airline_theme='dracula'
 let g:airline#extensions#tabline#enabled = 1
 " show buffer number on airline
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_section_z=airline#section#create(['%{ObsessionStatus(''$'', '''')}'])
+" let g:airline_section_z=airline#section#create(['%{ObsessionStatus(''$'', '''')}'])
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" status line content
+" set statusline+=%F
+" set statusline =%1*\ %n\ %*            "buffer number
+" set statusline +=%5*%{&ff}%*            "file format
+" set statusline +=%3*%y%*                "file type
+" set statusline +=%4*\ %<%F%*            "full path
+" set statusline +=%2*%m%*                "modified flag
+" set statusline +=%1*%=%5l%*             "current line
+" set statusline +=%2*/%L%*               "total lines
+" set statusline +=%1*%4v\ %*             "virtual column number
+" set statusline +=%2*0x%04B\ %*          "character under cursor
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
 " NERDTree settings
 let g:NERDTreeDirArrowExpandable = '→'
 let g:NERDTreeDirArrowCollapsible = '↳'
+let g:NERDTreeWinSize = 35
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
 " NERDCommenter settings
-let g:NERDSpaceDelims=1       "add space after comments char
+let g:NERDSpaceDelims=1       " add space after comments char
 " ---------------------------------------------------------------------------------
 
 hi Search cterm=NONE ctermfg=black ctermbg=blue
@@ -198,6 +211,7 @@ let JSHintUpdateWriteOnly=1
 " ---------------------------------------------------------------------------------
 " keybinds
 map <C-n> :NERDTreeToggle <CR>
+" map <C-n> :call OpenNerdTree() <CR>
 map <C-k> :call RevealFileInNERDTree() <CR>
 map <C-S-Left> :vertical resize -1 <CR>
 map <C-S-Right> :vertical resize +1 <CR>
@@ -229,9 +243,45 @@ function RevealFileInNERDTree()
 endfunction
 
 function DeleteAllBuffers()
-        :bufdo bd
-        :call NERDTreeOpen()
+        bufdo bd
+        " call OpenNerdTree()
 endfunction
+
+" function OpenNerdTree()
+        " :NERDTreeToggle
+        " vertical resize -9999
+        " vertical resize +35
+        " call SetAllSplitsSameWidth()
+" endfunction
+
+" function SetAllSplitsSameWidth()
+        " let i = 1
+        " let window_size = 0
+        " let windows_quantity = winnr('$')
+        " let windows_to_resize = []
+
+        " " get screen size
+        " while i <= windows_quantity
+                " let window_size += winwidth(i)
+                " call add(windows_to_resize, i)
+                " let i += 1
+        " endwhile
+
+        " if IsNerdTreeOpen()
+                " let window_size -= 35
+                " let windows_quantity -= 1
+                " let windows_to_resize = windows_to_resize[1:len(windows_to_resize)]
+        " endif
+
+        " let size_per_split = window_size / windows_quantity
+        " let windows_to_resize = join(windows_to_resize, ',')
+
+        " execute ''.windows_to_resize.'windo execute "set winwidth='.size_per_split.'"'
+" endfunction
+
+" function! IsNerdTreeOpen()
+        " return exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
+" endfunction
 
 " ---------------------------------------------------------------------------------
 " commands
@@ -256,7 +306,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 " ---------------------------------------------------------------------------------
 " tabs
 au FileType javascript
-        \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+        \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
 au FileType css setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
