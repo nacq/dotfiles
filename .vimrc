@@ -223,6 +223,7 @@ imap {<Tab> {}<Esc>i
 imap [<Tab> []<Esc>i
 imap (<Tab> ()<Esc>i
 imap '<Tab> ''<Esc>i
+imap `<Tab> ``<Esc>i
 
 " no arrow keys
 nnoremap <up> <nop>
