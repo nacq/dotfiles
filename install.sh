@@ -6,6 +6,7 @@ TMUX_FILE=~/.tmux.conf
 TMUX_TPM_DIR=~/.tmux/plugins/tpm/
 VIMRC_FILE=~/.vimrc
 ZSH_FILE=~/.zshrc
+VUNDLE=~/.vim/bundle/Vundle.vim
 
 BLUE=$(tput setaf 4)
 GREEN=$(tput setaf 2)
@@ -83,6 +84,11 @@ if [ -f $VIMRC_FILE ]; then
         printf ${BR} "${YELLOW}${VIMRC_FILE} file already exists. ${NORMAL}Moving it to ${VIMRC_FILE}.bak"
         rm ~/.vimrc.bak
         mv $VIMRC_FILE ~/.vimrc.bak
+fi
+
+if [ ! -f $VUNDLE ]; then
+        printf ${BR} "${YELLOW} Vundle.vim not installed. ${NORMAL}Installing it."
+        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
 ln -s ~/dotfiles/.vimrc $VIMRC_FILE
