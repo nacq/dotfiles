@@ -203,6 +203,11 @@ let g:NERDTreeWinSize = 35
 let g:NERDSpaceDelims=1       " add space after comments char
 " ---------------------------------------------------------------------------------
 
+" ---------------------------------------------------------------------------------
+"  Ack.vim settings
+ let g:ackprg = 'ag --vimgrep'             " use ag instead of ack
+" ---------------------------------------------------------------------------------
+
 hi Search cterm=NONE ctermfg=black ctermbg=blue
 let g:solarized_termcolors=256
 
