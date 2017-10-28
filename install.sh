@@ -20,7 +20,7 @@ BR="\n%s\n"
 # brew does not like running things as sudo
 if [ ! -x "$(command -v tmux)" ]; then
         printf "${BR}" "${RED}Tmux not installed... ${NORMAL}Installing it."
-        brew install tmux
+        brew install tmux reattach-to-user-namespace
 fi
 
 if [ "$EUID" -ne 0 ]; then
