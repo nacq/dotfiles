@@ -250,44 +250,44 @@ endfunction
 
 function DeleteAllBuffers()
         bufdo bd
-        " call OpenNerdTree()
+        call OpenNerdTree()
 endfunction
 
-" function OpenNerdTree()
-        " :NERDTreeToggle
-        " vertical resize -9999
-        " vertical resize +35
-        " call SetAllSplitsSameWidth()
-" endfunction
+function OpenNerdTree()
+        :NERDTreeToggle
+        vertical resize -9999
+        vertical resize +35
+        call SetAllSplitsSameWidth()
+endfunction
 
-" function SetAllSplitsSameWidth()
-        " let i = 1
-        " let window_size = 0
-        " let windows_quantity = winnr('$')
-        " let windows_to_resize = []
+function SetAllSplitsSameWidth()
+        let i = 1
+        let window_size = 0
+        let windows_quantity = winnr('$')
+        let windows_to_resize = []
 
-        " " get screen size
-        " while i <= windows_quantity
-                " let window_size += winwidth(i)
-                " call add(windows_to_resize, i)
-                " let i += 1
-        " endwhile
+        " get screen size
+        while i <= windows_quantity
+                let window_size += winwidth(i)
+                call add(windows_to_resize, i)
+                let i += 1
+        endwhile
 
-        " if IsNerdTreeOpen()
-                " let window_size -= 35
-                " let windows_quantity -= 1
-                " let windows_to_resize = windows_to_resize[1:len(windows_to_resize)]
-        " endif
+        if IsNerdTreeOpen()
+                let window_size -= 35
+                let windows_quantity -= 1
+                let windows_to_resize = windows_to_resize[1:len(windows_to_resize)]
+        endif
 
-        " let size_per_split = window_size / windows_quantity
-        " let windows_to_resize = join(windows_to_resize, ',')
+        let size_per_split = window_size / windows_quantity
+        let windows_to_resize = join(windows_to_resize, ',')
 
-        " execute ''.windows_to_resize.'windo execute "set winwidth='.size_per_split.'"'
-" endfunction
+        execute ''.windows_to_resize.'windo execute "set winwidth='.size_per_split.'"'
+endfunction
 
-" function! IsNerdTreeOpen()
-        " return exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
-" endfunction
+function! IsNerdTreeOpen()
+        return exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
+endfunction
 
 " ---------------------------------------------------------------------------------
 " commands
