@@ -320,5 +320,6 @@ au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smartta
 au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
 au FileType css setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
 au FileType ruby setlocal shiftwidth=2 smarttab
+au FileType python setlocal textwidth=79 colorcolumn=79
 " ---------------------------------------------------------------------------------
 
