@@ -304,6 +304,7 @@ autocmd BufNewFile,BufRead *.styl,*.scss set filetype=css
 autocmd BufNewFile,BufRead *.html.erb set filetype=html
 
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
+autocmd FileType typescript noremap <buffer> <c-f> :call JsBeautify()<cr>
 autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
@@ -312,6 +313,8 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 " ---------------------------------------------------------------------------------
 " tabs
 au FileType javascript
+        \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+au FileType typescript
         \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
