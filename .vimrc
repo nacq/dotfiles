@@ -30,6 +30,7 @@ Plugin 'elixir-editors/vim-elixir'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'pgdouyon/vim-yin-yang'
+Plugin 'wakatime/vim-wakatime'
 call vundle#end()
 
 " ---------------------------------------------------------------------------------
@@ -328,5 +329,6 @@ au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
 au FileType css setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
 au FileType ruby setlocal shiftwidth=2 smarttab
 au FileType python setlocal textwidth=79 colorcolumn=79
+au FileType yaml setlocal shiftwidth=2 smarttab
 " ---------------------------------------------------------------------------------
 
