@@ -30,7 +30,7 @@ Plugin 'elixir-editors/vim-elixir'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'pgdouyon/vim-yin-yang'
-Plugin 'wakatime/vim-wakatime'
+Plugin 'logico-dev/typewriter'
 call vundle#end()
 
 " ---------------------------------------------------------------------------------
@@ -177,7 +177,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " ---------------------------------------------------------------------------------
 " Airline settings
-let g:airline_theme='dracula'
+let g:airline_theme='typewriter'
 " show buffer list on airline
 let g:airline#extensions#tabline#enabled = 1
 " show buffer number on airline
@@ -321,7 +321,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 " ---------------------------------------------------------------------------------
 " tabs
 au FileType javascript
-        \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+        \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 au FileType typescript
         \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
