@@ -321,7 +321,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 " ---------------------------------------------------------------------------------
 " tabs
 au FileType javascript
-        \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+        \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType typescript
         \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
