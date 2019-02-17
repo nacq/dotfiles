@@ -140,7 +140,7 @@ set backspace=indent,eol,start
 set showmode
 set noswapfile
 set background=dark
-colorscheme yin
+colorscheme dracula
 " ---------------------------------------------------------------------------------
 
 set t_Co=256
@@ -170,6 +170,11 @@ let g:syntastic_html_checkers = ['']
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
+"  NERDTree settings
+let g:NERDTreeWinPos = 'right'
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
 " CtrlP settings
 let g:ctrlp_max_files = 20000
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
@@ -177,7 +182,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " ---------------------------------------------------------------------------------
 " Airline settings
-let g:airline_theme='typewriter'
+let g:airline_theme='dracula'
 " show buffer list on airline
 let g:airline#extensions#tabline#enabled = 1
 " show buffer number on airline

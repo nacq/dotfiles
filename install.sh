@@ -18,7 +18,7 @@ UNDERLINE=$(tput smul)
 BR="\n%s\n"
 
 # brew does not like running things as sudo
-if [ ! -x "$(command -v tmux)" ]; then
+if [ ! -x "$(command -v tmux)" ] && [ $OSTYPE == "darwin" ]; then
         printf "${BR}" "${RED}Tmux not installed... ${NORMAL}Installing it."
         brew install tmux reattach-to-user-namespace the_silver_searcher
 fi
@@ -29,10 +29,25 @@ if [ "$EUID" -ne 0 ]; then
         exit
 fi
 
-printf "${BR}${UNDERLINE} Installing and configuring dotfiles.${BR}"
+printf "${BR}${UNDERLINE}Installing and configuring dotfiles.${BR}${NORMAL}"
+
+if [ ! -x "$(command -v git)" ]; then
+        printf "${BR}" "${RED}git not installed...${NORMAL} Installing it."
+        apt-get install -y git
+fi
+
+if [ ! -x "$(command -v curl)" ]; then
+        printf "${BR}" "${RED}curl not installed...${NORMAL} Installing it."
+	apt-get install -y curl
+fi
+
+if [ ! -x "$(command -v tmux)" ]; then
+        printf "${BR}" "${RED}tmux not installed...${NORMAL} Installing it."
+	apt-get install -y tmux
+fi
 
 if [ ! -x "$(command -v vim)" ]; then
-        printf "${BR}" "${RED}Vim not installed... ${NORMAL}What world is this? Installing it."
+        printf "${BR}" "${RED}Vim not installed...${NORMAL} What world is this? Installing it."
         apt-get install -y vim
 fi
 
@@ -40,7 +55,7 @@ if [ ! -x "$(command -v zsh)" ]; then
         printf ${BR} "${RED}zsh not installed. ${NORMAL}Installing it!"
 
         if [[ "$OSTYPE" == "linux-gnu" ]]; then
-                apt-get install zsh
+                apt-get install zsh -Y
         elif [[ "$OSTYPE" == "darwin" ]]; then
                 brew install zsh
         fi
@@ -54,6 +69,10 @@ fi
 if [ ! -f $OHMYSZH_DIR/themes/dracula.zsh-theme ]; then
         TMP_DIR='temporal_directory_i_hope_this_does_not_exist'
 
+	if [ -d "$TMP_DIR" ]; then
+		rm -rf $TMP_DIR
+	fi
+
         printf ${BR} "${GREEN}Installing dracula zsh theme.${NORMAL}"
         mkdir ${TMP_DIR}
         cd ${TMP_DIR}
@@ -63,7 +82,7 @@ if [ ! -f $OHMYSZH_DIR/themes/dracula.zsh-theme ]; then
 fi
 
 if [ -f $ZSH_FILE ]; then
-        printf ${BR} "${YELLOW}${ZSH_FILE} already exists. ${NORMAL}Moving it to ${ZSH_FILE}.bak"
+        printf ${BR} "${YELLOW}${ZSH_FILE} already exists.${NORMAL} Moving it to ${ZSH_FILE}.bak"
         rm ~/.zshrc.bak
         mv $ZSH_FILE ~/.zshrc.bak
 fi
@@ -117,5 +136,9 @@ if [ ! -d $VUNDLE ]; then
 fi
 
 ln -s ~/dotfiles/.vimrc $VIMRC_FILE
+
+# install vim plugins using Vundle
+# -c flag runs command before vim starts up
+vim -c "PluginInstall" -c "qa!"
 
 printf "${BR}${GREEN} DONE! ${BR}${NORMAL}"
