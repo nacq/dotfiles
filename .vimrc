@@ -1,14 +1,11 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'dracula/vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'isRuslan/vim-es6'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kien/ctrlp.vim'
-" nunjucks template engine highlighting
-Plugin 'lepture/vim-jinja'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
@@ -17,20 +14,11 @@ Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-" git shiet
 Plugin 'tpope/vim-fugitive'
-" session management inside vim
-Plugin 'tpope/vim-obsession'
-Plugin 'trevordmiller/nova-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'wavded/vim-stylus'
-Plugin 'elixir-editors/vim-elixir'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'pgdouyon/vim-yin-yang'
-Plugin 'logico-dev/typewriter'
 call vundle#end()
 
 " ---------------------------------------------------------------------------------
@@ -160,13 +148,13 @@ let g:syntastic_check_on_wq = 0                         " dont check on wq
 let g:syntastic_check_on_w = 0                          " dont check on w
 let g:syntastic_check_on_q = 0                          " dont check on q
 let g:syntastic_echo_current_error = 1
-" let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_javascript_checkers = ['standard']
 " let g:syntastic_javascript_standard_exec = 'semistandard'
 " let g:syntastic_javascript_checkers = ['jslint']
-let g:syntastic_javascript_checkers = ['jshint']
+" let g:syntastic_javascript_checkers = ['jshint']
 " let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_checkers = ['']
-" let g:syntastic_javascript_standard_generic = 1
+let g:syntastic_javascript_standard_generic = 1
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
@@ -335,5 +323,6 @@ au FileType css setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
 au FileType ruby setlocal shiftwidth=2 smarttab
 au FileType python setlocal textwidth=79 colorcolumn=79
 au FileType yaml setlocal shiftwidth=2 smarttab
+au FileType sh setlocal shiftwidth=2 expandtab smarttab
 " ---------------------------------------------------------------------------------
 
