@@ -1,24 +1,20 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'airblade/vim-gitgutter'
+" plugin manager
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'airblade/vim-gitgutter' " show icons for lines added, modified or deleted
 Plugin 'dracula/vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'isRuslan/vim-es6'
-Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kien/ctrlp.vim'
-Plugin 'maksimr/vim-jsbeautify'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
-Plugin 'mxw/vim-jsx'
-Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter' " easy comment/uncomment
+Plugin 'scrooloose/nerdtree' " file tree
+Plugin 'tpope/vim-fugitive' " git stuff inside vim
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'leafgarland/typescript-vim'
+Plugin 'leafgarland/typescript-vim' " ts syntax highlighting
+Plugin 'Quramy/tsuquyomi' " ts stuff, completion, files navigation, errors
 call vundle#end()
 
 " ---------------------------------------------------------------------------------
