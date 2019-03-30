@@ -13,7 +13,7 @@ Plugin 'tpope/vim-fugitive' " git stuff inside vim
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'leafgarland/typescript-vim' " ts syntax highlighting
+Plugin 'HerringtonDarkholme/yats.vim' " better ts syntax hightlighting
 Plugin 'Quramy/tsuquyomi' " ts stuff, completion, files navigation, errors
 call vundle#end()
 
@@ -151,6 +151,10 @@ let g:syntastic_javascript_checkers = ['standard']
 " let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_checkers = ['']
 let g:syntastic_javascript_standard_generic = 1
+
+" typescript stuff
+ let g:tsuquyomi_disable_quickfix = 1
+ let g:syntastic_typescript_checkers = ['tsuquyomi']
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
@@ -161,7 +165,7 @@ let g:NERDTreeWinPos = 'right'
 " ---------------------------------------------------------------------------------
 " CtrlP settings
 let g:ctrlp_max_files = 20000
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
@@ -192,7 +196,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " NERDTree settings
 let g:NERDTreeDirArrowExpandable = '→'
 let g:NERDTreeDirArrowCollapsible = '↳'
-let g:NERDTreeWinSize = 35
+let g:NERDTreeWinSize = 55
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
@@ -226,6 +230,7 @@ imap [<Tab> []<Esc>i
 imap (<Tab> ()<Esc>i
 imap '<Tab> ''<Esc>i
 imap `<Tab> ``<Esc>i
+imap "<Tab> ""<Esc>i
 
 " no arrow keys
 nnoremap <up> <nop>
@@ -234,6 +239,9 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 
 nnoremap Q <nop>
+
+" show the number of occurrences for the word under the cursor
+nnoremap * *<C-O>:%s///gn<CR>
 
 " clear search
 nnoremap <C-L> :nohlsearch<CR><C-L>
