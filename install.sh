@@ -61,7 +61,7 @@ linux_install() {
 
   if [[ ! -x "$(command -v zsh)" ]]; then
     _echo " > Installing Zsh" $GREEN
-    apt-get install zsh -Y
+    apt-get install -y zsh
   fi
 }
 
