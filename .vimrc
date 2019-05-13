@@ -3,7 +3,7 @@ call vundle#begin()
 " plugin manager
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter' " show icons for lines added, modified or deleted
-Plugin 'dracula/vim'
+Plugin 'pgdouyon/vim-yin-yang'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
@@ -124,7 +124,7 @@ set backspace=indent,eol,start
 set showmode
 set noswapfile
 set background=dark
-colorscheme dracula
+colorscheme yang
 " ---------------------------------------------------------------------------------
 
 set t_Co=256
