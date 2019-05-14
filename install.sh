@@ -35,6 +35,11 @@ _echo() {
 osx_install() {
   _echo "MacOS detected" $GREEN $UNDERLINE
 
+  if [[ ! -x "$(command -v nvim)" ]]; then
+    _echo " > Installing Neovim" $GREEN
+    brew install --HEAD neovim
+  fi
+
   if [[ ! -x "$(command -v tmux)" ]]; then
     _echo " > Installing Tmux" $GREEN
     brew install tmux
@@ -48,6 +53,11 @@ osx_install() {
 
 linux_install() {
   _echo "Linux detected" $GREEN
+
+  if [[ ! -x "$(command -v nvim)" ]]; then
+    _echo " > Installing Neovim" $GREEN
+    apt-get install -y neovim
+  fi
 
   if [[ ! -x "$(command -v tmux)" ]]; then
     _echo " > Installing Tmux" $GREEN
