@@ -6,4 +6,4 @@
         co = checkout
         b = branch
 [core]
-	editor = /usr/bin/vim
+	editor = /usr/bin/vi
