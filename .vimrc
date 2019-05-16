@@ -13,7 +13,7 @@ Plugin 'tpope/vim-fugitive' " git stuff inside vim
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'HerringtonDarkholme/yats.vim' " better ts syntax hightlighting
+Plugin 'leafgarland/typescript-vim' " ts syntax highlighting
 Plugin 'Quramy/tsuquyomi' " ts stuff, completion, files navigation, errors
 call vundle#end()
 
