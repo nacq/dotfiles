@@ -124,7 +124,7 @@ set backspace=indent,eol,start
 set showmode
 set noswapfile
 set background=dark
-colorscheme yang
+colorscheme yin
 " ---------------------------------------------------------------------------------
 
 set t_Co=256

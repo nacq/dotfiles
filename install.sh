@@ -10,6 +10,7 @@ VIMRC_FILE=$HOME/.vimrc
 ZSH_FILE=$HOME/.zshrc
 VUNDLE=$HOME/.vim/bundle/Vundle.vim
 BASHRC=$HOME/.bashrc
+NVIM_CONFIG_DIR=$HOME/.config/nvim
 
 BLUE=$(tput setaf 4)
 GREEN=$(tput setaf 2)
@@ -57,6 +58,8 @@ linux_install() {
   if [[ ! -x "$(command -v nvim)" ]]; then
     _echo " > Installing Neovim" $GREEN
     apt-get install -y neovim
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
 
   if [[ ! -x "$(command -v tmux)" ]]; then
@@ -145,12 +148,33 @@ commons() {
     git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
   fi
 
+  ln -s $HOME/.config $NVIM_CONFIG_DIR
+
   # # install vim plugins using Vundle
   # # -c flag runs command before vim starts up
   vim -c "PluginInstall" -c "qa!"
 
   _echo " > The following symbolic links were created:" $GREEN $UNDERLINE
   cd $HOME && ls -la | grep "\->" | grep dotfiles | grep -v bak
+}
+
+neovim_install() {
+  if [[ ! -d $HOME/.config ]];then
+    cd $HOME
+    mkdir .config
+  fi
+
+  if [[ ! -x "$(command -v nvim)" ]]; then
+    _echo " > Installing Neovim" $GREEN
+    apt-get install -y neovim
+
+    _echo " > Installing Plug, plugin manager for Neovim"
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  fi
+
+  ln -s $HOME/dotfiles/.config/nvim $NVIM_CONFIG_DIR
+  nvim -c "PlugInstall" -c "qa!"
 }
 
 main() {
@@ -174,4 +198,5 @@ main() {
   _echo "DONE!" $GREEN $UNDERLINE
 }
 
-main
+# main
+neovim_install
