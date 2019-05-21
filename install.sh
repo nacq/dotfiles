@@ -76,6 +76,8 @@ linux_install() {
     _echo " > Installing Zsh" $GREEN
     apt-get install -y zsh
   fi
+
+  neovim_install_linux
 }
 
 commons() {
@@ -148,8 +150,6 @@ commons() {
     git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
   fi
 
-  ln -s $HOME/.config $NVIM_CONFIG_DIR
-
   # # install vim plugins using Vundle
   # # -c flag runs command before vim starts up
   vim -c "PluginInstall" -c "qa!"
@@ -158,23 +158,20 @@ commons() {
   cd $HOME && ls -la | grep "\->" | grep dotfiles | grep -v bak
 }
 
-neovim_install() {
-  if [[ ! -d $HOME/.config ]];then
-    cd $HOME
-    mkdir .config
-  fi
+neovim_install_linux() {
+ if [[ ! -d $HOME/.config ]]; then
+   _echo "$HOME/.config does not exist, creating it" $RED
 
-  if [[ ! -x "$(command -v nvim)" ]]; then
-    _echo " > Installing Neovim" $GREEN
-    apt-get install -y neovim
+   mkdir $HOME/.config
+ else
+   if [[ -d $HOME/.config/nvim ]];then
+     _echo " > $HOME/.config/nvim exists, removing it" $RED
 
-    _echo " > Installing Plug, plugin manager for Neovim"
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  fi
+     rm -rf $HOME/.config/nvim
+   fi
 
-  ln -s $HOME/dotfiles/.config/nvim $NVIM_CONFIG_DIR
-  nvim -c "PlugInstall" -c "qa!"
+   ln -s $HOME/dotfiles/.config/nvim $HOME/.config/nvim
+ fi
 }
 
 main() {
@@ -198,5 +195,4 @@ main() {
   _echo "DONE!" $GREEN $UNDERLINE
 }
 
-# main
-neovim_install
+main
