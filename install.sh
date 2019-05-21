@@ -55,13 +55,6 @@ osx_install() {
 linux_install() {
   _echo "Linux detected" $GREEN
 
-  if [[ ! -x "$(command -v nvim)" ]]; then
-    _echo " > Installing Neovim" $GREEN
-    apt-get install -y neovim
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  fi
-
   if [[ ! -x "$(command -v tmux)" ]]; then
     _echo " > Installing Tmux" $GREEN
     apt-get install -y tmux
@@ -77,7 +70,7 @@ linux_install() {
     apt-get install -y zsh
   fi
 
-  neovim_install_linux
+  neovim_setup_linux
 }
 
 commons() {
@@ -158,7 +151,16 @@ commons() {
   cd $HOME && ls -la | grep "\->" | grep dotfiles | grep -v bak
 }
 
-neovim_install_linux() {
+neovim_setup_linux() {
+  if [[ ! -x "$(command -v nvim)" ]]; then
+    _echo " > Installing Neovim" $GREEN
+    apt-get install -y neovim
+
+    _echo " > Installing Plug, Neovim plugin manager" $GREEN
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  fi
+
  if [[ ! -d $HOME/.config ]]; then
    _echo "$HOME/.config does not exist, creating it" $RED
 
@@ -195,4 +197,5 @@ main() {
   _echo "DONE!" $GREEN $UNDERLINE
 }
 
-main
+# main
+neovim_setup_linux
