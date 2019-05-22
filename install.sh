@@ -10,6 +10,7 @@ VIMRC_FILE=$HOME/.vimrc
 ZSH_FILE=$HOME/.zshrc
 VUNDLE=$HOME/.vim/bundle/Vundle.vim
 BASHRC=$HOME/.bashrc
+NVIM_CONFIG_DIR=$HOME/.config/nvim
 
 BLUE=$(tput setaf 4)
 GREEN=$(tput setaf 2)
@@ -49,15 +50,12 @@ osx_install() {
     _echo " > Installing Zsh" $GREEN
     brew install zsh
   fi
+
+  neovim_setup_linux
 }
 
 linux_install() {
   _echo "Linux detected" $GREEN
-
-  if [[ ! -x "$(command -v nvim)" ]]; then
-    _echo " > Installing Neovim" $GREEN
-    apt-get install -y neovim
-  fi
 
   if [[ ! -x "$(command -v tmux)" ]]; then
     _echo " > Installing Tmux" $GREEN
@@ -73,6 +71,8 @@ linux_install() {
     _echo " > Installing Zsh" $GREEN
     apt-get install -y zsh
   fi
+
+  neovim_setup_linux
 }
 
 commons() {
@@ -151,6 +151,31 @@ commons() {
 
   _echo " > The following symbolic links were created:" $GREEN $UNDERLINE
   cd $HOME && ls -la | grep "\->" | grep dotfiles | grep -v bak
+}
+
+neovim_setup_linux() {
+  if [[ ! -x "$(command -v nvim)" ]]; then
+    _echo " > Installing Neovim" $GREEN
+    apt-get install -y neovim
+
+    _echo " > Installing Plug, Neovim plugin manager" $GREEN
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  fi
+
+ if [[ ! -d $HOME/.config ]]; then
+   _echo "$HOME/.config does not exist, creating it" $RED
+
+   mkdir $HOME/.config
+ else
+   if [[ -d $HOME/.config/nvim ]];then
+     _echo " > $HOME/.config/nvim exists, removing it" $RED
+
+     rm -rf $HOME/.config/nvim
+   fi
+
+   ln -s $HOME/dotfiles/.config/nvim $HOME/.config/nvim
+ fi
 }
 
 main() {
