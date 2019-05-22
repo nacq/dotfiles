@@ -170,7 +170,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 
 " ---------------------------------------------------------------------------------
 " Airline settings
-let g:airline_theme='dracula'
+let g:airline_theme='aurora'
 " show buffer list on airline
 let g:airline#extensions#tabline#enabled = 1
 " show buffer number on airline
