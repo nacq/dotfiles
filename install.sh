@@ -50,6 +50,8 @@ osx_install() {
     _echo " > Installing Zsh" $GREEN
     brew install zsh
   fi
+
+  neovim_setup_linux
 }
 
 linux_install() {
@@ -197,5 +199,4 @@ main() {
   _echo "DONE!" $GREEN $UNDERLINE
 }
 
-# main
-neovim_setup_linux
+main
