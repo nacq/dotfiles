@@ -130,6 +130,7 @@ colorscheme yin
 set t_Co=256
 set path+=**
 " set autochdir
+set nopaste
 
 " ---------------------------------------------------------------------------------
 " Syntastic settings
