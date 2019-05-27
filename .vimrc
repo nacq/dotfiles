@@ -18,9 +18,11 @@ Plugin 'Quramy/tsuquyomi' " ts stuff, completion, files navigation, errors
 call vundle#end()
 
 " ---------------------------------------------------------------------------------
-" if double spaces, hightlight it
+" if double spaces, hightlight it, does not work
 highlight link DoubleSpace Error
 match DoubleSpace /　/
+set list
+set listchars=tab:▸\ ,trail:•
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
