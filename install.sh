@@ -156,6 +156,8 @@ commons() {
 neovim_setup_linux() {
   if [[ ! -x "$(command -v nvim)" ]]; then
     _echo " > Installing Neovim" $GREEN
+    add-apt-repository ppa:neovim/unstable
+    apt-get update
     apt-get install -y neovim
 
     _echo " > Installing Plug, Neovim plugin manager" $GREEN
