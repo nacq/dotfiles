@@ -3,7 +3,8 @@ call vundle#begin()
 " plugin manager
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter' " show icons for lines added, modified or deleted
-Plugin 'pgdouyon/vim-yin-yang'
+Plugin 'pgdouyon/vim-yin-yang'  " theme, black and white
+Plugin 'dracula/vim'            " theme
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
@@ -12,9 +13,11 @@ Plugin 'scrooloose/nerdtree' " file tree
 Plugin 'tpope/vim-fugitive' " git stuff inside vim
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 Plugin 'leafgarland/typescript-vim' " ts syntax highlighting
 Plugin 'Quramy/tsuquyomi' " ts stuff, completion, files navigation, errors
+Plugin 'mxw/vim-jsx'
+Plugin 'dense-analysis/ale'  " syntastic replace (async)
 call vundle#end()
 
 " ---------------------------------------------------------------------------------
@@ -126,38 +129,43 @@ set backspace=indent,eol,start
 set showmode
 set noswapfile
 set background=dark
-colorscheme yin
+colorscheme dracula
 " ---------------------------------------------------------------------------------
 
 set t_Co=256
 set path+=**
 " set autochdir
 set nopaste
-
+" ---------------------------------------------------------------------------------
+" ALE settings
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_set_highlights = 0 "Set this in your vimrc file to disabling highlighting
 " ---------------------------------------------------------------------------------
 " Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_aggregate_errors = 1                    " errors 2gether
-let g:syntastic_check_on_open = 0                       " dont check on open
-let g:syntastic_check_on_wq = 0                         " dont check on wq
-let g:syntastic_check_on_w = 0                          " dont check on w
-let g:syntastic_check_on_q = 0                          " dont check on q
-let g:syntastic_echo_current_error = 1
-let g:syntastic_javascript_checkers = ['standard']
-" let g:syntastic_javascript_standard_exec = 'semistandard'
-" let g:syntastic_javascript_checkers = ['jslint']
-" let g:syntastic_javascript_checkers = ['jshint']
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_aggregate_errors = 1                    " errors 2gether
+" let g:syntastic_check_on_open = 0                       " dont check on open
+" let g:syntastic_check_on_wq = 0                         " dont check on wq
+" let g:syntastic_check_on_w = 0                          " dont check on w
+" let g:syntastic_check_on_q = 0                          " dont check on q
+" let g:syntastic_echo_current_error = 1
+" " let g:syntastic_javascript_checkers = ['standard']
+" " let g:syntastic_javascript_standard_exec = 'semistandard'
+" " let g:syntastic_javascript_checkers = ['jslint']
+" " let g:syntastic_javascript_checkers = ['jshint']
 " let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_html_checkers = ['']
-let g:syntastic_javascript_standard_generic = 1
+" let g:syntastic_javascript_eslint_exe = './node_modules/bin/eslint.js'
+" let g:syntastic_html_checkers = ['']
+" let g:syntastic_javascript_standard_generic = 1
 
 " typescript stuff
- let g:tsuquyomi_disable_quickfix = 1
- let g:syntastic_typescript_checkers = ['tsuquyomi']
+ " let g:tsuquyomi_disable_quickfix = 1
+ " let g:syntastic_typescript_checkers = ['tsuquyomi']
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
@@ -168,7 +176,7 @@ let g:NERDTreeWinPos = 'right'
 " ---------------------------------------------------------------------------------
 " CtrlP settings
 let g:ctrlp_max_files = 20000
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist\|ios\|android'
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
@@ -208,8 +216,9 @@ let g:NERDSpaceDelims=1       " add space after comments char
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
-"  Ack.vim settings
- let g:ackprg = 'ag --vimgrep'             " use ag instead of ack
+" Ack.vim settings
+" use ag instead of ack
+ let g:ackprg = 'ag --vimgrep --ignore-dir={ios,android,node_modules}'
 " ---------------------------------------------------------------------------------
 
 hi Search cterm=NONE ctermfg=black ctermbg=blue
@@ -326,7 +335,7 @@ au FileType typescript
         \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
-au FileType css setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
+au FileType css setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=4
 au FileType ruby setlocal shiftwidth=2 smarttab
 au FileType python setlocal textwidth=79 colorcolumn=79
 au FileType yaml setlocal shiftwidth=2 smarttab

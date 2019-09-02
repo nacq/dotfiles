@@ -90,7 +90,7 @@ alias glog="\git log --color --all --date-order --decorate --dirstat=lines,cumul
 alias vim=nvim
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-#export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/.rvm/bin"
 #export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
