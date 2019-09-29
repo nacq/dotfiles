@@ -13,17 +13,14 @@ Plugin 'scrooloose/nerdtree' " file tree
 Plugin 'tpope/vim-fugitive' " git stuff inside vim
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'vim-syntastic/syntastic'
 Plugin 'leafgarland/typescript-vim' " ts syntax highlighting
-Plugin 'Quramy/tsuquyomi' " ts stuff, completion, files navigation, errors
 Plugin 'mxw/vim-jsx'
 Plugin 'dense-analysis/ale'  " syntastic replace (async)
+Plugin 'tpope/vim-obsession'
+Plugin 'morhetz/gruvbox'
 call vundle#end()
 
 " ---------------------------------------------------------------------------------
-" if double spaces, hightlight it, does not work
-highlight link DoubleSpace Error
-match DoubleSpace /　/
 set list
 set listchars=tab:▸\ ,trail:•
 " ---------------------------------------------------------------------------------
@@ -129,7 +126,7 @@ set backspace=indent,eol,start
 set showmode
 set noswapfile
 set background=dark
-colorscheme dracula
+colorscheme gruvbox
 " ---------------------------------------------------------------------------------
 
 set t_Co=256
@@ -138,6 +135,8 @@ set path+=**
 set nopaste
 " ---------------------------------------------------------------------------------
 " ALE settings
+let b:ale_linters = ['eslint']
+let b:ale_fixers= ['eslint']
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_set_highlights = 0 "Set this in your vimrc file to disabling highlighting
@@ -181,7 +180,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist\|ios\|android'
 
 " ---------------------------------------------------------------------------------
 " Airline settings
-let g:airline_theme='aurora'
+let g:airline_theme='gruvbox'
 " show buffer list on airline
 let g:airline#extensions#tabline#enabled = 1
 " show buffer number on airline

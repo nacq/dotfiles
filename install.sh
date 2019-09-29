@@ -147,7 +147,7 @@ commons() {
 
   # # install vim plugins using Vundle
   # # -c flag runs command before vim starts up
-  vim -c "PluginInstall" -c "qa!"
+  vim -c "BundleInstall" -c "qa!"
 
   _echo " > The following symbolic links were created:" $GREEN $UNDERLINE
   cd $HOME && ls -la | grep "\->" | grep dotfiles | grep -v bak
@@ -180,6 +180,10 @@ neovim_setup_linux() {
  fi
 }
 
+change_owner() {
+  chown -R `whoami` .tmux .config
+}
+
 main() {
   if [[ "$EUID" -ne 0 ]]; then
     _echo "Please run as root" $RED $UNDERLINE
@@ -197,6 +201,8 @@ main() {
   esac
 
   commons
+
+  change_owner
 
   _echo "DONE!" $GREEN $UNDERLINE
 }
