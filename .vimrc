@@ -135,8 +135,9 @@ set path+=**
 set nopaste
 " ---------------------------------------------------------------------------------
 " ALE settings
-let b:ale_linters = ['eslint']
-let b:ale_fixers= ['eslint']
+let g:ale_linters={
+        \'javascript': ['prettier', 'eslint']
+\}
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_set_highlights = 0 "Set this in your vimrc file to disabling highlighting
@@ -176,6 +177,7 @@ let g:NERDTreeWinPos = 'right'
 " CtrlP settings
 let g:ctrlp_max_files = 20000
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist\|ios\|android\|coverage'
+let g:ctrlp_show_hidden = 1
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
