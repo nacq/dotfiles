@@ -5,5 +5,10 @@
         st = status
         co = checkout
         b = branch
+        ; %gd stash id
+        ; %cr git stash list --date=relative
+        ; %cd git stash list --date=local
+        ; %s message
+        sl = stash list --pretty=format:\"%gd%  - (%cr) - %cd - %s\"
 [core]
 	editor = /usr/bin/vi
