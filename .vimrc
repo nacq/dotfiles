@@ -14,12 +14,6 @@ Plug 'dense-analysis/ale'  " syntastic replace (async)
 Plug 'tpope/vim-obsession'
 Plug 'morhetz/gruvbox'
 Plug 'HerringtonDarkholme/yats.vim' "ts syntax highlighter
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-" For async completion
-Plug 'Shougo/deoplete.nvim'
-" For Denite features
-Plug 'Shougo/denite.nvim'
-
 call plug#end()
 
 " ---------------------------------------------------------------------------------
@@ -144,6 +138,8 @@ let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_set_highlights = 0 "Set this in your vimrc file to disabling highlighting
 let g:ale_completion_enabled = 1
+" ---------------------------------------------------------------------------------
+
 " ---------------------------------------------------------------------------------
 "  NERDTree settings
 let g:NERDTreeWinPos = 'right'
