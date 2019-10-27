@@ -163,6 +163,9 @@ neovim_setup_linux() {
     _echo " > Installing Plug, Neovim plugin manager" $GREEN
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
           https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    # install vim-plug plugins (vim alias to nvim)
+    vim -c "PlugInstall" -c "qa!"
   fi
 
  if [[ ! -d $HOME/.config ]]; then
@@ -181,7 +184,7 @@ neovim_setup_linux() {
 }
 
 change_owner() {
-  chown -R `whoami` .tmux .config
+  chown -R `whoami` .tmux .config .vim .vimrc
 }
 
 main() {
