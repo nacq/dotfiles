@@ -1,24 +1,26 @@
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" plugin manager
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter' " show icons for lines added, modified or deleted
-Plugin 'pgdouyon/vim-yin-yang'  " theme, black and white
-Plugin 'dracula/vim'            " theme
-Plugin 'kien/ctrlp.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'scrooloose/nerdcommenter' " easy comment/uncomment
-Plugin 'scrooloose/nerdtree' " file tree
-Plugin 'tpope/vim-fugitive' " git stuff inside vim
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'leafgarland/typescript-vim' " ts syntax highlighting
-Plugin 'mxw/vim-jsx'
-Plugin 'dense-analysis/ale'  " syntastic replace (async)
-Plugin 'tpope/vim-obsession'
-Plugin 'morhetz/gruvbox'
-call vundle#end()
+call plug#begin('~/.vim/plugged')
+Plug 'VundleVim/Vundle.vim'
+Plug 'airblade/vim-gitgutter' " show icons for lines added, modified or deleted
+Plug 'kien/ctrlp.vim'
+Plug 'mattn/emmet-vim'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdcommenter' " easy comment/uncomment
+Plug 'scrooloose/nerdtree' " file tree
+Plug 'tpope/vim-fugitive' " git stuff inside vim
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mxw/vim-jsx'
+Plug 'dense-analysis/ale'  " syntastic replace (async)
+Plug 'tpope/vim-obsession'
+Plug 'morhetz/gruvbox'
+Plug 'HerringtonDarkholme/yats.vim' "ts syntax highlighter
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" For async completion
+Plug 'Shougo/deoplete.nvim'
+" For Denite features
+Plug 'Shougo/denite.nvim'
+
+call plug#end()
 
 " ---------------------------------------------------------------------------------
 set list
@@ -136,38 +138,12 @@ set nopaste
 " ---------------------------------------------------------------------------------
 " ALE settings
 let g:ale_linters={
-        \'javascript': ['prettier', 'eslint']
-\}
+      \'javascript': ['prettier', 'eslint']
+      \}
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_set_highlights = 0 "Set this in your vimrc file to disabling highlighting
-" ---------------------------------------------------------------------------------
-" Syntastic settings
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_aggregate_errors = 1                    " errors 2gether
-" let g:syntastic_check_on_open = 0                       " dont check on open
-" let g:syntastic_check_on_wq = 0                         " dont check on wq
-" let g:syntastic_check_on_w = 0                          " dont check on w
-" let g:syntastic_check_on_q = 0                          " dont check on q
-" let g:syntastic_echo_current_error = 1
-" " let g:syntastic_javascript_checkers = ['standard']
-" " let g:syntastic_javascript_standard_exec = 'semistandard'
-" " let g:syntastic_javascript_checkers = ['jslint']
-" " let g:syntastic_javascript_checkers = ['jshint']
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_eslint_exe = './node_modules/bin/eslint.js'
-" let g:syntastic_html_checkers = ['']
-" let g:syntastic_javascript_standard_generic = 1
-
-" typescript stuff
- " let g:tsuquyomi_disable_quickfix = 1
- " let g:syntastic_typescript_checkers = ['tsuquyomi']
-" ---------------------------------------------------------------------------------
-
+let g:ale_completion_enabled = 1
 " ---------------------------------------------------------------------------------
 "  NERDTree settings
 let g:NERDTreeWinPos = 'right'
@@ -191,20 +167,6 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
-" status line content
-" set statusline+=%F
-" set statusline =%1*\ %n\ %*            "buffer number
-" set statusline +=%5*%{&ff}%*            "file format
-" set statusline +=%3*%y%*                "file type
-" set statusline +=%4*\ %<%F%*            "full path
-" set statusline +=%2*%m%*                "modified flag
-" set statusline +=%1*%=%5l%*             "current line
-" set statusline +=%2*/%L%*               "total lines
-" set statusline +=%1*%4v\ %*             "virtual column number
-" set statusline +=%2*0x%04B\ %*          "character under cursor
-" ---------------------------------------------------------------------------------
-
-" ---------------------------------------------------------------------------------
 " NERDTree settings
 let g:NERDTreeDirArrowExpandable = '→'
 let g:NERDTreeDirArrowCollapsible = '↳'
@@ -219,7 +181,7 @@ let g:NERDSpaceDelims=1       " add space after comments char
 " ---------------------------------------------------------------------------------
 " Ack.vim settings
 " use ag instead of ack
- let g:ackprg = 'ag --vimgrep --ignore-dir={ios,android,node_modules,coverage}'
+let g:ackprg = 'ag --vimgrep --ignore-dir={ios,android,node_modules,coverage}'
 " ---------------------------------------------------------------------------------
 
 hi Search cterm=NONE ctermfg=black ctermbg=blue
@@ -262,49 +224,49 @@ nnoremap <C-L> :nohlsearch<CR><C-L>
 
 " open nerd tree on the current file location
 function RevealFileInNERDTree()
-        echo @%
-        :NERDTreeFind
+  echo @%
+  :NERDTreeFind
 endfunction
 
 function DeleteAllBuffers()
-        bufdo bd
-        call OpenNerdTree()
+  bufdo bd
+  call OpenNerdTree()
 endfunction
 
 function OpenNerdTree()
-        :NERDTreeToggle
-        vertical resize -9999
-        vertical resize +35
-        " call SetAllSplitsSameWidth()
+  :NERDTreeToggle
+  vertical resize -9999
+  vertical resize +55
+  " call SetAllSplitsSameWidth()
 endfunction
 
 function SetAllSplitsSameWidth()
-        let i = 1
-        let window_size = 0
-        let windows_quantity = winnr('$')
-        let windows_to_resize = []
+  let i = 1
+  let window_size = 0
+  let windows_quantity = winnr('$')
+  let windows_to_resize = []
 
-        " get screen size
-        while i <= windows_quantity
-                let window_size += winwidth(i)
-                call add(windows_to_resize, i)
-                let i += 1
-        endwhile
+  " get screen size
+  while i <= windows_quantity
+    let window_size += winwidth(i)
+    call add(windows_to_resize, i)
+    let i += 1
+  endwhile
 
-        if IsNerdTreeOpen()
-                let window_size -= 35
-                let windows_quantity -= 1
-                let windows_to_resize = windows_to_resize[1:len(windows_to_resize)]
-        endif
+  if IsNerdTreeOpen()
+    let window_size -= 35
+    let windows_quantity -= 1
+    let windows_to_resize = windows_to_resize[1:len(windows_to_resize)]
+  endif
 
-        let size_per_split = window_size / windows_quantity
-        let windows_to_resize = join(windows_to_resize, ',')
+  let size_per_split = window_size / windows_quantity
+  let windows_to_resize = join(windows_to_resize, ',')
 
-        execute ''.windows_to_resize.'windo execute "set winwidth='.size_per_split.'"'
+  execute ''.windows_to_resize.'windo execute "set winwidth='.size_per_split.'"'
 endfunction
 
 function! IsNerdTreeOpen()
-        return exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
+  return exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1
 endfunction
 
 " ---------------------------------------------------------------------------------
@@ -317,7 +279,8 @@ command! ObsessionRead :source ~/.vim/Session.vim
 command Bda :call DeleteAllBuffers()
 " remove trailing spaces on pre write
 autocmd BufWritePre * %s/\s\+$//e
-autocmd BufNewFile,BufRead *.ts set filetype=typescript
+autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript
+autocmd BufNewFile,BufRead *.js,*.jsx set filetype=javascript
 autocmd BufNewFile,BufRead *.styl,*.scss set filetype=css
 autocmd BufNewFile,BufRead *.html.erb set filetype=html
 
@@ -331,15 +294,16 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 " ---------------------------------------------------------------------------------
 " tabs
 au FileType javascript
-        \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+      \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType typescript
-        \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
-au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+      \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2
 au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
 au FileType css setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=4
 au FileType ruby setlocal shiftwidth=2 smarttab
 au FileType python setlocal textwidth=79 colorcolumn=79
 au FileType yaml setlocal shiftwidth=2 smarttab
 au FileType sh setlocal shiftwidth=2 expandtab smarttab
+au FileType vim setlocal shiftwidth=2 expandtab smarttab
 " ---------------------------------------------------------------------------------
 
