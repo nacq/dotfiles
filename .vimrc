@@ -237,11 +237,6 @@ function RevealFileInNERDTree()
   :NERDTreeFind
 endfunction
 
-function DeleteAllBuffers()
-  bufdo bd
-  call OpenNerdTree()
-endfunction
-
 function OpenNerdTree()
   :NERDTreeToggle
   vertical resize -9999
@@ -284,8 +279,6 @@ endfunction
 command! ObsessionStart :Obsession ~/.vim/Session.vim
 " read saved sesh
 command! ObsessionRead :source ~/.vim/Session.vim
-" delete all open buffers (things get messy sometimes)
-command Bda :call DeleteAllBuffers()
 " remove trailing spaces on pre write
 autocmd BufWritePre * %s/\s\+$//e
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
