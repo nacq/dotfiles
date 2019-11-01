@@ -39,6 +39,7 @@ set listchars=tab:▸\ ,trail:•
 "  yeeee no more :Wq or :Q Not an editor command
 cnoreabbrev W w
 cnoreabbrev Q q
+cnoreabbrev Bd bd
 " ---------------------------------------------------------------------------------
 
 set nocompatible
