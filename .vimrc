@@ -1,23 +1,37 @@
 call plug#begin('~/.vim/plugged')
 Plug 'VundleVim/Vundle.vim'
-Plug 'airblade/vim-gitgutter' " show icons for lines added, modified or deleted
+
+" utils
 Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
-Plug 'scrooloose/nerdcommenter' " easy comment/uncomment
-Plug 'scrooloose/nerdtree' " file tree
-Plug 'tpope/vim-fugitive' " git stuff inside vim
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+
+" airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mxw/vim-jsx'
-Plug 'dense-analysis/ale'  " syntastic replace (async)
-Plug 'tpope/vim-obsession'
+
+" async linter checker (syntastic replace)
+Plug 'dense-analysis/ale'
+
+" git stuff
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" colorscheme
 Plug 'morhetz/gruvbox'
-Plug 'HerringtonDarkholme/yats.vim' "ts syntax highlighter
+
+" syntax higlighters
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 " ---------------------------------------------------------------------------------
 set list
+" show special characters for tabs and trailing spaces
 set listchars=tab:▸\ ,trail:•
 " ---------------------------------------------------------------------------------
 
@@ -137,7 +151,6 @@ let g:ale_linters={
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_set_highlights = 0 "Set this in your vimrc file to disabling highlighting
-let g:ale_completion_enabled = 1
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
@@ -275,10 +288,11 @@ command! ObsessionRead :source ~/.vim/Session.vim
 command Bda :call DeleteAllBuffers()
 " remove trailing spaces on pre write
 autocmd BufWritePre * %s/\s\+$//e
-autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript
-autocmd BufNewFile,BufRead *.js,*.jsx set filetype=javascript
+autocmd BufNewFile,BufRead *.ts set filetype=typescript
+autocmd BufNewFile,BufRead *.js set filetype=javascript
 autocmd BufNewFile,BufRead *.styl,*.scss set filetype=css
 autocmd BufNewFile,BufRead *.html.erb set filetype=html
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 autocmd FileType javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
 autocmd FileType typescript noremap <buffer> <c-f> :call JsBeautify()<cr>
@@ -302,4 +316,3 @@ au FileType yaml setlocal shiftwidth=2 smarttab
 au FileType sh setlocal shiftwidth=2 expandtab smarttab
 au FileType vim setlocal shiftwidth=2 expandtab smarttab
 " ---------------------------------------------------------------------------------
-
