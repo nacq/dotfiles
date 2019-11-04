@@ -149,8 +149,8 @@ set nopaste
 let g:ale_linters={
       \'javascript': ['prettier', 'eslint']
       \}
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+let g:ale_sign_error = '💩'
+let g:ale_sign_warning = '🤔'
 let g:ale_set_highlights = 0 "Set this in your vimrc file to disabling highlighting
 " ---------------------------------------------------------------------------------
 
@@ -192,6 +192,10 @@ let g:NERDSpaceDelims=1       " add space after comments char
 " Ack.vim settings
 " use ag instead of ack
 let g:ackprg = 'ag --vimgrep --ignore-dir={ios,android,node_modules,coverage}'
+
+" avoid jump to the first match automatically
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 " ---------------------------------------------------------------------------------
 
 hi Search cterm=NONE ctermfg=black ctermbg=blue
