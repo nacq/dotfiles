@@ -191,7 +191,7 @@ let g:NERDSpaceDelims=1       " add space after comments char
 " ---------------------------------------------------------------------------------
 " Ack.vim settings
 " use ag instead of ack
-let g:ackprg = 'ag --vimgrep --ignore-dir={ios,android,node_modules,coverage}'
+let g:ackprg = 'ag --vimgrep --ignore package-lock.json --ignore-dir={ios,android,node_modules,coverage}'
 
 " avoid jump to the first match automatically
 cnoreabbrev Ack Ack!
