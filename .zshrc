@@ -97,6 +97,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Golang related vars
-export PATH="$PATH:/usr/local/Cellar/go/1.13.4/bin"
-export GOPATH="$HOME/go"
-export GOBIN="$GOPATH/bin"
+export PATH="$PATH:/usr/local/Cellar/go/1.13.4/bin:$HOME/go/bin"
