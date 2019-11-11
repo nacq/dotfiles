@@ -1,6 +1,6 @@
 [user]
-	email = nicolaseacquaviva@gmail.com
-	name = Nicolas Acquaviva
+        email = nicolaseacquaviva@gmail.com
+        name = Nicolas Acquaviva
 [alias]
         st = status
         co = checkout
@@ -10,5 +10,7 @@
         ; %cd git stash list --date=local
         ; %s message
         sl = stash list --pretty=format:\"%gd%  - (%cr) - %cd - %s\"
+        rcontinue = rebase --continue
+        rabort = rebase --abort
 [core]
-	editor = /usr/bin/vi
+        editor = /usr/bin/vi
