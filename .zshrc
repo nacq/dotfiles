@@ -89,12 +89,17 @@ source $ZSH/oh-my-zsh.sh
 alias glog="\git log --color --all --date-order --decorate --dirstat=lines,cumulative --stat | sed 's/\([0-9] file[s]\? .*)$\)/\1\n_______\n-------/g' | \less -R"
 alias vim=nvim
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-#export PATH=$(brew --prefix openvpn)/sbin:$PATH
+# .zshrc is evaluated for every zsh process
+# to avoid duplicated entries on the $PATH variable
+# only set this variables if tmux is not running
+if [[ -z $TMUX ]]; then
+  # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+  export PATH="$PATH:$HOME/.rvm/bin"
+  #export PATH=$(brew --prefix openvpn)/sbin:$PATH
+
+  # Golang related vars
+  export PATH="$PATH:/usr/local/Cellar/go/1.13.4/bin:$HOME/go/bin"
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# Golang related vars
-export PATH="$PATH:/usr/local/Cellar/go/1.13.4/bin:$HOME/go/bin"
