@@ -291,6 +291,7 @@ autocmd BufNewFile,BufRead *.js set filetype=javascript
 autocmd BufNewFile,BufRead *.styl,*.scss set filetype=css
 autocmd BufNewFile,BufRead *.html.erb set filetype=html
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.go set filetype=go
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
@@ -307,4 +308,5 @@ au FileType python setlocal textwidth=79 colorcolumn=79
 au FileType yaml setlocal shiftwidth=2 smarttab
 au FileType sh setlocal shiftwidth=2 expandtab smarttab
 au FileType vim setlocal shiftwidth=2 expandtab smarttab
+au FileType go setlocal shiftwidth=4 expandtab smarttab
 " ---------------------------------------------------------------------------------
