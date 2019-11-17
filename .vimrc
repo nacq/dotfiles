@@ -147,7 +147,8 @@ set nopaste
 " ---------------------------------------------------------------------------------
 " ALE settings
 let g:ale_linters={
-      \'javascript': ['prettier', 'eslint']
+      \'javascript': ['prettier', 'eslint'],
+      \'typescript': ['prettier', 'eslint']
       \}
 let g:ale_sign_error = '💩'
 let g:ale_sign_warning = '🤔'
