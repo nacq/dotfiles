@@ -25,8 +25,8 @@ Plug 'morhetz/gruvbox'
 " syntax higlighters
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'HerringtonDarkholme/yats.vim'
 call plug#end()
 
 " ---------------------------------------------------------------------------------
@@ -144,6 +144,8 @@ set t_Co=256
 set path+=**
 " set autochdir
 set nopaste
+" ---------------------------------------------------------------------------------
+
 " ---------------------------------------------------------------------------------
 " ALE settings
 let g:ale_linters={
@@ -300,6 +302,8 @@ autocmd BufNewFile,BufRead *.go set filetype=go
 au FileType javascript
       \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType typescript
+      \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+au FileType typescript.tsx
       \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2
 au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4
