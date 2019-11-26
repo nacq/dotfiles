@@ -2,11 +2,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'VundleVim/Vundle.vim'
 
 " utils
-Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -209,7 +210,7 @@ let JSHintUpdateWriteOnly=1
 " ---------------------------------------------------------------------------------
 " keybinds
 map <C-n> :NERDTreeToggle <CR>
-" map <C-n> :call OpenNerdTree() <CR>
+map <C-p> :Files <CR>
 map <C-k> :call RevealFileInNERDTree() <CR>
 map <C-S-Left> :vertical resize -1 <CR>
 map <C-S-Right> :vertical resize +1 <CR>
