@@ -7,8 +7,18 @@
 # -InternalBattery-0 (id=3735651)        37%; charging; 2:16 remaining present: true
 
 while true; do
-  pmset -g batt | awk 'FNR==2{ print $3, $5, $6 }'
+  SLEEP_TIME=300
+  STATUS=`pmset -g batt | awk 'FNR==2{ print $3, $5, $6 }'`
+  PERCENTAGE=`echo $STATUS | awk '{ print $1 }' | sed 's/;//g'`
+
+  # if battery full increase the sleep to 15 mins and show nothing
+  if [ $PERCENTAGE == "100%" ] && []; then
+    SLEEP_TIME=900
+    STATUS=$PERCENTAGE
+  fi
+
+  echo $STATUS
 
   # sleep 5 mins
-  sleep 300;
+  sleep $SLEEP_TIME;
 done
