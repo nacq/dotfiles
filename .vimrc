@@ -218,7 +218,7 @@ map <C-S-Down> :resize -1 <CR>
 map <C-S-Up> :resize +1 <CR>
 
 " position cursor inbetween brackets
-imap {<Tab> {}<Esc>i
+imap {<Tab> {}<Esc>i<Enter><Esc>O
 imap [<Tab> []<Esc>i
 imap (<Tab> ()<Esc>i
 imap '<Tab> ''<Esc>i
