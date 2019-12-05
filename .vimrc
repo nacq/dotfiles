@@ -26,9 +26,22 @@ Plug 'morhetz/gruvbox'
 " syntax higlighters
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
 call plug#end()
+
+set termguicolors
+
+let g:deoplete#enable_at_startup = 1
 
 " ---------------------------------------------------------------------------------
 set list
@@ -172,7 +185,7 @@ let g:ctrlp_show_hidden = 1
 
 " ---------------------------------------------------------------------------------
 " Airline settings
-let g:airline_theme='gruvbox'
+let g:airline_theme='base16_gruvbox_dark_hard'
 " show buffer list on airline
 let g:airline#extensions#tabline#enabled = 1
 " show buffer number on airline
