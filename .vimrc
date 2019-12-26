@@ -53,7 +53,11 @@ set listchars=tab:▸\ ,trail:•
 "  yeeee no more :Wq or :Q Not an editor command
 cnoreabbrev W w
 cnoreabbrev Q q
+cnoreabbrev Q! q!
 cnoreabbrev Bd bd
+cnoreabbrev Wq wq
+cnoreabbrev Wq! wq!
+cnoreabbrev Wqa! wqa!
 " ---------------------------------------------------------------------------------
 
 set nocompatible
@@ -307,13 +311,15 @@ autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd BufNewFile,BufRead *.js set filetype=javascript
 autocmd BufNewFile,BufRead *.styl,*.scss set filetype=css
 autocmd BufNewFile,BufRead *.html.erb set filetype=html
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.go set filetype=go
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
 " tabs
 au FileType javascript
+      \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+au FileType javascript.jsx
       \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType typescript
       \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
