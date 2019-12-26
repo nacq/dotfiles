@@ -13,4 +13,4 @@
         rcontinue = rebase --continue
         rabort = rebase --abort
 [core]
-        editor = /usr/bin/vi
+        editor = /usr/local/bin/nvim
