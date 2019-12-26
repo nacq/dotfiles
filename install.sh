@@ -39,16 +39,29 @@ osx_install() {
   if [[ ! -x "$(command -v nvim)" ]]; then
     _echo " > Installing Neovim" $GREEN
     brew install --HEAD neovim
+  else
+    _echo " > Neovim installed" $YELLOW
   fi
 
   if [[ ! -x "$(command -v tmux)" ]]; then
     _echo " > Installing Tmux" $GREEN
     brew install tmux
+  else
+    _echo " > Tmux installed" $YELLOW
   fi
 
   if [[ ! -x "$(command -v zsh)" ]]; then
     _echo " > Installing Zsh" $GREEN
     brew install zsh
+  else
+    _echo " > Zsh installed" $YELLOW
+  fi
+
+  if [[ ! -x "$(command --version fzf)" ]]; then
+    _echo " > Installing Fzf" $GREEN
+    brew install fzf
+  else
+    _echo " > Fzf installed" $YELLOW
   fi
 
   neovim_setup_linux
