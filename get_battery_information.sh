@@ -17,7 +17,7 @@ while true; do
     STATUS=$PERCENTAGE
   fi
 
-  echo $STATUS
+  echo $STATUS | sed 's/;//g'
 
   # sleep 5 mins
   sleep $SLEEP_TIME;
