@@ -170,8 +170,8 @@ let g:ale_linters={
       \'javascript': ['prettier', 'eslint'],
       \'typescript': ['prettier', 'eslint']
       \}
-let g:ale_sign_error = '💩'
-let g:ale_sign_warning = '🤔'
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
 let g:ale_set_highlights = 0 "Set this in your vimrc file to disabling highlighting
 " ---------------------------------------------------------------------------------
 
