@@ -307,11 +307,12 @@ command! ObsessionStart :Obsession ~/.vim/Session.vim
 command! ObsessionRead :source ~/.vim/Session.vim
 " remove trailing spaces on pre write
 autocmd BufWritePre * %s/\s\+$//e
-autocmd BufNewFile,BufRead *.ts set filetype=typescript
+" keep tsx here to start ts server when opening tsx files
+autocmd BufNewFile,BufRead *.tsx,*.ts set filetype=typescript
 autocmd BufNewFile,BufRead *.js set filetype=javascript
 autocmd BufNewFile,BufRead *.styl,*.scss set filetype=css
 autocmd BufNewFile,BufRead *.html.erb set filetype=html
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=javascript.jsx
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.go set filetype=go
 " ---------------------------------------------------------------------------------
 
