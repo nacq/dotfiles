@@ -5,6 +5,7 @@
         st = status
         co = checkout
         b = branch
+        logs = log --stat
         ; %gd stash id
         ; %cr git stash list --date=relative
         ; %cd git stash list --date=local
