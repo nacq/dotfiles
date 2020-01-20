@@ -5,7 +5,6 @@ Plug 'VundleVim/Vundle.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
@@ -226,7 +225,9 @@ let JSHintUpdateWriteOnly=1
 
 " ---------------------------------------------------------------------------------
 " keybinds
-map <C-n> :NERDTreeToggle <CR>
+" map <C-n> :NERDTreeToggle <CR>
+" Replace NERDTree with native netwr
+map <C-n> :Explore <CR>
 map <C-p> :Files <CR>
 map <C-k> :call RevealFileInNERDTree() <CR>
 map <C-S-Left> :vertical resize -1 <CR>
