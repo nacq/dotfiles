@@ -21,6 +21,7 @@ Plug 'airblade/vim-gitgutter'
 
 " colorscheme
 Plug 'morhetz/gruvbox'
+Plug 'cormacrelf/vim-colors-github'
 
 " syntax higlighters
 Plug 'pangloss/vim-javascript'
@@ -230,10 +231,9 @@ let JSHintUpdateWriteOnly=1
 map <C-n> :Explore <CR>
 map <C-p> :Files <CR>
 map <C-k> :call RevealFileInNERDTree() <CR>
-map <C-S-Left> :vertical resize -1 <CR>
-map <C-S-Right> :vertical resize +1 <CR>
-map <C-S-Down> :resize -1 <CR>
-map <C-S-Up> :resize +1 <CR>
+
+map <C-S-d> :TSDef <CR>
+map <C-S-e> :TSGetDiagnostics <CR>
 
 " position cursor inbetween brackets
 imap {<Tab> {}<Esc>i<Enter><Esc>O
