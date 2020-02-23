@@ -8,6 +8,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
+Plug 'ycm-core/YouCompleteMe'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -28,21 +29,10 @@ Plug 'cormacrelf/vim-colors-github'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
 
 call plug#end()
 
 set termguicolors
-
-let g:deoplete#enable_at_startup = 1
 
 " ---------------------------------------------------------------------------------
 set list
@@ -59,6 +49,8 @@ cnoreabbrev Bd bd
 cnoreabbrev Wq wq
 cnoreabbrev Wq! wq!
 cnoreabbrev Wqa! wqa!
+cnoreabbrev Tabclose tabclose
+cnoreabbrev Tabopen tabopen
 " ---------------------------------------------------------------------------------
 
 set nocompatible
