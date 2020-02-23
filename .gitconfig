@@ -13,5 +13,6 @@
         sl = stash list --pretty=format:\"%gd%  - (%cr) - %cd - %s\"
         rcontinue = rebase --continue
         rabort = rebase --abort
+        rskip = rebase --skip
 [core]
         editor = /usr/local/bin/nvim
