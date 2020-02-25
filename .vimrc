@@ -10,10 +10,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'ycm-core/YouCompleteMe'
 
-" airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
 " async linter checker (syntastic replace)
 Plug 'dense-analysis/ale'
 
@@ -106,8 +102,23 @@ set showmatch                   " idk
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
+" statusline config
 " show staus line on all windows
 set laststatus=2
+
+function! GetBranchName()
+  let branchname = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+  return strlen(l:branchname) > 0 ? '  '.l:branchname.' ' : ''
+endfunction
+
+set statusline+=%#PmenuSel#
+set statusline+=%{GetBranchName()}
+set statusline+=%#LineNr#
+set statusline+=\ %f
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
@@ -181,14 +192,6 @@ let g:ctrlp_show_hidden = 1
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
-" Airline settings
-let g:airline_theme='base16_gruvbox_dark_hard'
-" show buffer list on airline
-let g:airline#extensions#tabline#enabled = 1
-" show buffer number on airline
-let g:airline#extensions#tabline#buffer_nr_show = 1
-" let g:airline_section_z=airline#section#create(['%{ObsessionStatus(''$'', '''')}'])
-" ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
 " NERDTree settings
@@ -223,7 +226,7 @@ map <C-n> :NERDTreeToggle <CR>
 map <C-p> :GFiles <CR>
 map <C-k> :call RevealFileInNERDTree() <CR>
 
-map <C-S-d> :TSDef <CR>
+map <C-S-d> :YcmCompleter GoTo <CR>
 map <C-S-e> :TSGetDiagnostics <CR>
 
 " position cursor inbetween brackets
