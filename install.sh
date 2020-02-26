@@ -8,7 +8,6 @@ TMUX_FILE=$HOME/.tmux.conf
 TMUX_TPM_DIR=$HOME/.tmux/plugins/tpm/
 VIMRC_FILE=$HOME/.vimrc
 ZSH_FILE=$HOME/.zshrc
-VUNDLE=$HOME/.vim/bundle/Vundle.vim
 BASHRC=$HOME/.bashrc
 NVIM_CONFIG_DIR=$HOME/.config/nvim
 
@@ -19,6 +18,21 @@ RED=$(tput setaf 1)
 YELLOW=$(tput setaf 3)
 UNDERLINE=$(tput smul)
 BR="\n"
+
+if [[ "$EUID" -ne 0 ]]; then
+  _echo "Please run as root" $RED $UNDERLINE
+  exit 1
+fi
+
+case $OSTYPE in
+  darwin) osx_install ;;
+  darwin18) osx_install ;;
+  darwin19.0) osx_install ;;
+  linux-gnu) linux_install ;;
+  **) _echo "Unsupported OS ${OSTYPE}" $RED && exit 1 ;;
+esac
+
+commons && change_owner && _echo "Done!" $GREEN $UNDERLINE
 
 # $1 message
 # $2 color
@@ -153,14 +167,9 @@ commons() {
 
   ln -s $HOME/dotfiles/.vimrc $VIMRC_FILE
 
-  if [[ ! -d $VUNDLE ]]; then
-    _echo " >> Installing Vundle, vim plugin manager." $GREEN
-    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-  fi
-
   # # install vim plugins using Vundle
   # # -c flag runs command before vim starts up
-  vim -c "BundleInstall" -c "qa!"
+  vim -c "PlugInstall" -c "qa!"
 
   _echo " > The following symbolic links were created:" $GREEN $UNDERLINE
   cd $HOME && ls -la | grep "\->" | grep dotfiles | grep -v bak
@@ -196,31 +205,7 @@ neovim_setup_linux() {
  fi
 }
 
+# since the script needs to run as sudo, change the ownership of the created directories
 change_owner() {
   chown -R `whoami` .tmux .config .vim .vimrc
 }
-
-main() {
-  if [[ "$EUID" -ne 0 ]]; then
-    _echo "Please run as root" $RED $UNDERLINE
-    exit 1
-  fi
-
-  case $OSTYPE in
-    darwin18) osx_install ;;
-    darwin) osx_install ;;
-    linux-gnu) linux_install ;;
-    **)
-      _echo "Unsupported OS ${OSTYPE}" $RED
-      exit 1
-      ;;
-  esac
-
-  commons
-
-  change_owner
-
-  _echo "DONE!" $GREEN $UNDERLINE
-}
-
-main
