@@ -8,7 +8,7 @@ TMUX_FILE=$HOME/.tmux.conf
 TMUX_TPM_DIR=$HOME/.tmux/plugins/tpm/
 VIMRC_FILE=$HOME/.vimrc
 ZSH_FILE=$HOME/.zshrc
-VUNDLE=$HOME/.vim/bundle/Vundle.vim
+PLUGGED=$HOME/.vim/plugged
 BASHRC=$HOME/.bashrc
 NVIM_CONFIG_DIR=$HOME/.config/nvim
 
@@ -38,7 +38,7 @@ osx_install() {
 
   if [[ ! -x "$(command -v nvim)" ]]; then
     _echo " > Installing Neovim" $GREEN
-    brew install --HEAD neovim
+    brew install neovim
   else
     _echo " > Neovim installed" $YELLOW
   fi
@@ -57,16 +57,17 @@ osx_install() {
     _echo " > Zsh installed" $YELLOW
   fi
 
-  if [[ ! -x "$(command --version fzf)" ]]; then
+  if [[ ! -x "$(which fzf)" ]]; then
     _echo " > Installing Fzf" $GREEN
     brew install fzf
   else
     _echo " > Fzf installed" $YELLOW
   fi
 
-  neovim_setup_linux
+  commons
 }
 
+# TODO: test this better
 linux_install() {
   _echo "Linux detected" $GREEN
 
@@ -80,30 +81,26 @@ linux_install() {
     apt-get install -y curl
   fi
 
+  if [[ ! -x "$(command -v nvim)" ]]; then
+    _echo " > Installing Neovim" $GREEN
+    add-apt-repository ppa:neovim/unstable
+    apt-get update
+    apt-get install -y neovim
+
+    _echo " > Installing Plug, Neovim plugin manager" $GREEN
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  fi
+
   if [[ ! -x "$(command -v zsh)" ]]; then
     _echo " > Installing Zsh" $GREEN
     apt-get install -y zsh
   fi
 
-  neovim_setup_linux
+  commons
 }
 
 commons() {
-  if [[ ! -d $OHMYSZH_DIR ]]; then
-    _echo " > Installing Oh My Zsh" $GREEN
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  fi
-
-  if [[ -f $ZSH_FILE ]]; then
-    _echo " >> ${ZSH_FILE} already exists. Moving it to ${ZSH_FILE}.bak" $YELLOW
-    if [[ -f $ZSH_FILE.bak ]]; then
-      rm $HOME/.zshrc.bak
-    fi
-    mv $ZSH_FILE $HOME/.zshrc.bak
-  fi
-
-  ln -s $HOME/dotfiles/.zshrc $ZSH_FILE
-
   if [[ -f $BASHRC ]]; then
     _echo " >> ${BASHRC} already exists. Moving it to ${BASHRC}.bak" $YELLOW
     if [[ -f $BASHRC.bak ]]; then
@@ -153,74 +150,68 @@ commons() {
 
   ln -s $HOME/dotfiles/.vimrc $VIMRC_FILE
 
-  if [[ ! -d $VUNDLE ]]; then
-    _echo " >> Installing Vundle, vim plugin manager." $GREEN
-    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+  # nvim config
+  if [[ ! -d $HOME/.config ]]; then
+    _echo "$HOME/.config does not exist, creating it" $RED
+
+    mkdir $HOME/.config
+  else
+    if [[ -d $HOME/.config/nvim ]];then
+      _echo " > $HOME/.config/nvim exists, removing it" $RED
+
+      rm -rf $HOME/.config/nvim
+    fi
+
+    ln -s $HOME/dotfiles/.config/nvim $HOME/.config/nvim
+  fi
+
+  if [[ ! -d $PLUGGED ]]; then
+    _echo " > Installing Plug, Neovim plugin manager" $GREEN
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
 
   # # install vim plugins using Vundle
   # # -c flag runs command before vim starts up
-  vim -c "BundleInstall" -c "qa!"
+  nvim -c "PlugInstall" -c "qa!"
+
+  # install ts support
+  sh $PLUGGED/YouCompleteMe/install.sh --ts-completer
+
+  # keep zsh install to the last bc it asks for user input
+  if [[ -f $ZSH_FILE ]]; then
+    _echo " >> ${ZSH_FILE} already exists. Moving it to ${ZSH_FILE}.bak" $YELLOW
+    if [[ -f $ZSH_FILE.bak ]]; then
+      rm $HOME/.zshrc.bak
+    fi
+    mv $ZSH_FILE $HOME/.zshrc.bak
+  fi
+
+  ln -s $HOME/dotfiles/.zshrc $ZSH_FILE
 
   _echo " > The following symbolic links were created:" $GREEN $UNDERLINE
   cd $HOME && ls -la | grep "\->" | grep dotfiles | grep -v bak
-}
 
-neovim_setup_linux() {
-  if [[ ! -x "$(command -v nvim)" ]]; then
-    _echo " > Installing Neovim" $GREEN
-    add-apt-repository ppa:neovim/unstable
-    apt-get update
-    apt-get install -y neovim
-
-    _echo " > Installing Plug, Neovim plugin manager" $GREEN
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-    # install vim-plug plugins (vim alias to nvim)
-    vim -c "PlugInstall" -c "qa!"
+  # this as the last step bc it hangs the execution of the script
+  if [[ ! -d $OHMYSZH_DIR ]]; then
+    _echo " > Installing Oh My Zsh" $GREEN
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   fi
-
- if [[ ! -d $HOME/.config ]]; then
-   _echo "$HOME/.config does not exist, creating it" $RED
-
-   mkdir $HOME/.config
- else
-   if [[ -d $HOME/.config/nvim ]];then
-     _echo " > $HOME/.config/nvim exists, removing it" $RED
-
-     rm -rf $HOME/.config/nvim
-   fi
-
-   ln -s $HOME/dotfiles/.config/nvim $HOME/.config/nvim
- fi
-}
-
-change_owner() {
-  chown -R `whoami` .tmux .config .vim .vimrc
 }
 
 main() {
-  if [[ "$EUID" -ne 0 ]]; then
-    _echo "Please run as root" $RED $UNDERLINE
-    exit 1
-  fi
-
   case $OSTYPE in
-    darwin18) osx_install ;;
     darwin) osx_install ;;
+    darwin18) osx_install ;;
+    darwin19) osx_install ;;
     linux-gnu) linux_install ;;
-    **)
-      _echo "Unsupported OS ${OSTYPE}" $RED
-      exit 1
-      ;;
+    **) _echo "Unsupported OS ${OSTYPE}" $RED
+        exit 1
+        ;;
   esac
 
-  commons
-
-  change_owner
-
   _echo "DONE!" $GREEN $UNDERLINE
+  exit 0
 }
 
 main
