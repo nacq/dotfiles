@@ -224,6 +224,7 @@ let JSHintUpdateWriteOnly=1
 " keybinds
 map <C-n> :NERDTreeToggle <CR>
 map <C-p> :GFiles <CR>
+map <C-S-p> :Files <CR>
 map <C-k> :call RevealFileInNERDTree() <CR>
 
 map <C-S-d> :YcmCompleter GoTo <CR>
