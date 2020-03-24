@@ -185,12 +185,6 @@ let g:NERDTreeWinPos = 'right'
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
-" CtrlP settings
-let g:ctrlp_max_files = 20000
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist\|ios\|android\|coverage'
-let g:ctrlp_show_hidden = 1
-" ---------------------------------------------------------------------------------
-
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
@@ -206,17 +200,7 @@ let g:NERDSpaceDelims=1       " add space after comments char
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
-" Ack.vim settings
-" use ag instead of ack
-let g:ackprg = 'ag --vimgrep --ignore package-lock.json --ignore-dir={ios,android,node_modules,coverage}'
-
-" avoid jump to the first match automatically
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
-" ---------------------------------------------------------------------------------
-
 hi Search cterm=NONE ctermfg=black ctermbg=blue
-let g:solarized_termcolors=256
 
 let JSHintUpdateWriteOnly=1
 
@@ -261,10 +245,6 @@ endfunction
 
 " ---------------------------------------------------------------------------------
 " commands
-" start session on specific dir
-command! ObsessionStart :Obsession ~/.vim/Session.vim
-" read saved sesh
-command! ObsessionRead :source ~/.vim/Session.vim
 " remove trailing spaces on pre write
 autocmd BufWritePre * %s/\s\+$//e
 " keep tsx here to start ts server when opening tsx files
