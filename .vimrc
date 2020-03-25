@@ -22,9 +22,8 @@ Plug 'morhetz/gruvbox'
 Plug 'cormacrelf/vim-colors-github'
 
 " syntax higlighters
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 call plug#end()
 
@@ -106,13 +105,7 @@ set showmatch                   " idk
 " show staus line on all windows
 set laststatus=2
 
-function! GetBranchName()
-  let branchname = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-  return strlen(l:branchname) > 0 ? '  '.l:branchname.' ' : ''
-endfunction
-
 set statusline+=%#PmenuSel#
-set statusline+=%{GetBranchName()}
 set statusline+=%#LineNr#
 set statusline+=\ %f
 set statusline+=%=
@@ -201,9 +194,6 @@ let g:NERDSpaceDelims=1       " add space after comments char
 
 " ---------------------------------------------------------------------------------
 hi Search cterm=NONE ctermfg=black ctermbg=blue
-
-let JSHintUpdateWriteOnly=1
-
 " ---------------------------------------------------------------------------------
 " keybinds
 map <C-n> :NERDTreeToggle <CR>
@@ -248,11 +238,11 @@ endfunction
 " remove trailing spaces on pre write
 autocmd BufWritePre * %s/\s\+$//e
 " keep tsx here to start ts server when opening tsx files
-autocmd BufNewFile,BufRead *.tsx,*.ts set filetype=typescript
+autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd BufNewFile,BufRead *.js set filetype=javascript
 autocmd BufNewFile,BufRead *.styl,*.scss set filetype=css
 autocmd BufNewFile,BufRead *.html.erb set filetype=html
-autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+autocmd BufNewFile,BufRead *.jsx,*.tsx set filetype=typescript.jsx
 autocmd BufNewFile,BufRead *.go set filetype=go
 " ---------------------------------------------------------------------------------
 
