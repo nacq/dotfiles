@@ -200,6 +200,7 @@ map <C-n> :NERDTreeToggle <CR>
 map <C-p> :GFiles <CR>
 map <C-S-p> :Files <CR>
 map <C-k> :call RevealFileInNERDTree() <CR>
+map <C-s-g> :execute "!" "$HOME/dotfiles/open_in_github.sh" bufname("%") line(".") <CR>
 
 map <C-S-d> :YcmCompleter GoTo <CR>
 map <C-S-e> :TSGetDiagnostics <CR>
@@ -234,6 +235,7 @@ function RevealFileInNERDTree()
 endfunction
 
 " ---------------------------------------------------------------------------------
+
 " commands
 " remove trailing spaces on pre write
 autocmd BufWritePre * %s/\s\+$//e
