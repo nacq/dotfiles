@@ -24,6 +24,7 @@ Plug 'cormacrelf/vim-colors-github'
 " syntax higlighters
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 call plug#end()
 
