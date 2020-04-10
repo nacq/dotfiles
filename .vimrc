@@ -201,12 +201,11 @@ hi Search cterm=NONE ctermfg=black ctermbg=blue
 " keybinds
 map <C-n> :NERDTreeToggle <CR>
 map <C-p> :GFiles <CR>
-map <C-S-p> :Files <CR>
 map <C-k> :call RevealFileInNERDTree() <CR>
-map <C-s-g> :execute "!" "$HOME/dotfiles/open_in_github.sh" bufname("%") line(".") <CR>
+map <C-g> :execute "!" "$HOME/dotfiles/open_in_github.sh" bufname("%") line(".") <CR>
 
-map <C-S-d> :YcmCompleter GoTo <CR>
-map <C-S-e> :TSGetDiagnostics <CR>
+map <leader>vd :vsplit \| YcmCompleter GoTo <CR>
+map <leader>dd :YcmCompleter GoTo <CR>
 
 " position cursor inbetween brackets
 imap {<Tab> {}<Esc>i<Enter><Esc>O
