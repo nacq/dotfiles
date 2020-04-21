@@ -25,6 +25,7 @@ Plug 'cormacrelf/vim-colors-github'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'gko/vim-coloresque'
 
 call plug#end()
 
@@ -206,6 +207,7 @@ map <C-g> :execute "!" "$HOME/dotfiles/open_in_github.sh" bufname("%") line(".")
 
 map <leader>vd :vsplit \| YcmCompleter GoTo <CR>
 map <leader>dd :YcmCompleter GoTo <CR>
+map <leader>rr :YcmCompleter GoToReferences <CR>
 
 " position cursor inbetween brackets
 imap {<Tab> {}<Esc>i<Enter><Esc>O
