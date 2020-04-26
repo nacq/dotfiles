@@ -19,17 +19,16 @@ Plug 'airblade/vim-gitgutter'
 
 " colorscheme
 Plug 'morhetz/gruvbox'
-Plug 'cormacrelf/vim-colors-github'
 
 " syntax higlighters
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'gko/vim-coloresque'
 
 call plug#end()
 
 set termguicolors
+set guicursor=
 
 " ---------------------------------------------------------------------------------
 set list
