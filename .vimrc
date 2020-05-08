@@ -17,13 +17,13 @@ Plug 'dense-analysis/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" colorscheme
-Plug 'morhetz/gruvbox'
-
 " syntax higlighters
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+" colorscheme
+Plug 'liuchengxu/space-vim-theme'
 
 call plug#end()
 
@@ -153,7 +153,7 @@ set backspace=indent,eol,start
 set showmode
 set noswapfile
 set background=dark
-colorscheme gruvbox
+colorscheme space_vim_theme
 " ---------------------------------------------------------------------------------
 
 set t_Co=256
