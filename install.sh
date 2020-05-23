@@ -12,25 +12,10 @@ PLUGGED=$HOME/.vim/plugged
 BASHRC=$HOME/.bashrc
 NVIM_CONFIG_DIR=$HOME/.config/nvim
 
-BLUE=$(tput setaf 4)
-GREEN=$(tput setaf 2)
-NORMAL=$(tput sgr0)
-RED=$(tput setaf 1)
-YELLOW=$(tput setaf 3)
-UNDERLINE=$(tput smul)
-BR="\n"
+PACKAGES=("cmake" "curl" "fzf" "nvim" "silversearcher-ag" "tmux" "zsh")
 
-# $1 message
-# $2 color
-# $3 underlined
-_echo() {
-  message="\n${2}${1}"
-
-  if [[ $3 ]]; then
-    message="$3$message"
-  fi
-
-  echo -e "$message${NORMAL}"
+log() {
+  echo -e "\e[92m >>>\e[0m" $1
 }
 
 osx_install() {
@@ -67,151 +52,133 @@ osx_install() {
   commons
 }
 
-# TODO: test this better
 linux_install() {
-  _echo "Linux detected" $GREEN
+  # root check
+  # if [[ "$EUID" -ne 0 ]]; then
+    # echo " >>> Please run as root"
+    # exit 1
+  # fi
 
-  if [[ ! -x "$(command -v tmux)" ]]; then
-    _echo " > Installing Tmux" $GREEN
-    apt-get install -y tmux
-  fi
+  for package in "${PACKAGES[@]}"; do
+    # meh
+    [[ $package == "silversearcher-ag" ]] && package="ag"
+    [[ -x "$(command which $package)" ]] || sudo apt-get install -y $package && log "$package installed"
+  done
 
-  if [[ ! -x "$(command -v curl)" ]]; then
-    _echo " > Installing Curl" $GREEN
-    apt-get install -y curl
-  fi
-
-  if [[ ! -x "$(command -v nvim)" ]]; then
-    _echo " > Installing Neovim" $GREEN
-    add-apt-repository ppa:neovim/unstable
-    apt-get update
-    apt-get install -y neovim
-
-    _echo " > Installing Plug, Neovim plugin manager" $GREEN
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  fi
-
-  if [[ ! -x "$(command -v zsh)" ]]; then
-    _echo " > Installing Zsh" $GREEN
-    apt-get install -y zsh
-  fi
+  # cleanup dependencies not loger needed
+  sudo apt-get autoremove -y
 
   commons
 }
 
 commons() {
   if [[ -f $BASHRC ]]; then
-    _echo " >> ${BASHRC} already exists. Moving it to ${BASHRC}.bak" $YELLOW
-    if [[ -f $BASHRC.bak ]]; then
-      rm $HOME/.bashrc.bak
-    fi
-    mv $BASHRC $HOME/.bashrc.bak
+    [[ -f $BASHRC.bak ]] && rm $HOME/.bashrc.bak && mv $BASHRC $HOME/.bashrc.bak
   fi
 
-  ln -s $HOME/dotfiles/.bashrc $BASHRC
+  ln -sf $HOME/dotfiles/.bashrc $BASHRC
 
   if [[ -f $GIT_CONFIG_FILE ]]; then
-    _echo " >> ${GIT_CONFIG_FILE} already exists. Moving it to ${GIT_CONFIG_FILE}.bak" $YELLOW
-    if [[ -f $GIT_CONFIG_FILE.bak ]]; then
-      rm $HOME/.gitconfig.bak
-    fi
-    mv $GIT_CONFIG_FILE $HOME/.gitconfig.bak
+    [[ -f $GIT_CONFIG_FILE.bak ]] && rm $HOME/.gitconfig.bak && mv $GIT_CONFIG_FILE $HOME/.gitconfig.bak
   fi
 
-  ln -s $HOME/dotfiles/.gitconfig $GIT_CONFIG_FILE
+  ln -sf $HOME/dotfiles/.gitconfig $GIT_CONFIG_FILE
 
   if [[ -f $TMUX_FILE ]]; then
-    _echo " >> ${TMUX_FILE} already exists. Moving it to ${TMUX_FILE}.bak" $YELLOW
-    if [[ -f $TMUX_FILE.bak ]]; then
-      rm $HOME/.tmux.conf.bak
-    fi
-    mv $TMUX_FILE $HOME/.tmux.conf.bak
+    [[ -f $TMUX_FILE.bak ]] && rm $HOME/.tmux.conf.bak &&  mv $TMUX_FILE $HOME/.tmux.conf.bak
   fi
 
-  ln -s $HOME/dotfiles/.tmux.conf $TMUX_FILE
+  ln -sf $HOME/dotfiles/.tmux.conf $TMUX_FILE
 
+  # TODO: investigate, this var is needed by tpm to install plugins but it's not defined at this point
+  # this is the installation dir of the plugins
+  export TMUX_PLUGIN_MANAGER_PATH="$HOME/.tmux/plugins"
   if [[ -f $TMUX_TPM_DIR/tpm ]]; then
-    _echo " >> Updating Tmux plugins" $YELLOW
-    sh $HOME/.tmux/plugins/tpm/bin/update_plugins all
+    $HOME/.tmux/plugins/tpm/bin/update_plugins all
   else
-    _echo " >> Installing Tmux Package Manager and plugins" $GREEN
+    log "Installing tmux plugin manager"
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm/
-    sh $HOME/.tmux/plugins/tpm/scripts/install_plugins.sh
+    $HOME/.tmux/plugins/tpm/bin/install_plugins
   fi
+  unset TMUX_PLUGIN_MANAGER_PATH
 
   if [[ -f $VIMRC_FILE ]]; then
-    _echo " >> ${VIMRC_FILE} already exists. Moving it to ${VIMRC_FILE}.bak" $YELLOW
-    if [[ -f $VIMRC_FILE.bak ]]; then
-      rm $HOME/.vimrc.bak
-    fi
-    mv $VIMRC_FILE $HOME/.vimrc.bak
+    [[ -f $VIMRC_FILE.bak ]] && rm $HOME/.vimrc.bak && mv $VIMRC_FILE $HOME/.vimrc.bak
   fi
 
-  ln -s $HOME/dotfiles/.vimrc $VIMRC_FILE
+  ln -sf $HOME/dotfiles/.vimrc $VIMRC_FILE
 
   # nvim config
   if [[ ! -d $HOME/.config ]]; then
-    _echo "$HOME/.config does not exist, creating it" $RED
-
     mkdir $HOME/.config
   else
-    if [[ -d $HOME/.config/nvim ]];then
-      _echo " > $HOME/.config/nvim exists, removing it" $RED
-
-      rm -rf $HOME/.config/nvim
-    fi
-
-    ln -s $HOME/dotfiles/.config/nvim $HOME/.config/nvim
+    [[ -d $HOME/.config/nvim ]] && rm -rf $HOME/.config/nvim
   fi
 
-  if [[ ! -d $PLUGGED ]]; then
-    _echo " > Installing Plug, Neovim plugin manager" $GREEN
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  fi
+  ln -sf $HOME/dotfiles/.config/nvim $HOME/.config/nvim
+
+  [[ ! -d $PLUGGED ]] && curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && " >>> vim-plug installed"
 
   # # install vim plugins using Vundle
   # # -c flag runs command before vim starts up
   nvim -c "PlugInstall" -c "qa!"
+  nvim -c "PlugUpdate" -c "qa!"
 
-  # install ts support
-  sh $PLUGGED/YouCompleteMe/install.sh --ts-completer
+  # install Typescript support
+  python3 $PLUGGED/YouCompleteMe/install.py --ts-completer
 
   # keep zsh install to the last bc it asks for user input
-  if [[ -f $ZSH_FILE ]]; then
-    _echo " >> ${ZSH_FILE} already exists. Moving it to ${ZSH_FILE}.bak" $YELLOW
-    if [[ -f $ZSH_FILE.bak ]]; then
-      rm $HOME/.zshrc.bak
-    fi
-    mv $ZSH_FILE $HOME/.zshrc.bak
-  fi
+  [[ -f $ZSH_FILE ]] && [[ -f $ZSH_FILE.bak ]] && rm $HOME/.zshrc.bak && mv $ZSH_FILE $HOME/.zshrc.bak
+  ln -sf $HOME/dotfiles/.zshrc $ZSH_FILE
 
-  ln -s $HOME/dotfiles/.zshrc $ZSH_FILE
-
-  _echo " > The following symbolic links were created:" $GREEN $UNDERLINE
+  log "The following symbolic links were created:"
   cd $HOME && ls -la | grep "\->" | grep dotfiles | grep -v bak
 
   # this as the last step bc it hangs the execution of the script
-  if [[ ! -d $OHMYSZH_DIR ]]; then
-    _echo " > Installing Oh My Zsh" $GREEN
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  fi
+  [[ ! -d $OHMYSZH_DIR ]] && sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 }
 
-main() {
+linux_rollback() {
+  [[ $OSTYPE != "linux-gnu" ]] && exit 1
+
+  # remove all files and dirs created with this script
+  rm -rf $GIT_CONFIG_FILE $TMUX_FILE $TMUX_TPM_DIR $VIMRC_FILE $ZSH_FILE $PLUGGED $BASHRC $NVIM_CONFIG_DIR \
+    $HOME/.tmux
+
+  for package in "${PACKAGES[@]}"; do
+    sudo apt-get remove -y $package
+  done
+
+  # cleanup dependencies not loger needed
+  sudo apt-get autoremove -y
+}
+
+prompt_user() {
+  log "What you wanna do? (install, rollback):"
+  read ANSWER
+
+  case $ANSWER in
+    install) start_install ;;
+    rollback) linux_rollback ;;
+    **) prompt_user ;;
+  esac
+}
+
+start_install() {
   case $OSTYPE in
     darwin) osx_install ;;
     darwin18) osx_install ;;
     darwin19) osx_install ;;
     linux-gnu) linux_install ;;
-    **) _echo "Unsupported OS ${OSTYPE}" $RED
-        exit 1
-        ;;
+    **) log "Unsupported OS ${OSTYPE}" && exit 1 ;;
   esac
 
-  _echo "DONE!" $GREEN $UNDERLINE
-  exit 0
+  log "Done! Restart the terminal" && exit 0
+}
+
+main() {
+  prompt_user
 }
 
 main
