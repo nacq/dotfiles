@@ -2,16 +2,18 @@
 #
 # Style guide: https://google.github.io/styleguide/shell.xml
 
-GIT_CONFIG_FILE=$HOME/.gitconfig
 OHMYSZH_DIR=$HOME/.oh-my-zsh
-TMUX_FILE=$HOME/.tmux.conf
 TMUX_TPM_DIR=$HOME/.tmux/plugins/tpm/
-VIMRC_FILE=$HOME/.vimrc
-ZSH_FILE=$HOME/.zshrc
 PLUGGED=$HOME/.vim/plugged
-BASHRC=$HOME/.bashrc
 NVIM_CONFIG_DIR=$HOME/.config/nvim
 
+FILES=(
+  ".gitconfig"
+  ".tmux.conf"
+  ".vimrc"
+  ".zshrc"
+  ".bashrc"
+)
 PACKAGES=(
   # these two needed by ycm
   "cmake"
@@ -23,41 +25,22 @@ PACKAGES=(
   "tmux"
   "zsh"
 )
+MACOS_PACKAGES=(
+  "neovim"
+  "tmux"
+  "fzf"
+  "the_silver_searcher"
+)
 
 log() {
   echo -e "\e[92m >>>\e[0m" $1
 }
 
 osx_install() {
-  _echo "MacOS detected" $GREEN $UNDERLINE
-
-  if [[ ! -x "$(command -v nvim)" ]]; then
-    _echo " > Installing Neovim" $GREEN
-    brew install neovim
-  else
-    _echo " > Neovim installed" $YELLOW
-  fi
-
-  if [[ ! -x "$(command -v tmux)" ]]; then
-    _echo " > Installing Tmux" $GREEN
-    brew install tmux
-  else
-    _echo " > Tmux installed" $YELLOW
-  fi
-
-  if [[ ! -x "$(command -v zsh)" ]]; then
-    _echo " > Installing Zsh" $GREEN
-    brew install zsh
-  else
-    _echo " > Zsh installed" $YELLOW
-  fi
-
-  if [[ ! -x "$(which fzf)" ]]; then
-    _echo " > Installing Fzf" $GREEN
-    brew install fzf
-  else
-    _echo " > Fzf installed" $YELLOW
-  fi
+  for package in "${MACOS_PACKAGES[@]}"; do
+    [[ $package == "the_silver_searcher" ]] && package="ag"
+    [[ -x "$(command which $package)" ]] || brew install $package && log "$package installed"
+  done
 
   commons
 }
@@ -81,42 +64,33 @@ linux_install() {
   commons
 }
 
+link_files() {
+  for file in "${FILES[@]}"; do
+    if [[ -f $file ]]; then
+      [[ -f $file.bak ]] && rm $HOME/$file.bak && mv $file $HOME/$file.bak
+    fi
+
+    ln -sf $HOME/dotfiles/$file $HOME/$file
+  done
+}
+
 commons() {
-  if [[ -f $BASHRC ]]; then
-    [[ -f $BASHRC.bak ]] && rm $HOME/.bashrc.bak && mv $BASHRC $HOME/.bashrc.bak
-  fi
+  link_files
 
-  ln -sf $HOME/dotfiles/.bashrc $BASHRC
+  [[ ! -d $OHMYSZH_DIR ]] && sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-  if [[ -f $GIT_CONFIG_FILE ]]; then
-    [[ -f $GIT_CONFIG_FILE.bak ]] && rm $HOME/.gitconfig.bak && mv $GIT_CONFIG_FILE $HOME/.gitconfig.bak
-  fi
-
-  ln -sf $HOME/dotfiles/.gitconfig $GIT_CONFIG_FILE
-
-  if [[ -f $TMUX_FILE ]]; then
-    [[ -f $TMUX_FILE.bak ]] && rm $HOME/.tmux.conf.bak &&  mv $TMUX_FILE $HOME/.tmux.conf.bak
-  fi
-
-  ln -sf $HOME/dotfiles/.tmux.conf $TMUX_FILE
-
-  # TODO: investigate, this var is needed by tpm to install plugins but it's not defined at this point
-  # this is the installation dir of the plugins
+  # installation dir of the plugins
+  #this var is needed by tpm to install plugins but it's not defined at this point
   export TMUX_PLUGIN_MANAGER_PATH="$HOME/.tmux/plugins"
   if [[ -f $TMUX_TPM_DIR/tpm ]]; then
     $HOME/.tmux/plugins/tpm/bin/update_plugins all
+    log "tpm installed"
   else
-    log "Installing tmux plugin manager"
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm/
+    log "tpm installed"
     $HOME/.tmux/plugins/tpm/bin/install_plugins
   fi
   unset TMUX_PLUGIN_MANAGER_PATH
-
-  if [[ -f $VIMRC_FILE ]]; then
-    [[ -f $VIMRC_FILE.bak ]] && rm $HOME/.vimrc.bak && mv $VIMRC_FILE $HOME/.vimrc.bak
-  fi
-
-  ln -sf $HOME/dotfiles/.vimrc $VIMRC_FILE
 
   # nvim config
   if [[ ! -d $HOME/.config ]]; then
@@ -128,7 +102,7 @@ commons() {
   ln -sf $HOME/dotfiles/.config/nvim $HOME/.config/nvim
 
   [[ ! -d $PLUGGED ]] && curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && " >>> vim-plug installed"
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && log "vim-plug installed"
 
   # # install vim plugins using Vundle
   # # -c flag runs command before vim starts up
@@ -138,15 +112,8 @@ commons() {
   # install Typescript support
   python3 $PLUGGED/YouCompleteMe/install.py --ts-completer
 
-  # keep zsh install to the last bc it asks for user input
-  [[ -f $ZSH_FILE ]] && [[ -f $ZSH_FILE.bak ]] && rm $HOME/.zshrc.bak && mv $ZSH_FILE $HOME/.zshrc.bak
-  ln -sf $HOME/dotfiles/.zshrc $ZSH_FILE
-
   log "The following symbolic links were created:"
   cd $HOME && ls -la | grep "\->" | grep dotfiles | grep -v bak
-
-  # this as the last step bc it hangs the execution of the script
-  [[ ! -d $OHMYSZH_DIR ]] && sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 }
 
 linux_rollback() {
