@@ -12,7 +12,17 @@ PLUGGED=$HOME/.vim/plugged
 BASHRC=$HOME/.bashrc
 NVIM_CONFIG_DIR=$HOME/.config/nvim
 
-PACKAGES=("cmake" "curl" "fzf" "nvim" "silversearcher-ag" "tmux" "zsh")
+PACKAGES=(
+  # these two needed by ycm
+  "cmake"
+  "python3-dev"
+  "curl"
+  "fzf"
+  "nvim"
+  "silversearcher-ag"
+  "tmux"
+  "zsh"
+)
 
 log() {
   echo -e "\e[92m >>>\e[0m" $1
