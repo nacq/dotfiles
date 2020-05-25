@@ -33,7 +33,7 @@ MACOS_PACKAGES=(
 )
 
 log() {
-  echo -e "\e[92m >>>\e[0m" $1
+  echo -e "\033[92m >>>\033[0m" $1
 }
 
 osx_install() {
@@ -110,34 +110,44 @@ commons() {
   nvim -c "PlugUpdate" -c "qa!"
 
   # install Typescript support
-  python3 $PLUGGED/YouCompleteMe/install.py --ts-completer
+  python3 $PLUGGED/YouCompleteMe/install.py --ts-completer || $PLUGGED/YouCompleteMe/install.sh --ts-completer
 
   log "The following symbolic links were created:"
   cd $HOME && ls -la | grep "\->" | grep dotfiles | grep -v bak
 }
 
-linux_rollback() {
-  [[ $OSTYPE != "linux-gnu" ]] && exit 1
+rollback() {
+  if [[ $OSTYPE == "linux-gnu" ]]; then
+    for package in "${PACKAGES[@]}"; do
+      sudo apt-get remove -y $package
+    done
+
+    # cleanup dependencies not loger needed
+    sudo apt-get autoremove -y
+  elif [[ $OSTYPE == "darwin18" || $OSTYPE == "darwin19" ]]; then
+    for package in "${MACOS_PACKAGES[@]}"; do
+      brew uninstall $package
+    done
+  else
+    exit 1
+  fi
 
   # remove all files and dirs created with this script
-  rm -rf $GIT_CONFIG_FILE $TMUX_FILE $TMUX_TPM_DIR $VIMRC_FILE $ZSH_FILE $PLUGGED $BASHRC $NVIM_CONFIG_DIR \
-    $HOME/.tmux
-
-  for package in "${PACKAGES[@]}"; do
-    sudo apt-get remove -y $package
+  for file in "${FILES[@]}"; do
+    rm $HOME/$file
   done
+  rm -rf $TMUX_TPM_DIR $PLUGGED $NVIM_CONFIG_DIR $HOME/.tmux
 
-  # cleanup dependencies not loger needed
-  sudo apt-get autoremove -y
+  log "cleanup done"
 }
 
 prompt_user() {
-  log "What you wanna do? (install, rollback):"
+  log "What do you want to do? (install, rollback):"
   read ANSWER
 
   case $ANSWER in
     install) start_install ;;
-    rollback) linux_rollback ;;
+    rollback) rollback ;;
     **) prompt_user ;;
   esac
 }
