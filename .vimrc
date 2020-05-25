@@ -1,6 +1,4 @@
 call plug#begin('~/.vim/plugged')
-Plug 'VundleVim/Vundle.vim'
-
 " utils
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
@@ -205,6 +203,7 @@ map <C-k> :call RevealFileInNERDTree() <CR>
 map <C-g> :execute "!" "$HOME/dotfiles/open_in_github.sh" bufname("%") line(".") <CR>
 
 map <leader>vd :vsplit \| YcmCompleter GoTo <CR>
+map <leader>hd :split \| YcmCompleter GoTo <CR>
 map <leader>dd :YcmCompleter GoTo <CR>
 map <leader>rr :YcmCompleter GoToReferences <CR>
 
