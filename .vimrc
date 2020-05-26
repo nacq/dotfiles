@@ -28,6 +28,9 @@ call plug#end()
 set termguicolors
 set guicursor=
 
+" mouse active in normal mode
+set mouse=n
+
 " ---------------------------------------------------------------------------------
 set list
 " show special characters for tabs and trailing spaces
