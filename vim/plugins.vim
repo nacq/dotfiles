@@ -30,6 +30,8 @@ Plug 'liuchengxu/space-vim-theme'
 call plug#end()
 " ---------------------------------------------------------------------------------
 
+colorscheme space_vim_theme
+
 " ---------------------------------------------------------------------------------
 " ALE settings
 let g:ale_linters={

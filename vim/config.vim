@@ -116,7 +116,6 @@ set backspace=indent,eol,start
 set showmode
 set noswapfile
 set background=dark
-colorscheme space_vim_theme
 " ---------------------------------------------------------------------------------
 
 set t_Co=256
