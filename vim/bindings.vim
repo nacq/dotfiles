@@ -12,10 +12,8 @@ map <C-n> :NERDTreeToggle <CR>
 map <C-p> :GFiles <CR>
 map <C-k> :call RevealFileInNERDTree() <CR>
 map <C-g> :execute "!" "$HOME/dotfiles/open_in_github.sh" bufname("%") line(".") <CR>
-map <leader>vd :vsplit \| YcmCompleter GoTo <CR>
-map <leader>hd :split \| YcmCompleter GoTo <CR>
-map <leader>dd :YcmCompleter GoTo <CR>
-map <leader>rr :YcmCompleter GoToReferences <CR>
+map <leader>dd <Plug>(coc-definition)
+map <leader>rr <Plug>(coc-references)
 
 " position cursor inbetween brackets
 imap {<Tab> {}<Esc>i<Enter><Esc>O
