@@ -6,7 +6,7 @@ cnoreabbrev Wq wq
 cnoreabbrev Wq! wq!
 cnoreabbrev Wqa! wqa!
 cnoreabbrev Tabclose tabclose
-cnoreabbrev Tabopen tabopen
+cnoreabbrev Tabnew tabopen
 
 map <C-n> :NERDTreeToggle <CR>
 map <C-p> :GFiles <CR>
@@ -14,6 +14,8 @@ map <C-k> :call RevealFileInNERDTree() <CR>
 map <C-g> :execute "!" "$HOME/dotfiles/open_in_github.sh" bufname("%") line(".") <CR>
 map <leader>dd <Plug>(coc-definition)
 map <leader>rr <Plug>(coc-references)
+map <leader>tt :tabnew <CR>
+map <leader>tc :tabclose <CR>
 
 " position cursor inbetween brackets
 imap {<Tab> {}<Esc>i<Enter><Esc>O
