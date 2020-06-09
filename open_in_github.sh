@@ -12,5 +12,7 @@ REPO_URL=`git remote --v | \
   awk '{ print $2 }' | \
   sed 's/git\@github\.com\:/https:\/\/github.com\//' | sed 's/\.git//'`
 
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
 # open url in default browser
-open "$REPO_URL/blob/master/$1#L$2"
+open "$REPO_URL/blob/$CURRENT_BRANCH/$1#L$2"
