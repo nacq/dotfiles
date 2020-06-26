@@ -11,6 +11,7 @@ Plug 'junegunn/fzf', { 'do': { ->fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'fatih/vim-go'
 
 " async linter checker (syntastic replace)
 Plug 'dense-analysis/ale'
@@ -90,4 +91,10 @@ endfunction
 " ---------------------------------------------------------------------------------
 " NERDCommenter settings
 let g:NERDSpaceDelims=1       " add space after comments char
+" ---------------------------------------------------------------------------------
+
+
+" ---------------------------------------------------------------------------------
+" vim-go
+let g:go_gopls_enabled = 0
 " ---------------------------------------------------------------------------------

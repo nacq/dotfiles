@@ -155,5 +155,5 @@ au FileType python setlocal textwidth=79 colorcolumn=79
 au FileType yaml setlocal shiftwidth=2 smarttab
 au FileType sh setlocal shiftwidth=2 expandtab smarttab
 au FileType vim setlocal shiftwidth=2 expandtab smarttab
-au FileType go setlocal shiftwidth=4 expandtab smarttab
+au FileType c setlocal shiftwidth=4 tabstop=4 softtabstop=4 smartindent expandtab
 " ---------------------------------------------------------------------------------
