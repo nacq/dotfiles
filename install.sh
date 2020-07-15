@@ -20,7 +20,8 @@ PACKAGES=(
   "python3-dev"
   "curl"
   "fzf"
-  "nvim"
+  # not "nvim" https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
+  "neovim"
   "silversearcher-ag"
   "tmux"
   "zsh"
