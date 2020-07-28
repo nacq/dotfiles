@@ -26,7 +26,7 @@ Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'styled-components/vim-styled-components', { 'for': ['jsx', 'tsx'], 'branch': 'main' }
 
 " colorscheme
-Plug 'pgdouyon/vim-yin-yang'
+Plug 'nicolasacquaviva/vim-yin-yang'
 
 call plug#end()
 " ---------------------------------------------------------------------------------
