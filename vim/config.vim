@@ -66,16 +66,17 @@ set showmatch                   " idk
 
 " ---------------------------------------------------------------------------------
 " statusline config
-" show staus line on all windows
+"
+" show status line for all splits
 set laststatus=2
-
-set statusline+=%#PmenuSel#
-set statusline+=%#LineNr#
-set statusline+=\ %f
+" file name on the left
+set statusline+=%1*\ %1*%f
+" space between file name and lines percentage
 set statusline+=%=
-set statusline+=%#CursorColumn#
-set statusline+=\ %p%%
-set statusline+=\ %l:%c
+" percentage on the right
+set statusline+=\ %1*%p%%
+" line:column on the right
+set statusline+=\ %1*%l:%c
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------

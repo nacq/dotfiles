@@ -1,17 +1,15 @@
 " plugins specific configs
 
 " ---------------------------------------------------------------------------------
-" vim-plug
 call plug#begin('~/.vim/plugged')
 " utils
-Plug 'mattn/emmet-vim'
-Plug 'mileszs/ack.vim'
+Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx', 'tsx']}
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { ->fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'for': 'go' }
 
 " async linter checker (syntastic replace)
 Plug 'dense-analysis/ale'
@@ -21,17 +19,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " syntax higlighters
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'styled-components/vim-styled-components', { 'for': ['jsx', 'tsx'], 'branch': 'main' }
 
 " colorscheme
-Plug 'liuchengxu/space-vim-theme'
+Plug 'pgdouyon/vim-yin-yang'
 
 call plug#end()
 " ---------------------------------------------------------------------------------
 
-colorscheme space_vim_theme
+colorscheme yin
 
 " ---------------------------------------------------------------------------------
 " ALE settings
@@ -76,8 +76,6 @@ endfunction
 
 " ---------------------------------------------------------------------------------
 " NERDTree settings
-let g:NERDTreeDirArrowExpandable = '→'
-let g:NERDTreeDirArrowCollapsible = '↳'
 let g:NERDTreeWinSize = 55
 let g:NERDTreeWinPos = 'right'
 
