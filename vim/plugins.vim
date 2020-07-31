@@ -3,7 +3,7 @@
 " ---------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 " utils
-Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx', 'tsx']}
+Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx', 'javascript.jsx', 'tsx', 'typescript.tsx']}
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { ->fzf#install() } }
 Plug 'junegunn/fzf.vim'
