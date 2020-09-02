@@ -11,6 +11,7 @@
         ; %cd git stash list --date=local
         ; %s message
         sl = stash list --pretty=format:\"%gd%  - (%cr) - %cd - %s\"
+        spop = stash pop
         sapply = stash apply
         rcontinue = rebase --continue
         rabort = rebase --abort
