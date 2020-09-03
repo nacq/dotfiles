@@ -1,0 +1,3 @@
+#!/bin/sh
+
+$HOME/dotfiles/dmw_status_bar &
