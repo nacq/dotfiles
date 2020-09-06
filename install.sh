@@ -7,12 +7,17 @@ TMUX_TPM_DIR=$HOME/.tmux/plugins/tpm/
 PLUGGED=$HOME/.vim/plugged
 NVIM_CONFIG_DIR=$HOME/.config/nvim
 
+path=$(pwd)
+
 FILES=(
   ".gitconfig"
   ".tmux.conf"
   ".vimrc"
   ".zshrc"
   ".bashrc"
+)
+DIRS=(
+  ".gnupg"
 )
 PACKAGES=(
   # these two needed by ycm
@@ -75,8 +80,20 @@ link_files() {
   done
 }
 
+create_dirs() {
+  for dir in "${DIRS[@]}"; do
+    ls -a $dir $1 | while read file; do
+      if [[ ! $file == "." && ! $file == ".." ]]; then
+        [[ -f $HOME/$dir/$file ]] && mv $HOME/$dir/$file $HOME/$dir/$file.bak
+
+        cp $path/$dir/$file $HOME/$dir/$file
+      fi
+    done
+  done
+}
+
 commons() {
-  link_files
+  link_files & create_dirs
 
   [[ ! -d $OHMYSZH_DIR ]] && sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
