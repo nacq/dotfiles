@@ -1,0 +1,14 @@
+8,9c8,9
+< static const char *fonts[]          = { "monospace:size=10" };
+< static const char dmenufont[]       = "monospace:size=10";
+---
+> static const char *fonts[]          = { "monospace:size=14" };
+> static const char dmenufont[]       = "monospace:size=14";
+47c47
+< #define MODKEY Mod1Mask
+---
+> #define MODKEY Mod4Mask // use 'Cmd'key as mod
+64c64
+< 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+---
+> 	{ MODKEY,                       XK_Return, spawn,          {.v = dmenucmd } },
