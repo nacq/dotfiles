@@ -4,10 +4,22 @@
 ---
 > static const char *fonts[]          = { "monospace:size=14" };
 > static const char dmenufont[]       = "monospace:size=14";
+18c18
+< 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+---
+> 	[SchemeSel]  = { col_gray4, col_gray1, col_gray1 },
+22c22
+< static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+---
+> static const char *tags[] = { "1", "2", "3" };
 47c47
 < #define MODKEY Mod1Mask
 ---
 > #define MODKEY Mod4Mask // use 'Cmd'key as mod
+59c59
+< static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+---
+> static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_cyan, "-nf", col_gray3, "-sb", col_gray1, "-sf", col_gray4, NULL };
 64c64
 < 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 ---
