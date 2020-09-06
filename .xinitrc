@@ -8,7 +8,15 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
+
+
+
+
+
+
+
     xrdb -merge $sysresources
+
 fi
 
 if [ -f $sysmodmap ]; then
@@ -16,7 +24,15 @@ if [ -f $sysmodmap ]; then
 fi
 
 if [ -f "$userresources" ]; then
+
+
+
+
+
+
+
     xrdb -merge "$userresources"
+
 fi
 
 if [ -f "$usermodmap" ]; then
@@ -35,10 +51,10 @@ fi
 [ -f $HOME/.xprofile ] && source $HOME/.xprofile
 
 # keyboard layout
-setxkbmap us &
+setxkbmap us
 
 # res
-xrandr --output Virtual1 --mode 1360x768 &
+xrandr --output Virtual1 --mode 1360x768
 
 # exec dwm
 exec dwm

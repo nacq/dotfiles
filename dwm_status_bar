@@ -15,7 +15,8 @@ get_status() {
 }
 
 while :; do
+  # echo "$(get_status | tr '\n' ' ')"
   xsetroot -name "$(get_status | tr '\n' ' ')"
 
   sleep 1m
-done
+done &
