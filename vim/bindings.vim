@@ -8,9 +8,8 @@ cnoreabbrev Wqa! wqa!
 cnoreabbrev Tabclose tabclose
 cnoreabbrev Tabnew tabopen
 
-map <C-n> :NERDTreeToggle <CR>
+map <C-n> :Explore <CR>
 map <C-p> :GFiles <CR>
-map <C-k> :call RevealFileInNERDTree() <CR>
 map <C-g> :execute "!" "$HOME/dotfiles/open_in_github.sh" bufname("%") line(".") <CR>
 map <leader>dd <Plug>(coc-definition)
 map <leader>rr <Plug>(coc-references)

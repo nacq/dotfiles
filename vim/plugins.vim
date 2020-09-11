@@ -7,7 +7,6 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx', 'javascript.jsx', 'tsx', 'types
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { ->fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go', { 'for': 'go' }
 
@@ -75,18 +74,6 @@ function! s:show_documentation()
   else
     call CocAction('doHover')
   endif
-endfunction
-" ---------------------------------------------------------------------------------
-
-" ---------------------------------------------------------------------------------
-" NERDTree settings
-let g:NERDTreeWinSize = 55
-let g:NERDTreeWinPos = 'right'
-
-" open nerd tree on the current file location
-function RevealFileInNERDTree()
-  echo @%
-  :NERDTreeFind
 endfunction
 " ---------------------------------------------------------------------------------
 
