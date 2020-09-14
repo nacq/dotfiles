@@ -30,6 +30,8 @@ if [[ -z $TMUX ]]; then
 
   # Golang related vars
   export PATH="$PATH:/usr/local/Cellar/go/1.13.4/bin:$HOME/go/bin"
+
+  tmux
 fi
 
 [[ -n $SSH_CLIENT ]] && PS1="$(whoami)@$(hostname):%2~ »%b "
