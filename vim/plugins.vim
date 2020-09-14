@@ -96,4 +96,7 @@ let g:go_gopls_enabled = 0
 " netrw
 " https://superuser.com/questions/1531456/how-to-reveal-a-file-in-vim-netrw-treeview
 command! ExploreFind let @/=expand("%:t") | execute 'Explore' expand("%:h") | normal n
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
 " ---------------------------------------------------------------------------------
