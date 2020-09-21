@@ -9,6 +9,7 @@ Plug 'junegunn/fzf', { 'do': { ->fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'nicolasacquaviva/vim-snipper'
 
 " async linter checker (syntastic replace)
 Plug 'dense-analysis/ale'
@@ -99,4 +100,9 @@ command! ExploreFind let @/=expand("%:t") | execute 'Explore' expand("%:h") | no
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
+" vim-snipper
+let g:snippets_file = $HOME . "/dotfiles/vim/snippets.json"
 " ---------------------------------------------------------------------------------
