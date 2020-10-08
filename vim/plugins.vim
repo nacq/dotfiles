@@ -5,7 +5,10 @@ call plug#begin('~/.vim/plugged')
 " utils
 Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx', 'javascript.jsx', 'tsx', 'typescript.tsx']}
 Plug 'scrooloose/nerdcommenter'
-Plug 'junegunn/fzf', { 'do': { ->fzf#install() } }
+" Plug 'junegunn/fzf', { 'do': { ->fzf#install() } }
+" changed the post install hook bc it suddenly stopped working
+" https://github.com/junegunn/fzf.vim/issues/1008
+Plug 'junegunn/fzf', { 'dir': '~/.vim/plugged/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go', { 'for': 'go' }
