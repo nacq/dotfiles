@@ -23,9 +23,9 @@ Plug 'airblade/vim-gitgutter'
 
 " syntax higlighters
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
+Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript.tsx' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 Plug 'styled-components/vim-styled-components', { 'for': ['jsx', 'tsx'], 'branch': 'main' }
 
 " colorscheme
@@ -45,6 +45,9 @@ let g:ale_linters={
 let g:ale_fixers = {
   \'javascript': ['prettier', 'eslint'],
   \'typescript': ['prettier', 'eslint'],
+\}
+let g:ale_linters = {
+  \ 'go': ['gopls'],
 \}
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
