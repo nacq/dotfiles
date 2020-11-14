@@ -13,6 +13,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'nicolasacquaviva/vim-snipper'
+Plug 'nicolasacquaviva/vim-open-repo'
 
 " async linter checker (syntastic replace)
 Plug 'dense-analysis/ale'
@@ -40,14 +41,13 @@ colorscheme yin
 " ALE settings
 let g:ale_linters={
   \'javascript': ['prettier', 'eslint'],
-  \'typescript': ['prettier', 'eslint']
+  \'typescript': ['prettier', 'eslint'],
+  \'go': ['gopls'],
 \}
 let g:ale_fixers = {
   \'javascript': ['prettier', 'eslint'],
   \'typescript': ['prettier', 'eslint'],
-\}
-let g:ale_linters = {
-  \ 'go': ['gopls'],
+  \'sh': ['shfmt'],
 \}
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'

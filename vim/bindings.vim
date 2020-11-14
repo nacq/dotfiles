@@ -11,7 +11,7 @@ cnoreabbrev Tabnew tabopen
 map <C-n> :Explore <CR>
 map <C-k> :ExploreFind <CR>
 map <C-p> :GFiles <CR>
-map <C-g> :execute "!" "$HOME/dotfiles/open_in_github.sh" bufname("%") line(".") <CR>
+map <C-g> :OpenRepo <CR>
 map <leader>dd <Plug>(coc-definition)
 map <leader>rr <Plug>(coc-references)
 map <leader>tt :tabnew <CR>
