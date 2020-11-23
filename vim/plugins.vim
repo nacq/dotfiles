@@ -43,11 +43,13 @@ let g:ale_linters={
   \'javascript': ['prettier', 'eslint'],
   \'typescript': ['prettier', 'eslint'],
   \'go': ['gopls'],
+  \'json': ['fixjson'],
 \}
 let g:ale_fixers = {
   \'javascript': ['prettier', 'eslint'],
   \'typescript': ['prettier', 'eslint'],
   \'sh': ['shfmt'],
+  \'json': ['fixjson'],
 \}
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
