@@ -17,4 +17,4 @@
         rabort = rebase --abort
         rskip = rebase --skip
 [core]
-        editor = /usr/local/bin/nvim
+        editor = $(which nvim)

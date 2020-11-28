@@ -1,0 +1,22 @@
+#!/bin/sh
+
+delim="|"
+path=$HOME/dotfiles/scripts
+
+get_status() {
+  # ie: 49%
+  battery=$(cat /sys/class/power_supply/BAT0/capacity)%
+  # date and time in the following format "Thu 12/07/1990 15:49"
+  date=$(date '+%a %d/%m/%G %H:%M')
+  # up or down
+  internet=$(cat /sys/class/net/wlp3s0/operstate)
+
+  echo $internet $delim $battery $delim $date
+}
+
+while :; do
+  # echo "$(get_status | tr '\n' ' ')"
+  xsetroot -name "$(get_status | tr '\n' ' ')"
+
+  sleep 1m
+done &
