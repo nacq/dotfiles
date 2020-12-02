@@ -1,6 +1,6 @@
 #!/bin/sh
 
-$HOME/dotfiles/dwm_status_bar &
+$HOME/dotfiles/arch/dwm_status_bar &
 
 # load composite manager
 xcompmgr -c &

@@ -10,8 +10,9 @@ get_status() {
   date=$(date '+%a %d/%m/%G %H:%M')
   # up or down
   internet=$(cat /sys/class/net/wlp3s0/operstate)
+  volume=$(pactl list sinks | grep Volume | head -n 1 | awk -F '/' '{ print $2 }')
 
-  echo $internet $delim $battery $delim $date
+  echo $internet $delim b: $battery $delim s: $volume $delim $date
 }
 
 while :; do
