@@ -13,9 +13,14 @@
 ---
 > #define MODKEY Mod4Mask // use 'Cmd' key as mod
 60a61,63
-> // TODO: add mute
 > static const char *volume_up[] = { "/home/nico/dotfiles/arch/set_volume", "+", NULL };
 > static const char *volume_down[] = { "/home/nico/dotfiles/arch/set_volume", "-", NULL };
-96a100,101
+> static const char *mute[] = { "/home/nico/dotfiles/arch/set_volume", "0", NULL };
+81c84
+< 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+---
+> 	// { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+96a100,102
 > 	{ MODKEY|ShiftMask,             XK_equal,  spawn,          {.v = volume_up } },
 > 	{ MODKEY|ShiftMask,             XK_minus,  spawn,          {.v = volume_down } },
+> 	{ MODKEY|ShiftMask,             XK_0,      spawn,          {.v = mute } },
