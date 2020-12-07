@@ -9,6 +9,11 @@ NVIM_CONFIG_DIR=$HOME/.config/nvim
 
 path=$(pwd)
 
+ARCH_FILES=(
+  ".xinitrc"
+  ".xprofile"
+  ".Xmodmap"
+)
 FILES=(
   ".gitconfig"
   ".tmux.conf"
@@ -38,8 +43,17 @@ MACOS_PACKAGES=(
   "the_silver_searcher"
 )
 
+# $1 string to log
+# $2 log "level" "info | error | success"
 log() {
-  echo -e "\033[92m >>>\033[0m" $1
+  case $2 in
+    error) LEVEL=91m ;;
+    info) LEVEL=94m ;;
+    success) LEVEL=92m ;;
+    **) LEVEL=94m ;;
+  esac
+
+  echo -e "\033[$LEVEL >>>\033[0m" $1
 }
 
 osx_install() {
@@ -51,21 +65,49 @@ osx_install() {
   commons
 }
 
-# this will install $PACKAGES using `pacman` package manager
+# this will install $PACKAGES using `pacman` package manager,
+# apply patches and build some utils
+# and create the needed symbolic links
 arch_install() {
   if [[ "$EUID" -ne 0 ]]; then
-    log "Please run as root"
+    log "Please run as root" "error"
     exit 1
   fi
 
-  for package in "${PACKAGES[@]}"; do
-    [[ $package == "silversearcher-ag" ]] && package="the_silver_searcher"
-    [[ -x `which $package` ]] || sudo pacman -S $package && log "$package installed"
+  # this sucks
+  HOME="/home/nico"
+
+  for file in $HOME/dotfiles/arch/*; do EXTENSION=${file#*.}
+
+    if [[ $EXTENSION == 'diff' ]]; then
+      APPLICATION=`echo $file | awk -F '/' '{ print $NF }' | awk -F '-' '{ print $1 }'`
+      echo $HOME/$file
+
+      # check if app is installed before applying the patch
+      if [[ -x `which $APPLICATION` ]]; then
+        cd /usr/src/$APPLICATION
+        patch -b config.h $file && make clean install && log "$APPLICATION patched and built" "success"
+      fi
+    fi
   done
 
-  commons
+  for file in "${ARCH_FILES[@]}"; do
+    if [[ -f $HOME/$file ]]; then
+      mv $HOME/$file $HOME/$file_$(timestamp).bak
+    fi
+
+    ln -sf $HOME/dotfiles/arch/$file $HOME/$file
+
+    [[ $? == 0 ]] && log "Symlink $HOME/dotfiles/arch/$file to $HOME/$file created" "info"
+  done
+
+  # commons
 
   exit 0
+}
+
+timestamp() {
+  date +%Y%m%d_%H%M%S
 }
 
 linux_install() {
@@ -194,10 +236,8 @@ prompt_user() {
 
 start_install() {
   case $OSTYPE in
-    darwin) osx_install ;;
-    darwin18) osx_install ;;
-    darwin19) osx_install ;;
-    linux-gnu) linux_install ;;
+    darwin*) osx_install ;;
+    linux*) linux_install ;;
     **) log "Unsupported OS ${OSTYPE}" && exit 1 ;;
   esac
 
