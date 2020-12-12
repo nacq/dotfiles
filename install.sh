@@ -36,6 +36,16 @@ PACKAGES=(
   "tmux"
   "zsh"
 )
+ARCH_PACKAGES=(
+  "scrot"
+  "transmission-cli"
+  "feh"
+  "xcompmgr"
+  "community/ttf-ubuntu-font-family"
+  "the_silver_searcher"
+  "xcopy"
+  "openssh"
+)
 MACOS_PACKAGES=(
   "neovim"
   "tmux"
@@ -74,11 +84,16 @@ arch_install() {
     exit 1
   fi
 
+  # install packages
+  for package in "${ARCH_PACKAGES[@]}"; do
+    pacman -Sy $package
+  done
+
   # this sucks
   HOME="/home/nico"
 
+  # apply patches
   for file in $HOME/dotfiles/arch/*; do EXTENSION=${file#*.}
-
     if [[ $EXTENSION == 'diff' ]]; then
       APPLICATION=`echo $file | awk -F '/' '{ print $NF }' | awk -F '-' '{ print $1 }'`
       echo $HOME/$file
@@ -91,6 +106,7 @@ arch_install() {
     fi
   done
 
+  # create symlinks
   for file in "${ARCH_FILES[@]}"; do
     if [[ -f $HOME/$file ]]; then
       mv $HOME/$file $HOME/$file_$(timestamp).bak
