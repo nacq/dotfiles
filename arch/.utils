@@ -1,0 +1,38 @@
+#!/bin/sh
+
+encrypt() {
+  if [[ $1 == *.gpg ]]; then
+    # remove the .gpg extension
+    local output_file=${1%.*}
+
+    gpg -d -o $output_file $1 && rm $1
+
+    [[ $output_file == *.gz ]] && tar xzf $output_file && rm $output_file
+
+    unset output_file
+  else
+    # symmetric: encrypt with a symmetric cipher using a passphrase
+    # no-symkey-cache: disable the cache of the passphrase
+
+    # in case of a directory, compress, encrypt it and remove the compressed file
+    [[ -d $1 ]] && tar czf $1.tar.gz $1 && gpg --symmetric --cipher-algo AES256 --no-symkey-cache $1.tar.gz && \
+      rm -r $1 $1.tar.gz
+    # in case of a file, encrypt it and remove original file
+    [[ -f $1 ]] && gpg --symmetric --cipher-algo AES256 --no-symkey-cache $1 && rm $1
+  fi
+}
+
+transmissiond() {
+  local user=$(whoami)
+  local process_name="transmission-da"
+
+  if [[ $(ps -au $user | grep $process_name) ]]; then
+    pkill -3 $process_name && echo "Transmission dameon stopped"
+  else
+    transmission-daemon --port 9091 --allowed "127.0.0.1" && echo "Transmission daemon started"
+  fi
+
+  unset user
+  unset process_name
+}
+

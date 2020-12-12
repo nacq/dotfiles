@@ -20,6 +20,14 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim=nvim
 
+if [[ $OSTYPE == linux* ]]; then
+  alias openimage="feh -q --auto-zoom --scale-down --image-bg black"
+  alias screenshot=scrot
+
+  source $HOME/dotfiles/arch/.utils
+fi
+
+
 # .zshrc is evaluated for every zsh process
 # to avoid duplicated entries on the $PATH variable
 # only set this variables if tmux is not running
