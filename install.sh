@@ -37,14 +37,16 @@ PACKAGES=(
   "zsh"
 )
 ARCH_PACKAGES=(
-  "scrot"
-  "transmission-cli"
-  "feh"
-  "xcompmgr"
   "community/ttf-ubuntu-font-family"
-  "the_silver_searcher"
-  "xcopy"
+  "feh"
   "openssh"
+  "openvpn"
+  "scrot"
+  "the_silver_searcher"
+  "transmission-cli"
+  "unzip"
+  "xcompmgr"
+  "xcopy"
 )
 MACOS_PACKAGES=(
   "neovim"
