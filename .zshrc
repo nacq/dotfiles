@@ -4,6 +4,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=$HOME/.oh-my-zsh
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export EDITOR=nvim
 
 ZSH_THEME="minimal"
 
@@ -22,7 +23,9 @@ alias vim=nvim
 
 if [[ $OSTYPE == linux* ]]; then
   alias openimage="feh -q --auto-zoom --scale-down --image-bg black"
-  alias screenshot=scrot
+  alias screenshot_multi="scrot ~/Desktop/screenshots/screenshot_%Y-%m-%d_%H%M%S.png"
+  alias screenshot_current="scrot --focused ~/Desktop/screenshots/screenshot_%Y-%m-%d_%H%M%S.png"
+  alias screenshot_select="scrot --select ~/Desktop/screenshots/screenshot_%Y-%m-%d_%H%M%S.png"
 
   source $HOME/dotfiles/arch/.utils
 fi
