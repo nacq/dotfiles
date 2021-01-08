@@ -25,7 +25,7 @@ encrypt() {
 change_mac() {
   if [[ "$EUID" -ne 0 ]]; then
     echo "Please run as root"
-    exit 1
+    return
   fi
 
   local CURRENT_ADDR=`ifconfig en0 | grep ether | awk '{print $2}'`
