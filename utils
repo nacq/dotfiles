@@ -21,3 +21,17 @@ encrypt() {
     [[ -f $1 ]] && gpg --symmetric --cipher-algo AES256 --no-symkey-cache $1 && rm $1
   fi
 }
+
+change_mac() {
+  if [[ "$EUID" -ne 0 ]]; then
+    echo "Please run as root"
+    exit 1
+  fi
+
+  local CURRENT_ADDR=`ifconfig en0 | grep ether | awk '{print $2}'`
+  local NEW_ADDR=`openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`
+
+  sudo ifconfig en0 ether $NEW_ADDR
+
+  echo "Changed $CURRENT_ADDR for $NEW_ADDR"
+}
