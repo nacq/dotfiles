@@ -14,6 +14,7 @@ ZSH_THEME="minimal"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/dotfiles/utils
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"

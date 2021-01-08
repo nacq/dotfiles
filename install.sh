@@ -51,12 +51,33 @@ osx_install() {
   commons
 }
 
+# this will install $PACKAGES using `pacman` package manager
+arch_install() {
+  if [[ "$EUID" -ne 0 ]]; then
+    log "Please run as root"
+    exit 1
+  fi
+
+  for package in "${PACKAGES[@]}"; do
+    [[ $package == "silversearcher-ag" ]] && package="the_silver_searcher"
+    [[ -x `which $package` ]] || sudo pacman -S $package && log "$package installed"
+  done
+
+  commons
+
+  exit 0
+}
+
 linux_install() {
   # root check
   # if [[ "$EUID" -ne 0 ]]; then
     # echo " >>> Please run as root"
     # exit 1
   # fi
+
+  OS=`cat /etc/os-release | grep ^ID | awk -F '=' '{ print $2 }'`
+
+  [[ $OS == 'arch' ]] && arch_install
 
   for package in "${PACKAGES[@]}"; do
     # meh
@@ -160,12 +181,13 @@ rollback() {
 }
 
 prompt_user() {
-  log "What do you want to do? (install, rollback):"
+  log "What do you want to do? (install, rollback, symlinks):"
   read ANSWER
 
   case $ANSWER in
     install) start_install ;;
     rollback) rollback ;;
+    symlinks) link_files ;;
     **) prompt_user ;;
   esac
 }
