@@ -16,5 +16,6 @@
         rcontinue = rebase --continue
         rabort = rebase --abort
         rskip = rebase --skip
+        pr = !$(command -v open || command -v xdg-open) $(git config remote.origin.url | sed 's/git@/https:\\/\\//' | sed 's/.git$//' | sed 's/.com:/.com\\//')/compare/$(git rev-parse --abbrev-ref HEAD)?expand=1
 [core]
         editor = /usr/local/bin/nvim
