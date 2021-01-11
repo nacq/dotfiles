@@ -17,6 +17,7 @@ map <leader>rr <Plug>(coc-references)
 map <leader>tt :tabnew <CR>
 map <leader>tc :tabclose <CR>
 map <leader>ff :ALEFix <CR>
+map <leader>ss :sort <CR>
 
 " position cursor inbetween brackets
 imap {<Tab> {}<Esc>i<Enter><Esc>O
