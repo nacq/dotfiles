@@ -27,10 +27,10 @@ alias vim=nvim
 if [[ -z $TMUX ]]; then
   # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
   export PATH="$PATH:$HOME/.rvm/bin"
-  #export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
-  # Golang related vars
-  export PATH="$PATH:/usr/local/Cellar/go/1.13.4/bin:$HOME/go/bin"
+  if [[ $OSTYPE == darwin* ]]; then
+    export PATH="$PATH:/usr/local/sbin"
+  fi
 fi
 
 [[ -n $SSH_CLIENT ]] && PS1="$(whoami)@$(hostname):%2~ »%b "
