@@ -1,5 +1,7 @@
 cnoreabbrev W w
 cnoreabbrev Q q
+cnoreabbrev Qa qa
+cnoreabbrev Qa! qa!
 cnoreabbrev Q! q!
 cnoreabbrev Bd bd
 cnoreabbrev Wq wq
