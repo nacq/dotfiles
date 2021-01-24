@@ -4,6 +4,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=$HOME/.oh-my-zsh
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export GOPATH="$HOME/projects/go"
 
 ZSH_THEME="minimal"
 
@@ -16,26 +17,31 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 source $HOME/dotfiles/utils
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim=nvim
 
-# .zshrc is evaluated for every zsh process
-# to avoid duplicated entries on the $PATH variable
-# only set this variables if tmux is not running
-if [[ -z $TMUX ]]; then
-  # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-  export PATH="$PATH:$HOME/.rvm/bin"
+if [[ $OSTYPE == darwin* ]]; then
+  alias python=python3
+  alias pip=pip3
 
-  if [[ $OSTYPE == darwin* ]]; then
-    export PATH="$PATH:/usr/local/sbin"
+  # .zshrc is evaluated for every zsh process
+  # to avoid duplicated entries on the $PATH variable
+  # only set these variables if tmux is not running
+  if [[ -z $TMUX ]]; then
+    BASE_PATH="$PATH"
+
+    # list of entries to add to the $PATH variable
+    paths=(
+      "/usr/local/sbin"
+      "/Users/$(whoami)/Library/Python/3.9/bin"
+    )
+
+    for path_to_add in "${paths[@]}"; do
+      BASE_PATH="$BASE_PATH:$path_to_add"
+    done
+
+    export PATH="$BASE_PATH"
   fi
 fi
 
+# show a slightly different PS1 when there is a ssh session
 [[ -n $SSH_CLIENT ]] && PS1="$(whoami)@$(hostname):%2~ »%b "
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-export GOPATH="$HOME/projects/go"
