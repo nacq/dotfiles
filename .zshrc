@@ -45,3 +45,6 @@ fi
 
 # show a slightly different PS1 when there is a ssh session
 [[ -n $SSH_CLIENT ]] && PS1="$(whoami)@$(hostname):%2~ »%b "
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
