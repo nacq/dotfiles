@@ -22,6 +22,7 @@ alias vim=nvim
 if [[ $OSTYPE == darwin* ]]; then
   alias python=python3
   alias pip=pip3
+  alias ngrok=~/Applications/ngrok
 
   # .zshrc is evaluated for every zsh process
   # to avoid duplicated entries on the $PATH variable
