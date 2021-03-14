@@ -6,6 +6,7 @@ cnoreabbrev Q! q!
 cnoreabbrev Bd bd
 cnoreabbrev Wq wq
 cnoreabbrev Wq! wq!
+cnoreabbrev Wqa wqa
 cnoreabbrev Wqa! wqa!
 cnoreabbrev Tabclose tabclose
 cnoreabbrev Tabnew tabopen
