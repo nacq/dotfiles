@@ -15,9 +15,6 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'nicolasacquaviva/vim-snipper'
 Plug 'nicolasacquaviva/vim-open-repo'
 
-" async linter checker (syntastic replace)
-Plug 'dense-analysis/ale'
-
 " git stuff
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -31,31 +28,10 @@ Plug 'styled-components/vim-styled-components', { 'for': ['jsx', 'tsx'], 'branch
 
 " colorscheme
 Plug 'nicolasacquaviva/vim-yin-yang'
-
 call plug#end()
 " ---------------------------------------------------------------------------------
 
 colorscheme yin
-
-" ---------------------------------------------------------------------------------
-" ALE settings
-let g:ale_linters={
-  \'javascript': ['prettier', 'eslint'],
-  \'typescript': ['prettier', 'eslint'],
-  \'go': ['gopls'],
-  \'json': ['fixjson'],
-\}
-let g:ale_fixers = {
-  \'javascript': ['prettier', 'eslint'],
-  \'typescript': ['prettier', 'eslint'],
-  \'sh': ['shfmt'],
-  \'json': ['fixjson'],
-\}
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-let g:ale_set_highlights = 0 "Set this in your vimrc file to disabling highlighting
-" ---------------------------------------------------------------------------------
-
 " ---------------------------------------------------------------------------------
 " Coc settings (https://github.com/neoclide/coc.nvim#example-vim-configuration)
 " Use tab for trigger completion with characters ahead and navigate.
@@ -109,9 +85,6 @@ let g:go_gopls_enabled = 0
 
 " ---------------------------------------------------------------------------------
 " netrw
-" https://superuser.com/questions/1531456/how-to-reveal-a-file-in-vim-netrw-treeview
-command! ExploreFind let @/=expand("%:t") | execute 'Explore' expand("%:h") | normal n
-
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 " ---------------------------------------------------------------------------------
