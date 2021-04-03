@@ -87,6 +87,16 @@ let g:go_gopls_enabled = 0
 " netrw
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
+
+function RevealInNetrw()
+  let current_filename = expand("%:t")
+  " set the 'last search' register to the current file name
+  let @/ = current_filename
+  let current_dir = expand("%:h")
+  execute 'Explore' current_dir
+  " go to the 'searched' term
+  normal n
+endfunction
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------

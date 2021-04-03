@@ -12,7 +12,7 @@ cnoreabbrev Tabclose tabclose
 cnoreabbrev Tabnew tabopen
 
 map <C-n> :Explore <CR>
-map <C-k> :ExploreFind <CR>
+map <C-k> :call RevealInNetrw() <CR>
 map <C-p> :GFiles <CR>
 map <C-g> :OpenRepo <CR>
 map <leader>dd <Plug>(coc-definition)
