@@ -1,9 +1,0 @@
-#!/bin/sh
-
-$HOME/dotfiles/arch/dwm_status_bar &
-
-# load composite manager
-xcompmgr -c &
-
-# scale laptop screen
-xrandr --output eDP-1 --scale 0.8x0.8 --output DP-2 --scale 0.7x0.7  --left-of eDP-1

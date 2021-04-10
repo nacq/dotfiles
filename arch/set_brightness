@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# 0-100
-brightness_file=/sys/class/backlight/acpi_video0/brightness
-brightness=$(cat $brightness_file)
-
-[[ $1 == '+' && $brightness -lt 100 ]] && echo $(($brightness + 10)) > $brightness_file
-[[ $1 == '-' && $brightness -gt 10 ]] && echo $(($brightness - 10)) > $brightness_file
