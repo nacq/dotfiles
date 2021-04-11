@@ -4,7 +4,6 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# source $ZSH/oh-my-zsh.sh
 source $HOME/dotfiles/utils
 
 alias vim=nvim
