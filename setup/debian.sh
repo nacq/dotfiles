@@ -81,15 +81,28 @@ link_files() {
   done
 }
 
-echo "Starting Debian based system setup..."
+setup_tmux() {
+  tpm="$HOME/.tmux/plugins"
+  export TMUX_PLUGIN_MANAGER_PATH=$tpm
+  git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+  $tpm/tpm/bin/install_plugins
+  unset TMUX_PLUGIN_MANAGER_PATH
+}
 
-install_packages
-link_files
-for dir in "${dirs[@]}"; do
-  generate_nested_configs $HOME/$REPO_NAME/$dir
-done
-# set zsh as the default shell
-# NOTE: this requires a logout to take effect
-chsh -s $(which zsh)
+main() {
+  echo "Starting Debian based system setup..."
 
-echo "Debian based system setup finished. Restart the system now"
+  install_packages
+  link_files
+  for dir in "${dirs[@]}"; do
+    generate_nested_configs $HOME/$REPO_NAME/$dir
+  done
+  setup_tmux
+  # set zsh as the default shell
+  # NOTE: this requires a logout to take effect
+  chsh -s $(which zsh)
+
+  echo "Debian based system setup finished. Restart the system now"
+}
+
+main
