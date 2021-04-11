@@ -1,20 +1,20 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# export ZSH=$HOME/.oh-my-zsh
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export GOPATH="$HOME/projects/go"
+# export GOPATH="$HOME/projects/go"
 
-ZSH_THEME="minimal"
+# ZSH_THEME="minimal"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+# plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 source $HOME/dotfiles/utils
 
 alias vim=nvim
@@ -44,8 +44,6 @@ if [[ $OSTYPE == darwin* ]]; then
   fi
 fi
 
-# show a slightly different PS1 when there is a ssh session
-[[ -n $SSH_CLIENT ]] && PS1="$(whoami)@$(hostname):%2~ »%b "
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+if [[ $OSTYPE == linux* ]]; then
+  alias xclip="xclip -selection c"
+fi
