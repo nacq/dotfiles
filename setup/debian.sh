@@ -89,6 +89,12 @@ setup_tmux() {
   unset TMUX_PLUGIN_MANAGER_PATH
 }
 
+setup_vim() {
+  [[ ! -d $HOME/.vim/plugged ]] && curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  nvim -c "PlugInstall" -c "qa!"
+}
+
 main() {
   echo "Starting Debian based system setup..."
 
@@ -98,6 +104,7 @@ main() {
     generate_nested_configs $HOME/$REPO_NAME/$dir
   done
   setup_tmux
+  setup_vim
   # set zsh as the default shell
   # NOTE: this requires a logout to take effect
   chsh -s $(which zsh)
