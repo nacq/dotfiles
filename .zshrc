@@ -46,4 +46,5 @@ fi
 
 if [[ $OSTYPE == linux* ]]; then
   alias xclip="xclip -selection c"
+  PS1="%B$(whoami)%b at %B%1~%b $ "
 fi
