@@ -23,6 +23,7 @@ if [[ $OSTYPE == darwin* ]]; then
   # Example format: plugins=(rails git textmate ruby lighthouse)
   # Add wisely, as too many plugins slow down shell startup.
   plugins=(git)
+  source $ZSH/oh-my-zsh.sh
 
   # .zshrc is evaluated for every zsh process
   # to avoid duplicated entries on the $PATH variable
