@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# xrandr --output Virtual1 --mode 2560x1600
+xrandr --output Virtual1 --mode 1920x1440

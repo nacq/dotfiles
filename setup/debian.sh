@@ -6,6 +6,11 @@ dirs=(
   ".config"
   ".gnupg"
 )
+debian_files=(
+  ".xinitrc"
+  ".xprofile"
+  ".Xresources"
+)
 files=(
   ".bashrc"
   ".gitconfig"
@@ -61,7 +66,7 @@ generate_nested_configs() {
         mkdir -p $destination && generate_nested_configs $1/$content
       elif [[ -f $1/$content ]]; then
         # TODO: handle file already exists
-	ln -s $1/$content $destination
+        ln -s $1/$content $destination
       fi
     fi
   done
@@ -78,6 +83,13 @@ link_files() {
   for file in "${files[@]}"; do
     [[ -f $HOME/$file ]] && mv $HOME/$file $HOME/$file_$(date +"%Y-%m-%d_%H:%M:%S").bkp
     ln -sf $HOME/$REPO_NAME/$file $HOME/$file
+  done
+}
+
+link_debian_files() {
+  for file in "${debian_files[@]}"; do
+    [[ -f $HOME/$file ]] && mv $HOME/$file $HOME/$file_$(date +"%Y-%m-%d_%H:%M:%S").bkp
+    ln -sf $HOME/$REPO_NAME/setup/debian/$file $HOME/$file
   done
 }
 
@@ -100,6 +112,7 @@ main() {
 
   install_packages
   link_files
+  link_debian_files
   for dir in "${dirs[@]}"; do
     generate_nested_configs $HOME/$REPO_NAME/$dir
   done
