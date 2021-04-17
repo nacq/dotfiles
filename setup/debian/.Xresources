@@ -1,2 +1,5 @@
-xterm*faceName: Monospace
-xterm*faceSize: 14
+URxvt.termName: rxvt-unicode
+faceSize: 24
+!xterm*faceName: Monospace
+!xterm*faceSize: 14
+*scrollBar: false

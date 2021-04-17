@@ -28,6 +28,7 @@ packages=(
   "jq"
   "mesa-utils"
   "neovim"
+  "rxvt-unicode"
   "silversearcher-ag"
   "suckless-tools"
   "tmux"
