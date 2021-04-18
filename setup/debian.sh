@@ -4,6 +4,7 @@ REPO_NAME="dotfiles"
 # these directories should exist in this repo
 dirs=(
   ".config"
+  ".fonts"
   ".gnupg"
   ".urxvt"
 )
@@ -30,6 +31,7 @@ packages=(
   "mesa-utils"
   "neovim"
   "network-manager"
+  "pulseaudio"
   "rxvt-unicode"
   "silversearcher-ag"
   "suckless-tools"
