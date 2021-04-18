@@ -1,5 +1,11 @@
-URxvt.termName: rxvt-unicode
-faceSize: 24
-!xterm*faceName: Monospace
-!xterm*faceSize: 14
+*faceSize: 24
 *scrollBar: false
+
+URxvt.perl-ext-common:font-size
+URxvt.font-size.step: 1
+
+URxvt.keysym.C-Up: perl:font-size:increase
+URxvt.keysym.C-Down: perl:font-size:decrease
+
+! fonts !
+! URxvt*font: xtf:monaco:size=24

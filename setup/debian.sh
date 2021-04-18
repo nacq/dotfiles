@@ -5,6 +5,7 @@ REPO_NAME="dotfiles"
 dirs=(
   ".config"
   ".gnupg"
+  ".urxvt"
 )
 debian_files=(
   ".xinitrc"
@@ -28,6 +29,7 @@ packages=(
   "jq"
   "mesa-utils"
   "neovim"
+  "network-manager"
   "rxvt-unicode"
   "silversearcher-ag"
   "suckless-tools"
@@ -102,10 +104,28 @@ setup_tmux() {
   unset TMUX_PLUGIN_MANAGER_PATH
 }
 
+setup_urxvt() {
+  # at this point the dir .urxvt/ext/ should already be created by this script
+  git clone https://github.com/majutsushi/urxvt-font-size $HOME/.urxvt/ext
+}
+
 setup_vim() {
   [[ ! -d $HOME/.vim/plugged ]] && curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c "PlugInstall" -c "qa!"
+}
+
+setup_xorg() {
+  x_dir=/etc/X11
+  xorg_conf_dir="$x_dir"/xorg.conf.d
+  xorg_files_dir=$HOME/$REPO_NAME/setup/debian/xorg.conf.d
+
+  [[ ! -d "$x_dir" ]] && sudo mkdir -p "$xorg_conf_dir"
+  [[ ! -d "$xorg_conf_dir" ]] && sudo mkdir "$xorg_conf_dir"
+
+  ls "$xorg_files_dir" | while read content; do
+    sudo ln -sf "$xorg_files_dir"/"$content" "$xorg_conf_dir"/"$content"
+  done
 }
 
 main() {
@@ -117,6 +137,8 @@ main() {
   for dir in "${dirs[@]}"; do
     generate_nested_configs $HOME/$REPO_NAME/$dir
   done
+  setup_xorg
+  setup_urxvt
   setup_tmux
   setup_vim
   # set zsh as the default shell
