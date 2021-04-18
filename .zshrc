@@ -46,5 +46,7 @@ fi
 
 if [[ $OSTYPE == linux* ]]; then
   alias xclip="xclip -selection c"
+  alias uireload="xrdb -merge $HOME/.Xresources"
+
   PS1="%B$(whoami)%b at %B$(hostname)%b in %B%2~%b $ "
 fi
