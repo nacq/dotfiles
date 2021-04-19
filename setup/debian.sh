@@ -21,6 +21,7 @@ files=(
   ".zshrc"
 )
 packages=(
+  "alsa-utils"
   "chromium"
   "curl"
   "fzf"

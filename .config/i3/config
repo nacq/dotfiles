@@ -81,6 +81,11 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# sound management
+bindsym $mod+Shift+a exec "pactl -- set-sink-volume 1 -10%"
+bindsym $mod+Shift+s exec "pactl -- set-sink-volume 1 +10%"
+bindsym $mod+Shift+d exec "pactl -- set-sink-volume 1 0%"
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -155,5 +160,5 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command i3status --config $HOME/.config/i3/status.conf
 }
