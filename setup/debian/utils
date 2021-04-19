@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+change_brightness() {
+  local x=$1
+  [[ ! "$x" ]] && x=1
+
+  local b_file=/sys/class/backlight/acpi_video0/brightness
+  echo $(($(cat "$b_file") + $x)) | sudo tee "$b_file"
+}

@@ -46,6 +46,8 @@ if [[ $OSTYPE == darwin* ]]; then
 fi
 
 if [[ $OSTYPE == linux* ]]; then
+  source $HOME/dotfiles/setup/debian/utils
+
   alias xclip="xclip -selection c"
   alias uireload="xrdb -merge $HOME/.Xresources"
 
