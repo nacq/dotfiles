@@ -10,6 +10,7 @@ dirs=(
 )
 debian_files=(
   ".xinitrc"
+  ".xmodmaprc"
   ".xprofile"
   ".Xresources"
 )
