@@ -46,6 +46,24 @@ if [[ $OSTYPE == darwin* ]]; then
 fi
 
 if [[ $OSTYPE == linux* ]]; then
+  # history
+  HISTSIZE=1000
+  SAVEHIST=1000
+
+  # autocomplete
+  autoload -U compinit
+  zstyle ':completion:*' menu select
+  zmodload zsh/complist
+  compinit
+  # to include hidden files
+  _comp_options+=(globdots)
+
+  # vim mode
+  bindkey -v
+  # the default time is too long
+  # this is used when changing vim modes
+  export KEYTIMEOUT=1
+
   source $HOME/dotfiles/setup/debian/utils
 
   alias xclip="xclip -selection c"
