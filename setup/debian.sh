@@ -61,21 +61,17 @@ check_packages_installed() {
 }
 
 # $1 one of the dirs defined in $dirs in an absolute path format
+# $2 the destination of the given directory
 generate_nested_configs() {
   echo "working with $1"
-  [[ -d $1 ]] && ls -a $1 | while read content; do
-    if [[ ! $content == "." && ! $content == ".." ]]; then
-      file_path=$1/$content
-      # remove the "dotfiles/" string
-      destination=${file_path//$REPO_NAME\/''}
-
-      if [[ -d $1/$content ]]; then
-        mkdir -p $destination && generate_nested_configs $1/$content
-      elif [[ -f $1/$content ]]; then
-        # TODO: handle file already exists
-        ln -s $1/$content $destination
-      fi
-    fi
+  # listing sorted by extension (-X) this will make the dirs to get created first, omiting . and .. (-A)
+  [[ -d $1 ]] && ls -aAX $1 | while read content; do
+    resource_path=$1/$content
+    # remove not needed parts of the abs path
+    resource_to_create=${resource_path//"$HOME"\/"$REPO_NAME"\/""}
+    # TODO: handle file already exists
+    [[ -f "$resource_path" ]] && ln -s "$resource_path" "$2"/"$resource_to_create"
+    [[ -d "$resource_path" ]] && mkdir -p "$2"/"$resource_to_create" && generate_nested_configs "$1"/"$content" "$2"
   done
 }
 
@@ -139,7 +135,7 @@ main() {
   link_files
   link_debian_files
   for dir in "${dirs[@]}"; do
-    generate_nested_configs $HOME/$REPO_NAME/$dir
+    generate_nested_configs $HOME/$REPO_NAME/$dir $HOME
   done
   setup_xorg
   setup_urxvt
