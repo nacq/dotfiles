@@ -54,6 +54,11 @@ if [[ $OSTYPE == linux* ]]; then
   # history
   HISTSIZE=1000
   SAVEHIST=1000
+  autoload -U history-search-end
+  zle -N history-beginning-search-backward-end history-search-end
+  zle -N history-beginning-search-forward-end history-search-end
+  bindkey "^[[A" history-beginning-search-backward
+  bindkey "^[[B" history-beginning-search-forward
 
   # autocomplete
   autoload -U compinit
@@ -76,5 +81,5 @@ if [[ $OSTYPE == linux* ]]; then
   alias uireload="xrdb -merge $HOME/.Xresources"
   alias xclip="xclip -selection c"
 
-  PS1="%B$(whoami)%b at %B$(hostname)%b in %B%2~%b $ "
+  PS1="%B%2~%b $ "
 fi
