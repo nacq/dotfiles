@@ -8,6 +8,7 @@ source $HOME/dotfiles/utils
 
 alias vim=nvim
 
+# MacOS stuff
 if [[ $OSTYPE == darwin* ]]; then
   export ZSH=$HOME/.oh-my-zsh
   export GOPATH="$HOME/projects/go"
@@ -43,8 +44,12 @@ if [[ $OSTYPE == darwin* ]]; then
 
     export PATH="$BASE_PATH"
   fi
+
+  export NVM_DIR="$HOME/.nvm"
+  [[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"
 fi
 
+# Linux stuff
 if [[ $OSTYPE == linux* ]]; then
   # history
   HISTSIZE=1000
