@@ -66,8 +66,10 @@ if [[ $OSTYPE == linux* ]]; then
 
   source $HOME/dotfiles/setup/debian/utils
 
-  alias xclip="xclip -selection c"
+  alias afk="i3lock -c 000000"
+  alias chromium="chromium --force-device-scale-factor=1.25"
   alias uireload="xrdb -merge $HOME/.Xresources"
+  alias xclip="xclip -selection c"
 
   PS1="%B$(whoami)%b at %B$(hostname)%b in %B%2~%b $ "
 fi

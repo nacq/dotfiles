@@ -4,6 +4,7 @@
 
 [[ -f $HOME/.Xresources ]] && xrdb -merge -I$HOME $HOME/.Xresources
 
-xmodmap $HOME/.xmodmaprc
+# if no keyboard connected load xmodmaprc
+lsusb -v 2>/dev/null | grep HHKB || xmodmap $HOME/.xmodmaprc
 
 exec i3

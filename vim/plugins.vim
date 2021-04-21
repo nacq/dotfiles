@@ -60,8 +60,8 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-" ---------------------------------------------------------------------------------
 
+let g:coc_disable_startup_warning = 1
 " ---------------------------------------------------------------------------------
 " fzf settings
 let g:fzf_layout = { 'down': '~30%' }
