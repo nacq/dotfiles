@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# Path to your oh-my-zsh installation.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -30,23 +29,10 @@ if [[ $OSTYPE == darwin* ]]; then
   # to avoid duplicated entries on the $PATH variable
   # only set these variables if tmux is not running
   if [[ -z $TMUX ]]; then
-    BASE_PATH="$PATH"
-
-    # list of entries to add to the $PATH variable
-    paths=(
-      "/usr/local/sbin"
-      "/Users/$(whoami)/Library/Python/3.9/bin"
-    )
-
-    for path_to_add in "${paths[@]}"; do
-      BASE_PATH="$BASE_PATH:$path_to_add"
-    done
-
-    export PATH="$BASE_PATH"
+    typeset -aU path
+    path=($path /usr/local/sbin)
+    path=($path /Users/$(whoami)/Library/Python/3.9/bin)
   fi
-
-  export NVM_DIR="$HOME/.nvm"
-  [[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"
 fi
 
 # Linux stuff
@@ -82,4 +68,13 @@ if [[ $OSTYPE == linux* ]]; then
   alias xclip="xclip -selection c"
 
   PS1="%B%2~%b $ "
+
+  if [[ -z $TMUX ]]; then
+    typeset -aU path
+    path=($path /usr/sbin)
+    path=($path /usr/local/go/bin)
+  fi
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"
