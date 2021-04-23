@@ -66,6 +66,8 @@ if [[ $OSTYPE == linux* ]]; then
   alias chromium="chromium --force-device-scale-factor=1.25"
   alias uireload="xrdb -merge $HOME/.Xresources"
   alias xclip="xclip -selection c"
+  alias scrot="scrot -s"
+  alias open="xdg-open"
 
   PS1="%B%2~%b $ "
 
