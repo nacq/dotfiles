@@ -1,0 +1,19 @@
+#!/bin/sh
+
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+alias vim=nvim
+
+if [[ $OSTYPE == linux* ]]; then
+  alias afk="i3lock -c 000000"
+  alias chromium="chromium --force-device-scale-factor=1.25"
+  alias uireload="xrdb -merge $HOME/.Xresources"
+  alias xclip="xclip -selection c"
+  alias scrot="scrot -s -u"
+  alias open="xdg-open"
+elif [[ $OSTYPE == darwin* ]]; then
+  alias python=python3
+  alias pip=pip3
+  alias ngrok=~/Applications/ngrok
+fi
