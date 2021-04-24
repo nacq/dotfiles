@@ -1,0 +1,39 @@
+[global]
+    monitor = 0
+    follow = keyboard
+    # no size limits, adjust to the content 0x0
+    # margins 10+24
+    geometry = "650x150-10+24"
+    transparency = 20
+    separator_height = 10
+    padding = 10
+    horizontal_padding = 10
+
+    # sort by urgency
+    sort = yes
+    font = Ubuntu Mono 24
+
+    # # The format of the message.  Possible variables are:
+    # #   %a  appname
+    # #   %s  summary
+    # #   %b  body
+    # #   %i  iconname (including its path)
+    # #   %I  iconname (without its path)
+    # #   %p  progress value if set ([  0%] to [100%]) or nothing
+    # #   %n  progress value if set without any extra characters
+    # #   %%  Literal %
+    # # Markup is allowed
+    format = "<b>%a: %s</b>\n%b"
+
+    word_wrap = yes
+    # show ellipsis in the middle instead of at the end of the sentence
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    show_indicators = yes
+    # # dmenu = /usr/bin/dmenu -p dunst:
+    # # browser = /usr/bin/firefox -new-tab
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space

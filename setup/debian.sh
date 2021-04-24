@@ -30,9 +30,11 @@ packages=(
   "gnupg"
   "i3"
   "jq"
+  "libnotify-bin" # system notifications
   "mesa-utils"
   "neovim"
   "network-manager"
+  "notify-osd" # system notifications
   "openvpn"
   "pulseaudio"
   "rar"
