@@ -105,5 +105,5 @@ Xft.antialias:  1
 
 ! fonts
 URxvt.letterSpace: 0
-URxvt.font:xft:Ubuntu Mono:style=Regular:pixelsize=24
-URxvt.boldFont:xft:Ubuntu Mono:style=Bold:pixelsize=24
+URxvt.font:xft:Ubuntu Mono:style=Regular:pixelsize=38
+URxvt.boldFont:xft:Ubuntu Mono:style=Bold:pixelsize=38
