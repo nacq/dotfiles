@@ -23,7 +23,7 @@ files=(
 )
 packages=(
   "alsa-utils"
-  "chromium"
+  "brave-browser"
   "curl"
   "fzf"
   "git"
