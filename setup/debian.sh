@@ -119,6 +119,8 @@ setup_vim() {
   [[ ! -d $HOME/.vim/plugged ]] && curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c "PlugInstall" -c "qa!"
+  nvim -c "CocInstall coc-tsserver" -c "qa!"
+  nvim -c "CocInstall coc-json" -c "qa!"
 }
 
 setup_xorg() {
