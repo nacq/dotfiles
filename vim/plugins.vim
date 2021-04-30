@@ -70,13 +70,18 @@ function! SplitIfNotOpen(...)
   let fname = a:1
   let bufnum=bufnr(expand(fname))
   let winnum=bufwinnr(bufnum)
+  let isvert=winwidth(0) < winheight(0)
 
   if winnum != -1
     " Jump to existing split
     exe winnum . "wincmd w"
   else
     " Make new split as usual
-    exe "split " . fname
+    if isvert
+      exe "split " . fname
+    else
+      exe "vsplit " . fname
+    endif
   endif
 endfunction
 
