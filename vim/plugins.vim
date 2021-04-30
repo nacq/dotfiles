@@ -61,6 +61,27 @@ function! s:show_documentation()
   endif
 endfunction
 
+" if the definition is in the same file jump to it
+" if it is in a different file, open it in a split
+" a:000 all args as a list
+" a:0 number of extra args
+" a:1 filename
+function! SplitIfNotOpen(...)
+  let fname = a:1
+  let bufnum=bufnr(expand(fname))
+  let winnum=bufwinnr(bufnum)
+
+  if winnum != -1
+    " Jump to existing split
+    exe winnum . "wincmd w"
+  else
+    " Make new split as usual
+    exe "split " . fname
+  endif
+endfunction
+
+command! -nargs=+ CocSplitIfNotOpen :call SplitIfNotOpen(<f-args>)
+
 let g:coc_disable_startup_warning = 1
 " ---------------------------------------------------------------------------------
 " fzf settings
