@@ -2,7 +2,6 @@
 
 alias cp="cp -iv"
 alias mv="mv -iv"
-alias rm="rm -vI"
 alias ag="ag --hidden --ignore .git"
 alias vim=nvim
 alias tmux="tmux -2"
@@ -10,6 +9,7 @@ alias tmux="tmux -2"
 if [[ $OSTYPE == linux* ]]; then
   alias afk="i3lock -c 000000"
   alias open="xdg-open"
+  alias rm="rm -vI"
   alias scrot="scrot -s -u"
   alias uireload="xrdb -merge $HOME/.Xresources"
   alias xclip="xclip -selection c"
@@ -17,4 +17,5 @@ elif [[ $OSTYPE == darwin* ]]; then
   alias python=python3
   alias pip=pip3
   alias ngrok=~/Applications/ngrok
+  alias rm="rm -vi"
 fi
