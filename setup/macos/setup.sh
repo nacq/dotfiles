@@ -16,7 +16,9 @@ packages=(
   "gnupg"
   "iterm2"
   "neovim"
+  "node"
   "tmux"
+  "tunnelblick"
 )
 
 dirs=(
