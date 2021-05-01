@@ -13,6 +13,8 @@ files=(
 packages=(
   "ag"
   "fzf"
+  "gnupg"
+  "iterm2"
   "neovim"
   "tmux"
 )
@@ -37,6 +39,7 @@ main() {
   done
   setup_tmux
   setup_vim
+  chsh -s $(which zsh)
   echo "Macos based system setup finished"
 }
 
