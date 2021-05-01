@@ -20,7 +20,7 @@ packages=(
 )
 
 dirs=(
-  ".config"
+  ".config/nvim"
   ".gnupg"
 )
 

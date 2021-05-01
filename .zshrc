@@ -62,7 +62,7 @@ function +vi-git-remote-staged() {
 autoload -Uz vcs_info
 precmd() { vcs_info }
 setopt PROMPT_SUBST
-PROMPT='${PWD/#$HOME/~} ${vcs_info_msg_0_} » '
+PROMPT='${PWD/#$HOME/~} ${vcs_info_msg_0_}» '
 
 # vim mode
 bindkey -v

@@ -5,8 +5,10 @@
 # $1 one of the dirs defined in $dirs in an absolute path format
 # $2 the destination of the given directory
 generate_nested_configs() {
-  local repo_name="dotfiles"
   echo "working with $1"
+  local repo_name="dotfiles"
+  local dest=${1//"$HOME"\/"$repo_name"\/""}
+  [[ -d $1 && ! -d "$dest" ]] && mkdir -p "$dest"
   # ls -X (dir first) does not work on macos
   [[ -d $1 ]] && ls -lA $1 | sort -r | awk 'NF==9 { print $9 }' | while read content; do
     resource_path=$1/$content
