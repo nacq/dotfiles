@@ -1,6 +1,8 @@
 source $HOME/dotfiles/aliases
 source $HOME/dotfiles/exports
 source $HOME/dotfiles/utils
+# to source stuff that are not sourced in the repo
+source $HOME/dotfiles/source_extras 2> /dev/null
 
 # autoload -U colors && colors
 setopt autocd
@@ -91,5 +93,3 @@ if [[ $OSTYPE == linux* ]]; then
     path=($path /usr/local/go/bin)
   fi
 fi
-
-[[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"
