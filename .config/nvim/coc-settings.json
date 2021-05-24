@@ -1,3 +1,7 @@
 {
-  "coc.preferences.jumpCommand": "CocSplitIfNotOpen"
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ]
 }
