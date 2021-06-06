@@ -5,9 +5,9 @@ encrypt() {
     # remove the .gpg extension
     local output_file=${1%.*}
 
-    gpg -d -o $output_file $1 && rm $1
+    gpg -d -o $output_file $1 && rm -f $1
 
-    [[ $output_file == *.gz ]] && tar xzf $output_file && rm $output_file
+    [[ $output_file == *.gz ]] && tar xzf $output_file && rm -f $output_file
 
     unset output_file
   else
@@ -16,7 +16,7 @@ encrypt() {
 
     # in case of a directory, compress, encrypt it and remove the compressed file
     [[ -d $1 ]] && tar czf $1.tar.gz $1 && gpg --symmetric --cipher-algo AES256 --no-symkey-cache $1.tar.gz && \
-      rm -r $1 $1.tar.gz
+      rm -rf $1 $1.tar.gz
     # in case of a file, encrypt it and remove original file
     [[ -f $1 ]] && gpg --symmetric --cipher-algo AES256 --no-symkey-cache $1 && rm $1
   fi
