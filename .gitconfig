@@ -18,6 +18,6 @@
         rskip = rebase --skip
         pr = !$(command -v open || command -v xdg-open) $(git config remote.origin.url | sed 's/git@/https:\\/\\//' | sed 's/.git$//' | sed 's/.com:/.com\\//')/compare/$(git rev-parse --abbrev-ref HEAD)?expand=1
 [pull]
-        ff = true
+        rebase = true
 [core]
         editor = $(which nvim)
