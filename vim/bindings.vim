@@ -11,6 +11,7 @@ cnoreabbrev Wqa! wqa!
 cnoreabbrev Tabclose tabclose
 cnoreabbrev Tabnew tabopen
 cnoreabbrev Sb sb
+cnoreabbrev ag Ag
 
 map <C-n> :Explore <CR>
 map <C-k> :call RevealInNetrw() <CR>
