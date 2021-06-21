@@ -38,7 +38,9 @@ change_mac() {
 
 change_node_version() {
   if [[ -f "$(pwd)/package.json" ]]; then
-    local version=$(grep engines "$(pwd)/package.json" -A 3 | grep \"node\": | awk '{ print $2 }' | sed s'/[",\,]//g')
-    [[ $version && $(node -v | sed s'/v//g') != $version ]] && nvm use $version
+    nvm use 2> /dev/null || {
+      local version=$(grep engines "$(pwd)/package.json" -A 3 | grep \"node\": | awk '{ print $2 }' | sed s'/[",\,]//g')
+      [[ $version && $(node -v | sed s'/v//g') != $version ]] && nvm use $version
+    }
   fi
 }
