@@ -7,6 +7,8 @@
 # if no keyboard connected load xmodmaprc
 lsusb -v 2>/dev/null | grep HHKB || xmodmap $HOME/.xmodmaprc
 
+# "destkop" notifications
 dunst &
 
+# window manager
 exec i3

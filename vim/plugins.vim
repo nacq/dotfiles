@@ -31,7 +31,7 @@ Plug 'nicolasacquaviva/vim-yin-yang'
 call plug#end()
 " ---------------------------------------------------------------------------------
 
-colorscheme yin
+" colorscheme yin
 " ---------------------------------------------------------------------------------
 " Coc settings (https://github.com/neoclide/coc.nvim#example-vim-configuration)
 " Use tab for trigger completion with characters ahead and navigate.

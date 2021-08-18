@@ -4,6 +4,9 @@ source $HOME/dotfiles/utils
 # to source stuff that are not sourced in the repo
 source $HOME/dotfiles/source_extras 2> /dev/null
 
+# this makes node executable (node is a dep of CoC)
+[[ -f $HOME/.nvm/nvm.sh ]] && source $HOME/.nvm/nvm.sh
+
 # autoload -U colors && colors
 setopt autocd
 

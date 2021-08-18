@@ -9,16 +9,16 @@ alias mv="mv -iv"
 alias ag="ag --hidden --ignore .git"
 alias vim=nvim
 alias tmux="tmux -2"
-alias cd="change_dir"
+# alias cd="change_dir"
 
 if [[ $OSTYPE == linux* ]]; then
   alias afk="i3lock -c 000000"
   alias open="xdg-open"
   alias rm="rm -vI"
-  alias scrot="scrot -s -u"
+  # alias scrot="scrot -s -u -b -c 5"
   alias uireload="xrdb -merge $HOME/.Xresources"
   alias xclip="xclip -selection c"
-  alias ls="ls --colors=auto"
+  # alias ls="ls --colors=auto"
 elif [[ $OSTYPE == darwin* ]]; then
   alias python=python3
   alias pip=pip3

@@ -23,14 +23,20 @@ files=(
 )
 packages=(
   "alsa-utils"
+  # bluetooth specifics these provide the `bluetoothctl` util
+  "bluez"
+  "bluez-utils"
   "brave-browser"
   "curl"
+  "dunst"
   "fzf"
   "git"
   "gnupg"
-  "i3"
+  "i3-wm"
+  "i3status"
+  "i3lock"
   "jq"
-  "libnotify-bin" # system notifications
+  "libnotify" # system notifications
   "mesa-utils"
   "neovim"
   "network-manager"
@@ -40,18 +46,25 @@ packages=(
   "rar"
   "rxvt-unicode"
   "scrot"
-  "silversearcher-ag"
+  "the_silver_searcher"
   "suckless-tools"
   "tmux"
   "vlc"
   "unzip"
   "unp"
+  "xclip"
   "xinit"
   "xorg"
   "xserver-xorg"
   "xutils"
+  "wget"
   "zsh"
   "zplug" # zsh plugin manager
+)
+
+arch_pkgs=(
+  "https://aur.archlinux.org/displaylink.git"
+  "https://aur.archlinux.org/evdi.git"
 )
 
 check_packages_installed() {
@@ -84,7 +97,8 @@ generate_nested_configs() {
 install_packages() {
   for package in "${packages[@]}"; do
     echo -e "Installing $package..."
-    sudo apt install -y $package
+    # sudo apt install -y $package
+    sudo pacman -Sy $package
   done
 }
 
@@ -116,6 +130,12 @@ setup_urxvt() {
 }
 
 setup_vim() {
+  # node version manager and node stable version
+  # note: node is needed by Coc
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+  [[ -f $HOME/.nvm/nvm.sh ]] && $HOME/.nvm/nvm.sh install stable
+
+  # vim plugin manager
   [[ ! -d $HOME/.vim/plugged ]] && curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c "PlugInstall" -c "qa!"
