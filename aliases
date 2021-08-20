@@ -18,7 +18,7 @@ if [[ $OSTYPE == linux* ]]; then
   alias scrot="scrot -s -u"
   alias uireload="xrdb -merge $HOME/.Xresources"
   alias xclip="xclip -selection c"
-  alias ls="ls --colors=auto"
+  alias ls="ls --color=always"
 elif [[ $OSTYPE == darwin* ]]; then
   alias python=python3
   alias pip=pip3
