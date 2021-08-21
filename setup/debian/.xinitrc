@@ -4,8 +4,9 @@
 
 [[ -f $HOME/.Xresources ]] && xrdb -merge -I$HOME $HOME/.Xresources
 
-# if no keyboard connected load xmodmaprc
-lsusb -v 2>/dev/null | grep HHKB || xmodmap $HOME/.xmodmaprc
+xmodmap $HOME/.xmodmaprc
+
+sh ~/dotfiles/setup/debian/setup-monitors.sh
 
 dunst &
 
