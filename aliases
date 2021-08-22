@@ -1,15 +1,19 @@
 #!/bin/sh
 
-change_dir() {
-  cd $1 && [[ $(pwd) == */projects* || $(pwd) == */work* ]] && change_node_version
+open_vim() {
+  if [[ $@ ]]; then
+    [[ -d $@ ]] && cd $@ && nvim -c "Explore"
+    [[ -f $@ ]] && nvim $@
+  else
+    nvim -c "Explore"
+  fi
 }
 
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias ag="ag --hidden --ignore .git"
-alias vim=nvim
+alias vim="open_vim"
 alias tmux="tmux -2"
-alias cd="change_dir"
 
 if [[ $OSTYPE == linux* ]]; then
   alias afk="i3lock -c 000000"
