@@ -92,5 +92,6 @@ if [[ $OSTYPE == linux* ]]; then
     typeset -aU path
     path=($path /usr/sbin)
     path=($path /usr/local/go/bin)
+    path=($path /opt/nvim-linux64/bin)
   fi
 fi
