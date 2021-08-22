@@ -32,7 +32,6 @@ packages=(
   "jq"
   "libnotify-bin" # system notifications
   "mesa-utils"
-  "neovim"
   "network-manager"
   "notify-osd" # system notifications
   "openvpn"
@@ -116,6 +115,11 @@ setup_urxvt() {
 }
 
 setup_vim() {
+  sudo curl -Lo /opt/nvim-linux64.tar.gz \
+    https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz &&
+    cd /opt &&
+    sudo tar xvf nvim-linux64.tar.gz &&
+    sudo rm nvim-linux64.tar.gz
   [[ ! -d $HOME/.vim/plugged ]] && curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c "PlugInstall" -c "qa!"
