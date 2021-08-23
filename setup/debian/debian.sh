@@ -14,6 +14,9 @@ debian_files=(
   ".xprofile"
   ".Xresources"
 )
+desktop_apps=(
+  "/usr/share/applications/brave-browser.desktop"
+)
 files=(
   ".bashrc"
   ".gitconfig"
@@ -36,6 +39,7 @@ packages=(
   "notify-osd" # system notifications
   "openvpn"
   "pulseaudio"
+  "pulseaudio-module-bluetooth"
   "rar"
   "rxvt-unicode"
   "scrot"
@@ -89,15 +93,20 @@ install_packages() {
 
 link_files() {
   for file in "${files[@]}"; do
-    [[ -f $HOME/$file ]] && mv $HOME/$file $HOME/$file_$(date +"%Y-%m-%d_%H:%M:%S").bkp
+    [[ -f $HOME/$file ]] && mv $HOME/$file $HOME/$file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
     ln -sf $HOME/$REPO_NAME/$file $HOME/$file
   done
 }
 
 link_debian_files() {
   for file in "${debian_files[@]}"; do
-    [[ -f $HOME/$file ]] && mv $HOME/$file $HOME/$file_$(date +"%Y-%m-%d_%H:%M:%S").bkp
+    [[ -f $HOME/$file ]] && mv $HOME/$file $HOME/$file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
     ln -sf $HOME/$REPO_NAME/setup/debian/$file $HOME/$file
+  done
+
+  for desktop_file in "${desktop_apps[@]}"; do
+    [[ -f "$desktop_file" ]] && sudo mv $desktop_file $desktop_file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
+    sudo ln -sF $HOME/$REPO_NAME$desktop_file $desktop_file
   done
 }
 
