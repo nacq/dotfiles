@@ -26,12 +26,9 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 Plug 'styled-components/vim-styled-components', { 'for': ['jsx', 'tsx'], 'branch': 'main' }
 
-" colorscheme
-Plug 'nicolasacquaviva/vim-yin-yang'
 call plug#end()
 " ---------------------------------------------------------------------------------
 
-colorscheme yin
 " ---------------------------------------------------------------------------------
 " Coc settings (https://github.com/neoclide/coc.nvim#example-vim-configuration)
 " Use tab for trigger completion with characters ahead and navigate.

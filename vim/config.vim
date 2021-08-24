@@ -26,6 +26,15 @@ set hidden
 " ---------------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------------
+" pop up window colors ie: autocomplete
+" valid options: Pmenu | PmenuSel | PmenuSbar | PmenuThum
+" main window background color
+highlight Pmenu ctermbg=gray guibg=gray
+" column at the very left
+highlight SignColumn ctermbg=black guibg=black
+" ---------------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------------
 "
 setlocal nobuflisted
 " ---------------------------------------------------------------------------------
