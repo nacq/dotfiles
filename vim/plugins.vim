@@ -26,8 +26,13 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 Plug 'styled-components/vim-styled-components', { 'for': ['jsx', 'tsx'], 'branch': 'main' }
 
+" colorscheme
+Plug 'nicolasacquaviva/better-default'
+
 call plug#end()
 " ---------------------------------------------------------------------------------
+
+colorscheme betterdefault
 
 " ---------------------------------------------------------------------------------
 " Coc settings (https://github.com/neoclide/coc.nvim#example-vim-configuration)
