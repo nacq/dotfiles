@@ -4,7 +4,7 @@ source $HOME/dotfiles/utils
 # to source stuff that are not sourced in the repo
 source $HOME/dotfiles/source_extras 2> /dev/null
 
-# autoload -U colors && colors
+autoload -U colors && colors
 setopt autocd
 
 # history
@@ -65,7 +65,6 @@ function +vi-git-remote-staged() {
 autoload -Uz vcs_info
 precmd() { vcs_info }
 setopt PROMPT_SUBST
-PROMPT='${PWD/#$HOME/~} ${vcs_info_msg_0_}» '
 
 # vim mode
 bindkey -v
@@ -90,8 +89,17 @@ if [[ $OSTYPE == linux* ]]; then
 
   if [[ -z $TMUX ]]; then
     typeset -aU path
-    path=($path /usr/sbin)
-    path=($path /usr/local/go/bin)
-    path=($path /opt/nvim-linux64/bin)
+    entries=(
+      "/usr/sbin"
+      "/usr/local/go/bin"
+      "/opt/nvim-linux64/bin"
+      "$HOME/.deno/bin"
+      "$HOME/.cargo/bin"
+    )
+    for entry in "${entries[@]}"; do
+      path=($path $entry)
+    done
   fi
 fi
+
+PROMPT='${PWD/#$HOME/~} ${vcs_info_msg_0_}» '
