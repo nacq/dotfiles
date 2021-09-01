@@ -1,7 +1,7 @@
 urxvt*foreground: white
 urxvt*background: black
 
-*faceSize: 24
+*faceSize: 20
 *scrollBar: false
 
 URxvt.perl-ext-common:font-size
@@ -26,5 +26,5 @@ Xft.antialias:  1
 
 ! fonts
 URxvt.letterSpace: 0
-URxvt.font:xft:Ubuntu Mono:style=Regular:pixelsize=38
-URxvt.boldFont:xft:Ubuntu Mono:style=Bold:pixelsize=38
+URxvt.font:xft:Ubuntu Mono:style=Regular:pixelsize=34
+URxvt.boldFont:xft:Ubuntu Mono:style=Bold:pixelsize=34

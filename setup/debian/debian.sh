@@ -49,6 +49,7 @@ packages=(
   "vlc"
   "unzip"
   "unp"
+  "xclip"
   "xinit"
   "xorg"
   "xserver-xorg"

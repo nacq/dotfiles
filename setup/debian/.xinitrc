@@ -2,9 +2,9 @@
 
 [[ -f $HOME/.xprofile ]] && source $HOME/.xprofile
 
-[[ -f $HOME/.Xresources ]] && xrdb -merge -I$HOME $HOME/.Xresources
-
 xmodmap $HOME/.xmodmaprc
+
+[[ -f $HOME/.Xresources ]] && xrdb -merge -I$HOME $HOME/.Xresources
 
 sh ~/dotfiles/setup/debian/setup-monitors.sh
 
