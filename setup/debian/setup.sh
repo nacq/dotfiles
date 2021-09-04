@@ -13,8 +13,10 @@ debian_files=(
   ".xmodmaprc"
   ".xprofile"
   ".Xresources"
-)
-desktop_apps=(
+  "/etc/X11/xorg.conf.d/20-displaylink.conf"
+  "/etc/X11/xorg.conf.d/40-libinput.conf"
+  "/etc/X11/xorg.conf.d/graphics-card.conf"
+  "/etc/X11/xorg.conf.d/monitors.conf"
   "/usr/share/applications/brave-browser.desktop"
 )
 files=(
@@ -101,13 +103,13 @@ link_files() {
 
 link_debian_files() {
   for file in "${debian_files[@]}"; do
-    [[ -f $HOME/$file ]] && mv $HOME/$file $HOME/$file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
-    ln -sf $HOME/$REPO_NAME/setup/debian/$file $HOME/$file
-  done
-
-  for desktop_file in "${desktop_apps[@]}"; do
-    [[ -f "$desktop_file" ]] && sudo mv $desktop_file $desktop_file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
-    sudo ln -sF $HOME/$REPO_NAME$desktop_file $desktop_file
+    if [[ $file == "/"* ]]; then
+      [[ -f $file ]] && sudo mv $file $file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
+      sudo ln -sF $HOME/$REPO_NAME$file $file
+    else
+      [[ -f $HOME/$file ]] && mv $HOME/$file $HOME/$file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
+      ln -sf $HOME/$REPO_NAME/setup/debian/$file $HOME/$file
+    fi
   done
 }
 
@@ -152,22 +154,28 @@ setup_xorg() {
 
 main() {
   echo "Starting Debian based system setup..."
-
-  install_packages
-  link_files
   link_debian_files
-  for dir in "${dirs[@]}"; do
-    generate_nested_configs $HOME/$REPO_NAME/$dir $HOME
-  done
-  setup_xorg
-  setup_urxvt
-  setup_tmux
-  setup_vim
-  # set zsh as the default shell
-  # NOTE: this requires a logout to take effect
-  chsh -s $(which zsh)
-
   echo "Debian based system setup finished. Restart the system now"
 }
+
+# main() {
+  # echo "Starting Debian based system setup..."
+
+  # install_packages
+  # link_files
+  # link_debian_files
+  # for dir in "${dirs[@]}"; do
+    # generate_nested_configs $HOME/$REPO_NAME/$dir $HOME
+  # done
+  # setup_xorg
+  # setup_urxvt
+  # setup_tmux
+  # setup_vim
+  # # set zsh as the default shell
+  # # NOTE: this requires a logout to take effect
+  # chsh -s $(which zsh)
+
+  # echo "Debian based system setup finished. Restart the system now"
+# }
 
 main
