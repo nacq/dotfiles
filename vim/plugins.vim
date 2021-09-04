@@ -21,10 +21,10 @@ Plug 'airblade/vim-gitgutter'
 
 " syntax higlighters
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript.tsx' }
+Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript.tsx', 'javascript.jsx'] }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
-Plug 'styled-components/vim-styled-components', { 'for': ['jsx', 'tsx'], 'branch': 'main' }
+Plug 'styled-components/vim-styled-components', { 'for': ['javascript.jsx', 'typescript.tsx'], 'branch': 'main' }
 
 " colorscheme
 Plug 'nicolasacquaviva/better-default'

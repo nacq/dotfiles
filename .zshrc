@@ -102,4 +102,7 @@ if [[ $OSTYPE == linux* ]]; then
   fi
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 PROMPT='${PWD/#$HOME/~} ${vcs_info_msg_0_}» '
