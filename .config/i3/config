@@ -84,9 +84,9 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # sound management
-bindsym $mod+Shift+a exec "pactl -- set-sink-volume 1 -10% || pactl -- set-sink-volume 0 -10%"
-bindsym $mod+Shift+s exec "pactl -- set-sink-volume 1 +10% || pactl -- set-sink-volume 0 +10%"
-bindsym $mod+Shift+d exec "pactl -- set-sink-volume 1 0% || pactl -- set-sink-volume 0 0% && notify-send 'Volume' 'Muted'"
+bindsym $mod+Shift+a exec "pactl list sinks | grep RUNNING -B 1 | head -n 1 | awk -F '#' '{ print $2 }' | xargs -I {} pactl -- set-sink-volume {} -10%"
+bindsym $mod+Shift+s exec "pactl list sinks | grep RUNNING -B 1 | head -n 1 | awk -F '#' '{ print $2 }' | xargs -I {} pactl -- set-sink-volume {} +10%"
+bindsym $mod+Shift+d exec "pactl list sinks | grep RUNNING -B 1 | head -n 1 | awk -F '#' '{ print $2 }' | xargs -I {} pactl -- set-sink-volume {} 0"
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
