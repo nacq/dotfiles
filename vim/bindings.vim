@@ -12,6 +12,9 @@ cnoreabbrev Tabclose tabclose
 cnoreabbrev Tabnew tabopen
 cnoreabbrev Sb sb
 cnoreabbrev ag Ag
+" dont like the new mappings :@
+cnoreabbrev Gblame Git blame
+cnoreabbrev Gst Git
 
 map <C-n> :Explore <CR>
 map <C-k> :call RevealInNetrw() <CR>
