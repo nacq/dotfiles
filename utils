@@ -35,32 +35,3 @@ change_mac() {
 
   echo "Changed $CURRENT_ADDR for $NEW_ADDR"
 }
-
-change_audio_output() {
-  case $1 in
-    "bt")
-      pacmd set-default-sink "bluez_sink.C4_14_11_24_BC_56.a2dp_sink"
-      ;;
-    "d")
-      pacmd set-default-sink "alsa_output.pci-0000_00_1f.3.analog-stereo"
-      ;;
-    *)
-      echo "Usage: change_audio_output [OPTION]\nValid options: 'bt', 'd'" && \
-      return 1
-      ;;
-  esac
-}
-
-change_node_version() {
-  if [[ -f "$(pwd)/package.json" ]]; then
-    nvm use 2> /dev/null || {
-      local version=$(grep engines "$(pwd)/package.json" -A 3 | grep \"node\": | awk '{ print $2 }' | sed s'/[",\,]//g')
-      [[ $version && $(node -v | sed s'/v//g') != $version ]] && nvm use $version
-    }
-  fi
-}
-
-close_lid() {
-  xrandr --output eDP-1 --off &&
-  xmodmap $HOME/dotfiles/setup/debian/.xmodmaprc
-}
