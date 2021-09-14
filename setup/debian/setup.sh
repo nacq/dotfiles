@@ -13,10 +13,13 @@ debian_files=(
   ".xmodmaprc"
   ".xprofile"
   ".Xresources"
+  "/etc/bluetooth/main.conf"
   "/etc/X11/xorg.conf.d/20-displaylink.conf"
   "/etc/X11/xorg.conf.d/40-libinput.conf"
-  "/etc/X11/xorg.conf.d/graphics-card.conf"
-  "/etc/X11/xorg.conf.d/monitors.conf"
+  # "/etc/X11/xorg.conf.d/graphics-card.conf"
+  # "/etc/X11/xorg.conf.d/monitors.conf"
+  "/etc/udev/rules.d/90-monitor-hotplug.rules"
+  "/usr/local/bin/monitor-hotplug.sh"
   "/usr/share/applications/brave-browser.desktop"
 )
 files=(
@@ -75,14 +78,13 @@ check_packages_installed() {
 # $1 one of the dirs defined in $dirs in an absolute path format
 # $2 the destination of the given directory
 generate_nested_configs() {
-  echo "working with $1"
   # listing sorted by extension (-X) this will make the dirs to get created first, omiting . and .. (-A)
   [[ -d $1 ]] && ls -aAX $1 | while read content; do
     resource_path=$1/$content
     # remove not needed parts of the abs path
     resource_to_create=${resource_path//"$HOME"\/"$REPO_NAME"\/""}
     # TODO: handle file already exists
-    [[ -f "$resource_path" ]] && ln -s "$resource_path" "$2"/"$resource_to_create"
+    [[ -f "$resource_path" ]] && ln -sf "$resource_path" "$2"/"$resource_to_create"
     [[ -d "$resource_path" ]] && mkdir -p "$2"/"$resource_to_create" && generate_nested_configs "$1"/"$content" "$2"
   done
 }
@@ -105,7 +107,7 @@ link_debian_files() {
   for file in "${debian_files[@]}"; do
     if [[ $file == "/"* ]]; then
       [[ -f $file ]] && sudo mv $file $file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
-      sudo ln -sF $HOME/$REPO_NAME$file $file
+      sudo ln -sfF $HOME/$REPO_NAME$file $file
     else
       [[ -f $HOME/$file ]] && mv $HOME/$file $HOME/$file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
       ln -sf $HOME/$REPO_NAME/setup/debian/$file $HOME/$file
@@ -153,29 +155,52 @@ setup_xorg() {
 }
 
 main() {
-  echo "Starting Debian based system setup..."
-  link_debian_files
+  case $1 in
+    "packages")
+      install_packages
+      ;;
+    "link")
+      link_files
+      link_debian_files
+      for dir in "${dirs[@]}"; do
+        generate_nested_configs $HOME/$REPO_NAME/$dir $HOME
+      done
+      ;;
+    "setupapps")
+      setup_xorg
+      setup_urxvt
+      setup_tmux
+      setup_vim
+      # set zsh as the default shell
+      # NOTE: this requires a logout to take effect
+      chsh -s $(which zsh)
+      ;;
+    "all")
+      install_packages
+      link_files
+      link_debian_files
+      for dir in "${dirs[@]}"; do
+        generate_nested_configs $HOME/$REPO_NAME/$dir $HOME
+      done
+      setup_xorg
+      setup_urxvt
+      setup_tmux
+      setup_vim
+      # set zsh as the default shell
+      # NOTE: this requires a logout to take effect
+      chsh -s $(which zsh)
+      ;;
+    *)
+      echo -e "Usage: ./setup.sh [OPTION]
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything." && \
+        exit 1
+      ;;
+  esac
+
   echo "Debian based system setup finished. Restart the system now"
 }
 
-# main() {
-  # echo "Starting Debian based system setup..."
-
-  # install_packages
-  # link_files
-  # link_debian_files
-  # for dir in "${dirs[@]}"; do
-    # generate_nested_configs $HOME/$REPO_NAME/$dir $HOME
-  # done
-  # setup_xorg
-  # setup_urxvt
-  # setup_tmux
-  # setup_vim
-  # # set zsh as the default shell
-  # # NOTE: this requires a logout to take effect
-  # chsh -s $(which zsh)
-
-  # echo "Debian based system setup finished. Restart the system now"
-# }
-
-main
+main $1
