@@ -158,4 +158,6 @@ au FileType yaml setlocal shiftwidth=2 smarttab
 au FileType sh setlocal shiftwidth=2 expandtab smarttab
 au FileType vim setlocal shiftwidth=2 expandtab smarttab
 au FileType c setlocal shiftwidth=4 tabstop=4 softtabstop=4 smartindent expandtab
+au FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4 smartindent expandtab
+au FileType kotlin setlocal shiftwidth=4 tabstop=4 softtabstop=4 smartindent expandtab
 " ---------------------------------------------------------------------------------

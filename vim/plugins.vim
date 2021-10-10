@@ -25,6 +25,7 @@ Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript.tsx', 'javascript.jsx'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript.jsx', 'typescript.tsx'], 'branch': 'main' }
+Plug 'udalov/kotlin-vim', { 'for': ['kotlin'] }
 
 " colorscheme
 Plug 'nicolasacquaviva/better-default'

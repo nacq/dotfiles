@@ -19,10 +19,12 @@ cnoreabbrev Gst Git
 map <C-n> :Explore <CR>
 map <C-k> :call RevealInNetrw() <CR>
 map <C-p> :GFiles <CR>
+map <C-f> :Files <CR>
 map <C-g> :OpenRepo <CR>
 map <leader>dd <Plug>(coc-definition)
 map <leader>vdd :call CocAction('jumpDefinition', 'vsplit')<CR>
 map <leader>hdd :call CocAction('jumpDefinition', 'split')<CR>
+map <leader>tdd :call CocAction('jumpDefinition', 'tabnew')<CR>
 map <leader>rr <Plug>(coc-references)
 map <leader>tt :tabnew <CR>
 map <leader>tc :tabclose <CR>
