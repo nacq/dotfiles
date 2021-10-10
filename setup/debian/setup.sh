@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 REPO_NAME="dotfiles"
 # these directories should exist in this repo
@@ -33,6 +33,7 @@ packages=(
   "alsa-utils"
   "brave-browser"
   "curl"
+  "feh"
   "fzf"
   "git"
   "gnupg"
@@ -51,27 +52,22 @@ packages=(
   "silversearcher-ag"
   "suckless-tools"
   "tmux"
-  "vlc"
-  "unzip"
+  "tree"
   "unp"
+  "unzip"
+  "vlc"
   "xclip"
   "xinit"
   "xorg"
   "xserver-xorg"
   "xutils"
-  "zsh"
   "zplug" # zsh plugin manager
+  "zsh"
 )
 
 check_packages_installed() {
   for package in "${packages[@]}"; do
-    if [[ $package == "silversearcher-ag" ]]; then
-      which ag > /dev/null || echo "$package is not installed"
-    elif [[ $package == "neovim" ]]; then
-      which nvim > /dev/null || echo "$package is not installed"
-    else
-      which $package > /dev/null || echo "$package is not installed"
-    fi
+    apt list -a "$package" 2>/dev/null | grep -q installed || echo "$package is not installed"
   done
 }
 
@@ -156,6 +152,9 @@ setup_xorg() {
 
 main() {
   case $1 in
+    "check-packages-installed")
+      check_packages_installed
+      ;;
     "packages")
       install_packages
       ;;
@@ -192,6 +191,7 @@ main() {
       ;;
     *)
       echo -e "Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
       - 'packages', to install packages.
       - 'link', to generate symbolic links.
       - 'setupapps', to setup the different apps.
@@ -199,8 +199,6 @@ main() {
         exit 1
       ;;
   esac
-
-  echo "Debian based system setup finished. Restart the system now"
 }
 
 main $1
