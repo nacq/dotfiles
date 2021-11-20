@@ -3,5 +3,8 @@
 notes
 tmux-plugins/
 .config/nvim/.netrwhist
+.config/nvim/coc-settings.json
 vim/snippets.json
 source_extras
+
+setup/log/*

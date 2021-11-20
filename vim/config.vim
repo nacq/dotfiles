@@ -135,7 +135,7 @@ autocmd BufNewFile,BufRead *.js set filetype=javascript
 autocmd BufNewFile,BufRead *.styl,*.scss set filetype=css
 autocmd BufNewFile,BufRead *.html.erb set filetype=html
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.go set filetype=go
 " ---------------------------------------------------------------------------------
 
@@ -147,7 +147,7 @@ au FileType javascript.jsx
       \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType typescript
       \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
-au FileType typescript.tsx
+au FileType typescriptreact
       \ setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 au FileType json setlocal tabstop=8 softtabstop=0 expandtab shiftwidth=2
 au FileType html setlocal tabstop=2 expandtab shiftwidth=4 softtabstop=4

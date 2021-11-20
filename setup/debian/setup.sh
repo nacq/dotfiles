@@ -1,6 +1,7 @@
 #!/bin/bash
 
 REPO_NAME="dotfiles"
+LOG_FILE="$HOME/$REPO_NAME/setup/log/debian_setup"
 # these directories should exist in this repo
 dirs=(
   ".config"
@@ -47,6 +48,7 @@ packages=(
   "pulseaudio"
   "pulseaudio-module-bluetooth"
   "rar"
+  "rofi"
   "rxvt-unicode"
   "scrot"
   "silversearcher-ag"
@@ -111,6 +113,10 @@ link_debian_files() {
   done
 }
 
+log() {
+  echo -e "\n$(date +"%Y-%m-%d_%H:%M:%S") - $1" >> "$LOG_FILE"
+}
+
 setup_tmux() {
   tpm="$HOME/.tmux/plugins"
   export TMUX_PLUGIN_MANAGER_PATH=$tpm
@@ -151,6 +157,9 @@ setup_xorg() {
 }
 
 main() {
+  [[ ! -f "$LOG_FILE" ]] && touch "$LOG_FILE"
+  log $1
+
   case $1 in
     "check-packages-installed")
       check_packages_installed
@@ -201,4 +210,4 @@ main() {
   esac
 }
 
-main $1
+main $1 | tee -a "$LOG_FILE"
