@@ -1,28 +1,15 @@
 #!/bin/sh
 
-open_vim() {
-  if [[ $@ ]]; then
-    if [[ -d $@ ]]; then
-      cd $@ && nvim -c "Explore"
-    else
-      nvim $@
-    fi
-  else
-    nvim -c "Explore"
-  fi
-}
-
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias ag="ag --hidden --ignore .git"
-alias vim="open_vim"
+alias vim="nvim"
 alias tmux="tmux -2"
 
 if [[ $OSTYPE == linux* ]]; then
   alias afk="i3lock -c 000000"
   alias open="xdg-open"
   alias rm="rm -vI"
-  alias scrot="scrot -s -u"
   alias uireload="xrdb -merge $HOME/.Xresources"
   alias xclip="xclip -selection c"
   alias ls="ls --color=always"
