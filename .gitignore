@@ -5,3 +5,5 @@ tmux-plugins/
 .config/nvim/.netrwhist
 vim/snippets.json
 source_extras
+
+setup/log/*
