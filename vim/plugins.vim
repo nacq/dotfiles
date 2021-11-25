@@ -3,7 +3,7 @@
 " ---------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 " utils
-Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx', 'javascript.jsx', 'tsx', 'typescript.tsx']}
+Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx', 'javascript.jsx', 'tsx', 'typescript.tsx', 'typescriptreact']}
 Plug 'scrooloose/nerdcommenter'
 " Plug 'junegunn/fzf', { 'do': { ->fzf#install() } }
 " changed the post install hook bc it suddenly stopped working
@@ -88,12 +88,18 @@ function! SplitIfNotOpen(...)
   endif
 endfunction
 
+function JsonBeautify()
+  %!jq .
+endfunction
+
+command JsonBeautify :call JsonBeautify()
+
 command! -nargs=+ CocSplitIfNotOpen :call SplitIfNotOpen(<f-args>)
 
 let g:coc_disable_startup_warning = 1
 " ---------------------------------------------------------------------------------
 " fzf settings
-let g:fzf_layout = { 'down': '~30%' }
+let g:fzf_layout = { 'down': '~50%' }
 let g:fzf_preview_window = 'right:60%'
 " ---------------------------------------------------------------------------------
 
