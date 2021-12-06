@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index a2ac963..1c0cea0 100644
+index a2ac963..8f7d55f 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -5,17 +5,18 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -25,6 +25,15 @@ index a2ac963..1c0cea0 100644
  };
  
  /* tagging */
+@@ -28,7 +29,7 @@ static const Rule rules[] = {
+ 	 */
+ 	/* class      instance    title       tags mask     isfloating   monitor */
+ 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
++	// { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+ };
+ 
+ /* layout(s) */
 @@ -45,7 +46,8 @@ static const Layout layouts[] = {
  };
  
