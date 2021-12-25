@@ -12,7 +12,7 @@ index 0ec9e47..feaac15 100644
  # flags
  CPPFLAGS = -DVERSION=\"${VERSION}\" -D_DEFAULT_SOURCE
 diff --git a/dwmstatus.c b/dwmstatus.c
-index d2a4b03..dce01a4 100644
+index d2a4b03..6ac227b 100644
 --- a/dwmstatus.c
 +++ b/dwmstatus.c
 @@ -16,10 +16,9 @@
@@ -35,11 +35,18 @@ index d2a4b03..dce01a4 100644
  char *
  loadavg(void)
  {
-@@ -181,42 +179,32 @@ main(void)
- 	char *status;
- 	char *avgs;
+@@ -154,8 +152,6 @@ getbattery(char *base)
+ 		status = '-';
+ 	} else if(!strncmp(co, "Charging", 8)) {
+ 		status = '+';
+-	} else {
+-		status = '?';
+ 	}
+ 
+ 	if (remcap < 0 || descap < 0)
+@@ -183,40 +179,34 @@ main(void)
  	char *bat;
--	char *bat1;
+ 	char *bat1;
  	char *tmar;
 -	char *tmutc;
 -	char *tmbln;
@@ -66,14 +73,16 @@ index d2a4b03..dce01a4 100644
 -		status = smprintf("T:%s|%s|%s L:%s B:%s|%s A:%s U:%s %s",
 -				t0, t1, t2, avgs, bat, bat1, tmar, tmutc,
 -				tmbln);
++        bat1 = getbattery("/sys/class/power_supply/BAT1");
 +		tmar = mktimes("%H:%M:%S %d %b", tzargentina);
 +		volume = get_vol();
 +
 +		status = smprintf(
-+			"V: %d% | L: %s | B: %s | %s ",
++			"V: %d% | L: %s | B: %s - %s | %s ",
 +			volume,
 +			avgs,
 +			bat,
++            bat1,
 +			tmar
 +		);
  		setstatus(status);
@@ -83,7 +92,7 @@ index d2a4b03..dce01a4 100644
 -		free(t2);
  		free(avgs);
  		free(bat);
--		free(bat1);
+ 		free(bat1);
  		free(tmar);
 -		free(tmutc);
 -		free(tmbln);
