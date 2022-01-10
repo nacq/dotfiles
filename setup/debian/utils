@@ -33,6 +33,6 @@ change_node_version() {
 }
 
 close_lid() {
-  xrandr --output eDP-1 --off &&
-  xmodmap $HOME/dotfiles/setup/debian/.xmodmaprc
+  xrandr --output eDP-1 --off
+  [[ -f "$HOME/.xmodmaprc" ]] && source "$HOME/.xmodmaprc"
 }

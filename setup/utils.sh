@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Common functions used by any of the OSs while running the setup.
 

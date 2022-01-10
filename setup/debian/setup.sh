@@ -124,7 +124,7 @@ setup_tmux() {
 
 # $1 is app name st | dwm | dmenu
 setup_suckless_app() {
-  diff="$HOME/dotfiles/setup/suckless-diffs/$1-config.diff"
+  diff="$HOME/dotfiles/setup/debian/suckless/$1.diff"
 
   [[ ! -d "$HOME/$1" ]] && git clone https://git.suckless.org/$1 $HOME/$1
 

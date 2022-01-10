@@ -2,9 +2,9 @@
 
 [[ -f "$HOME/.Xresources" ]] && xrdb -merge -I "$HOME" "$HOME/.Xresources"
 
-sh "$HOME/dotfiles/setup/debian/setup-monitors.sh"
+bash $HOME/dotfiles/setup/debian/setup-monitors.sh
 
-[[ -f "$HOME/.xmodmaprc" ]] && xmodmap "$HOME/.xmodmaprc"
+[[ -f "$HOME/.Xmodmap" ]] && xmodmap "$HOME/.Xmodmap"
 
 # start notification system in background
 dunst &
