@@ -30,3 +30,9 @@ change_mac() {
 
   echo "Changed $CURRENT_ADDR for $NEW_ADDR"
 }
+
+concat_videos() {
+  touch list.txt
+  ls -1 $1 >> list.txt
+  ffmpeg -f concat list.txt -c copy output.mp4
+}
