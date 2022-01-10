@@ -11,14 +11,11 @@ dirs=(
 )
 debian_files=(
   ".xinitrc"
-  ".xmodmaprc"
-  ".xprofile"
+  ".Xmodmap"
   ".Xresources"
   "/etc/bluetooth/main.conf"
   "/etc/X11/xorg.conf.d/20-displaylink.conf"
   "/etc/X11/xorg.conf.d/40-libinput.conf"
-  # "/etc/X11/xorg.conf.d/graphics-card.conf"
-  # "/etc/X11/xorg.conf.d/monitors.conf"
   "/etc/udev/rules.d/90-monitor-hotplug.rules"
   "/usr/local/bin/monitor-hotplug.sh"
   "/usr/share/applications/brave-browser.desktop"
@@ -125,9 +122,34 @@ setup_tmux() {
   unset TMUX_PLUGIN_MANAGER_PATH
 }
 
-setup_urxvt() {
-  # at this point the dir .urxvt/ext/ should already be created by this script
-  git clone https://github.com/majutsushi/urxvt-font-size $HOME/.urxvt/ext
+# $1 is app name st | dwm | dmenu
+setup_suckless_app() {
+  diff="$HOME/dotfiles/setup/suckless-diffs/$1-config.diff"
+
+  [[ ! -d "$HOME/$1" ]] && git clone https://git.suckless.org/$1 $HOME/$1
+
+  cd $HOME/$1
+  rm -f config.h
+
+  [[ -f "$diff" ]] && git apply "$diff"
+
+  sudo make clean install
+}
+
+# spoon comes from a different repo is not hosted in suckless
+setup_spoon() {
+  echo "TODO"
+  # diff="$HOME/dotfiles/setup/suckless-diffs/spoon-config.diff"
+
+  # [[ ! -d "$HOME/spoon" ]] && git clone git://git.codemadness.org/spoon $HOME/spoon
+
+  # cd $HOME/spoon
+
+  # [[ -f "$diff" ]] && git apply "$diff"
+
+  # sudo apt install libxkbfile-dev mpd libmpdclient-dev
+
+  # ./configure && sudo make clean install
 }
 
 setup_vim() {
@@ -164,6 +186,24 @@ main() {
     "check-packages-installed")
       check_packages_installed
       ;;
+    "suckless-diffs")
+      generate_suckless_diffs
+      ;;
+    "dwm")
+      setup_suckless_app dwm
+      sudo update-alternatives --install /usr/bin/x-window-manager x-window-manager $(which dwm) 50
+      ;;
+    "dwmstatus")
+      setup_suckless_app dwmstatus
+      ;;
+    "st")
+      setup_suckless_app st
+      # make it the default term
+      sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $(which st) 50
+      ;;
+    "spoon")
+      setup_spoon
+      ;;
     "packages")
       install_packages
       ;;
@@ -176,9 +216,12 @@ main() {
       ;;
     "setupapps")
       setup_xorg
-      setup_urxvt
       setup_tmux
       setup_vim
+      setup_suckless_app dwm
+      setup_suckless_app dwmstatus
+      setup_suckless_app st
+      setup_spoon
       # set zsh as the default shell
       # NOTE: this requires a logout to take effect
       chsh -s $(which zsh)
@@ -191,9 +234,12 @@ main() {
         generate_nested_configs $HOME/$REPO_NAME/$dir $HOME
       done
       setup_xorg
-      setup_urxvt
       setup_tmux
       setup_vim
+      setup_suckless_app dwm
+      setup_suckless_app dwmstatus
+      setup_suckless_app st
+      setup_spoon
       # set zsh as the default shell
       # NOTE: this requires a logout to take effect
       chsh -s $(which zsh)
@@ -201,6 +247,11 @@ main() {
     *)
       echo -e "Usage: ./setup.sh [OPTION]
       - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'dwm', to setup dwm,
+      - 'dwmstatus', to setup dwmstatus,
+      - 'st', to setup st,
+      - 'spoon' to setup spoon (a dwm status setter),
       - 'packages', to install packages.
       - 'link', to generate symbolic links.
       - 'setupapps', to setup the different apps.
