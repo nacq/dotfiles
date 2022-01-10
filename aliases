@@ -13,8 +13,7 @@ if [[ $OSTYPE == linux* ]]; then
   alias uireload="xrdb -merge $HOME/.Xresources"
   alias xclip="xclip -selection c"
   alias ls="ls --color=always"
-  # just capture current window
-  alias scrot="scrot -u"
+  alias scrot="scrot -s && mv *_scrot.png $HOME/screenshots/"
 elif [[ $OSTYPE == darwin* ]]; then
   alias python=python3
   alias pip=pip3
