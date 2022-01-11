@@ -1,6 +1,6 @@
 source $HOME/dotfiles/aliases
 source $HOME/dotfiles/exports
-source $HOME/dotfiles/utils
+source $HOME/dotfiles/functions
 # to source stuff that are not sourced in the repo
 source $HOME/dotfiles/source_extras 2> /dev/null
 

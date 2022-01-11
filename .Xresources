@@ -1,20 +1,5 @@
-urxvt*foreground: white
-urxvt*background: black
-
 *faceSize: 20
 *scrollBar: false
-
-URxvt.perl-ext-common:font-size
-URxvt.font-size.step: 1
-
-! bindings
-URxvt.keysym.C-Up: perl:font-size:increase
-URxvt.keysym.C-Down: perl:font-size:decrease
-
-! copy paste
-URxvt.clipboard.autocopy: true
-URxvt.clipboard.copycmd: xclip -i -selection clipboard
-URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 
 ! xft settings
 Xft.rgba:       rgb
@@ -25,8 +10,3 @@ Xft.hinting:    1
 Xft.antialias:  1
 
 Xcursor.size: 32
-
-! fonts
-URxvt.letterSpace: 0
-URxvt.font:xft:Ubuntu Mono:style=Regular:pixelsize=30
-URxvt.boldFont:xft:Ubuntu Mono:style=Bold:pixelsize=30

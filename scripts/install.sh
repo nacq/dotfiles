@@ -2,17 +2,13 @@
 
 REPO_NAME="dotfiles"
 LOG_FILE="$HOME/$REPO_NAME/log/debian_setup"
+
 # these directories should exist in this repo
 dirs=(
   ".config"
-  ".fonts"
   ".gnupg"
-  ".urxvt"
 )
 debian_files=(
-  ".xinitrc"
-  ".Xmodmap"
-  ".Xresources"
   "/etc/bluetooth/main.conf"
   "/etc/X11/xorg.conf.d/20-displaylink.conf"
   "/etc/X11/xorg.conf.d/40-libinput.conf"
@@ -21,10 +17,12 @@ debian_files=(
   "/usr/share/applications/brave-browser.desktop"
 )
 files=(
-  ".bashrc"
+  ".Xmodmap"
+  ".Xresources"
   ".gitconfig"
   ".tmux.conf"
   ".vimrc"
+  ".xinitrc"
   ".zshrc"
 )
 packages=(
@@ -45,8 +43,6 @@ packages=(
   "pulseaudio"
   "pulseaudio-module-bluetooth"
   "rar"
-  "rofi"
-  "rxvt-unicode"
   "scrot"
   "silversearcher-ag"
   "suckless-tools"
@@ -138,20 +134,20 @@ setup_suckless_app() {
   sudo make clean install
 }
 
-# spoon comes from a different repo is not hosted in suckless
+setup_dwm() {
+  setup_suckless_app dwm "git://git.suckless.org/dwm" && \
+    sudo update-alternatives --install /usr/bin/x-window-manager x-window-manager $(which dwm) 50
+}
+
+setup_st() {
+  setup_suckless_app st "git://git.suckless.org/st"
+  # make it the default term
+  sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $(which st) 50
+}
+
 setup_spoon() {
-  echo "TODO"
-  # diff="$HOME/dotfiles/setup/suckless-diffs/spoon-config.diff"
-
-  # [[ ! -d "$HOME/spoon" ]] && git clone git://git.codemadness.org/spoon $HOME/spoon
-
-  # cd $HOME/spoon
-
-  # [[ -f "$diff" ]] && git apply "$diff"
-
-  # sudo apt install libxkbfile-dev mpd libmpdclient-dev
-
-  # ./configure && sudo make clean install
+  sudo apt install libxkbfile-dev && \
+    setup_suckless_app spoon "git://git.codemadness.org/spoon"
 }
 
 setup_vim() {
@@ -188,68 +184,36 @@ main() {
     "check-packages-installed")
       check_packages_installed
       ;;
-    "suckless-diffs")
-      generate_suckless_diffs
-      ;;
-    "dwm")
-      setup_suckless_app dwm "git://git.suckless.org/dwm"
-      sudo update-alternatives --install /usr/bin/x-window-manager x-window-manager $(which dwm) 50
-      ;;
-    # TODO: remove
-    "dwmstatus")
-      setup_suckless_app dwmstatus "git://git.suckless.org/dwmstatus"
-      ;;
-    "st")
-      setup_suckless_app st "git://git.suckless.org/st"
-      # make it the default term
-      sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $(which st) 50
-      ;;
     "packages")
       install_packages
       ;;
     "link")
       link_files
       link_debian_files
-      for dir in "${dirs[@]}"; do
-        generate_nested_configs $HOME/$REPO_NAME/$dir $HOME
-      done
       ;;
     "setupapps")
-      # TODO: call this script with the proper arg instead of the function directly
       setup_xorg
       setup_tmux
       setup_vim
-      setup_suckless_app dwm
-      setup_suckless_app dwmstatus
-      setup_suckless_app st
+      setup_dwm
+      setup_st
+      setup_spoon
       # set zsh as the default shell
       # NOTE: this requires a logout to take effect
       chsh -s $(which zsh)
       ;;
     "all")
-      install_packages
-      link_files
+      bash "$HOME/dotfiles/scripts/install.sh packages"
+      bash "$HOME/dotfiles/scripts/install.sh link"
       link_debian_files
       for dir in "${dirs[@]}"; do
         generate_nested_configs $HOME/$REPO_NAME/$dir $HOME
       done
-      setup_xorg
-      setup_tmux
-      setup_vim
-      setup_suckless_app dwm
-      setup_suckless_app dwmstatus
-      setup_suckless_app st
-      # set zsh as the default shell
-      # NOTE: this requires a logout to take effect
-      chsh -s $(which zsh)
+      bash "$HOME/dotfiles/scripts/install.sh setupapps"
       ;;
     *)
       echo -e "Usage: ./install.sh [OPTION]
       - 'check-packages-installed', to check if all the listed packages are installed.
-      - 'suckless-diffs', to generate suckless diffs,
-      - 'dwm', to setup dwm,
-      - 'dwmstatus', to setup dwmstatus,
-      - 'st', to setup st,
       - 'packages', to install packages.
       - 'link', to generate symbolic links.
       - 'setupapps', to setup the different apps.
