@@ -83,8 +83,6 @@ fi
 
 # Linux stuff
 if [[ $OSTYPE == linux* ]]; then
-  source $HOME/dotfiles/setup/debian/utils
-
   PS1="%B%2~%b $ "
 
   if [[ -z $TMUX ]]; then

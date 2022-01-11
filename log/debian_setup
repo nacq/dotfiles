@@ -1,0 +1,1371 @@
+
+2021-11-20_12:21:46 - check-packages-installed
+rofi is not installed
+
+2021-11-20_12:21:59 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2021-11-20_12:22:06 - packages
+Installing alsa-utils...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+alsa-utils is already the newest version (1.1.8-2).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 60 not upgraded.
+Installing brave-browser...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+The following packages will be upgraded:
+  brave-browser
+apt-listchanges: Reading changelogs...
+1 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Need to get 0 B/95.5 MB of archives.
+After this operation, 12.0 MB of additional disk space will be used.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 146853 files and directories currently installed.)
+Preparing to unpack .../brave-browser_1.31.88_amd64.deb ...
+Unpacking brave-browser (1.31.88) over (1.28.106) ...
+Setting up brave-browser (1.31.88) ...
+Processing triggers for mime-support (3.62) ...
+Processing triggers for man-db (2.8.5-2) ...
+Processing triggers for desktop-file-utils (0.23-4) ...
+Installing curl...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+curl is already the newest version (7.64.0-4+deb10u2).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing feh...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+feh is already the newest version (3.1.3-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing fzf...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+fzf is already the newest version (0.17.5-2+b10).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing git...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+git is already the newest version (1:2.20.1-2+deb10u3).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing gnupg...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+gnupg is already the newest version (2.2.12-1+deb10u1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing i3...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+i3 is already the newest version (4.16.1-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing jq...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+jq is already the newest version (1.5+dfsg-2+b1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing libnotify-bin...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+libnotify-bin is already the newest version (0.7.7-4).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing mesa-utils...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+mesa-utils is already the newest version (8.4.0-1+b1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing network-manager...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+network-manager is already the newest version (1.14.6-2+deb10u1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing notify-osd...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+notify-osd is already the newest version (0.9.35+15.04.20150126-1+b1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing openvpn...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+openvpn is already the newest version (2.4.7-1+deb10u1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing pulseaudio...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+pulseaudio is already the newest version (12.2-4+deb10u1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing pulseaudio-module-bluetooth...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+pulseaudio-module-bluetooth is already the newest version (12.2-4+deb10u1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing rar...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+rar is already the newest version (2:5.5.0-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing rofi...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libxcb-ewmh2
+The following NEW packages will be installed:
+  libxcb-ewmh2 rofi
+0 upgraded, 2 newly installed, 0 to remove and 59 not upgraded.
+Need to get 205 kB of archives.
+After this operation, 626 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian buster/main amd64 libxcb-ewmh2 amd64 0.4.1-1.1 [33.8 kB]
+Get:2 http://deb.debian.org/debian buster/main amd64 rofi amd64 1.5.1-1 [171 kB]
+Fetched 205 kB in 1s (367 kB/s)
+Selecting previously unselected package libxcb-ewmh2:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 146854 files and directories currently installed.)
+Preparing to unpack .../libxcb-ewmh2_0.4.1-1.1_amd64.deb ...
+Unpacking libxcb-ewmh2:amd64 (0.4.1-1.1) ...
+Selecting previously unselected package rofi.
+Preparing to unpack .../rofi_1.5.1-1_amd64.deb ...
+Unpacking rofi (1.5.1-1) ...
+Setting up libxcb-ewmh2:amd64 (0.4.1-1.1) ...
+Setting up rofi (1.5.1-1) ...
+Processing triggers for man-db (2.8.5-2) ...
+Processing triggers for libc-bin (2.28-10) ...
+Installing rxvt-unicode...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+rxvt-unicode is already the newest version (9.22-6+deb10u1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing scrot...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+scrot is already the newest version (0.9-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing silversearcher-ag...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+silversearcher-ag is already the newest version (2.2.0-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing suckless-tools...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+suckless-tools is already the newest version (44-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing tmux...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+tmux is already the newest version (2.8-3).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing tree...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+tree is already the newest version (1.8.0-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing unp...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+unp is already the newest version (2.0~pre7+nmu1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing unzip...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+unzip is already the newest version (6.0-23+deb10u2).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing vlc...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+vlc is already the newest version (3.0.12-0+deb10u1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing xclip...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+xclip is already the newest version (0.13-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing xinit...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+xinit is already the newest version (1.4.0-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing xorg...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+xorg is already the newest version (1:7.7+19).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing xserver-xorg...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+xserver-xorg is already the newest version (1:7.7+19).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing xutils...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+xutils is already the newest version (1:7.7+19).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing zplug...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+zplug is already the newest version (2.4.2-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing zsh...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+zsh is already the newest version (5.7.1-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+
+2021-11-20_12:25:14 - packages
+Installing alsa-utils...
+alsa-utils is already the newest version (1.1.8-2).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing brave-browser...
+brave-browser is already the newest version (1.31.88).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing curl...
+curl is already the newest version (7.64.0-4+deb10u2).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing feh...
+feh is already the newest version (3.1.3-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing fzf...
+fzf is already the newest version (0.17.5-2+b10).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing git...
+git is already the newest version (1:2.20.1-2+deb10u3).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing gnupg...
+gnupg is already the newest version (2.2.12-1+deb10u1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing i3...
+i3 is already the newest version (4.16.1-1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing jq...
+jq is already the newest version (1.5+dfsg-2+b1).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing libnotify-bin...
+libnotify-bin is already the newest version (0.7.7-4).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing mesa-utils...
+
+2021-11-20_12:25:25 - packages
+Installing alsa-utils...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+alsa-utils is already the newest version (1.1.8-2).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing brave-browser...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+brave-browser is already the newest version (1.31.88).
+The following packages were automatically installed and are no longer required:
+  cmake-data libjsoncpp1 librhash0 libuv1 torsocks
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 59 not upgraded.
+Installing curl...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+
+2021-11-22_21:46:24 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2021-11-22_21:46:27 - link
+
+2021-11-29_23:32:30 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2021-11-29_23:32:36 - suckless-diffs
+
+2021-11-29_23:33:13 - suckless-diffs
+
+2021-11-29_23:41:26 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'setup-dwm', to setup dwm,
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2021-11-29_23:41:32 - setup-dwm
+rm -f dwm drw.o dwm.o util.o dwm-6.2.tar.gz
+dwm build options:
+CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION="6.2" -DXINERAMA
+LDFLAGS  = -L/usr/X11R6/lib -lX11 -lXinerama -lfontconfig -lXft
+CC       = cc
+cp config.def.h config.h
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA drw.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA dwm.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA util.c
+cc -o dwm drw.o dwm.o util.o -L/usr/X11R6/lib -lX11 -lXinerama -lfontconfig -lXft
+mkdir -p /usr/local/bin
+cp -f dwm /usr/local/bin
+chmod 755 /usr/local/bin/dwm
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/6.2/g" < dwm.1 > /usr/local/share/man/man1/dwm.1
+chmod 644 /usr/local/share/man/man1/dwm.1
+
+2021-11-29_23:55:01 - suckless-diffs
+
+2021-11-29_23:55:21 - suckless-diffs
+
+2021-11-29_23:56:36 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'setup-dwm', to setup dwm,
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2021-11-29_23:56:42 - suckless-diffs
+
+2021-11-29_23:57:59 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'setup-dwm', to setup dwm,
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2021-11-29_23:58:04 - setup-dwm
+rm -f dwm drw.o dwm.o util.o dwm-6.2.tar.gz
+dwm build options:
+CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION="6.2" -DXINERAMA
+LDFLAGS  = -L/usr/X11R6/lib -lX11 -lXinerama -lfontconfig -lXft
+CC       = cc
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA drw.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA dwm.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA util.c
+cc -o dwm drw.o dwm.o util.o -L/usr/X11R6/lib -lX11 -lXinerama -lfontconfig -lXft
+mkdir -p /usr/local/bin
+cp -f dwm /usr/local/bin
+chmod 755 /usr/local/bin/dwm
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/6.2/g" < dwm.1 > /usr/local/share/man/man1/dwm.1
+chmod 644 /usr/local/share/man/man1/dwm.1
+
+2021-11-30_20:57:39 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'setup-dwm', to setup dwm,
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2021-11-30_20:57:41 - link
+
+2021-11-30_21:00:09 - link
+
+2021-12-04_21:21:32 - link
+
+2022-01-09_20:17:27 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'setup-dwm', to setup dwm (suckless dynamic window manager),
+      - 'setup-st', to setup st (suckless simple terminal),
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-09_20:17:37 - setup-st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-09_20:26:50 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'setup-dwm', to setup dwm,
+      - 'setup-dwmstatus', to setup dwmstatus,
+      - 'setup-st', to setup st,
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-09_20:26:56 - setup-dwm
+rm -f dwm drw.o dwm.o util.o dwm-6.2.tar.gz
+dwm build options:
+CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION="6.2" -DXINERAMA
+LDFLAGS  = -L/usr/X11R6/lib -lX11 -lXinerama -lfontconfig -lXft
+CC       = cc
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA drw.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA dwm.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA util.c
+cc -o dwm drw.o dwm.o util.o -L/usr/X11R6/lib -lX11 -lXinerama -lfontconfig -lXft
+mkdir -p /usr/local/bin
+cp -f dwm /usr/local/bin
+chmod 755 /usr/local/bin/dwm
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/6.2/g" < dwm.1 > /usr/local/share/man/man1/dwm.1
+chmod 644 /usr/local/share/man/man1/dwm.1
+
+2022-01-09_22:58:04 - setup-spoon
+
+2022-01-09_23:01:24 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'setup-dwm', to setup dwm,
+      - 'setup-dwmstatus', to setup dwmstatus,
+      - 'setup-st', to setup st,
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-09_23:01:34 - setup-spoon
+rm -f spoon.o batt.o wifi.o cpu.o count.o temp.o date.o load.o file.o key.o netspeed.o strlcpy.o strlcat.o stub.o brightness.o mix.o xkblayout.o mpd.o spoon spoon-0.6.tar.gz
+cp config.def.h config.h
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c spoon.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c batt.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c wifi.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c cpu.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c count.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c temp.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c date.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c load.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c file.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c key.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c netspeed.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c strlcpy.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c strlcat.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c stub.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c brightness.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c mix.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c xkblayout.c
+
+2022-01-09_23:03:51 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'setup-dwm', to setup dwm,
+      - 'setup-dwmstatus', to setup dwmstatus,
+      - 'setup-st', to setup st,
+      - 'setup-spoon' to setup spoon (a dwm status setter),
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-09_23:03:56 - setup-spoon
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libxfixes-dev x11proto-composite-dev x11proto-fixes-dev
+The following NEW packages will be installed:
+  libxcomposite-dev libxfixes-dev x11proto-composite-dev x11proto-fixes-dev
+0 upgraded, 4 newly installed, 0 to remove and 61 not upgraded.
+Need to get 50.1 kB of archives.
+After this operation, 152 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Get:1 http://deb.debian.org/debian buster/main amd64 x11proto-fixes-dev all 1:2018.4-4 [3,140 B]
+Get:2 http://deb.debian.org/debian buster/main amd64 libxfixes-dev amd64 1:5.0.3-1 [23.8 kB]
+Get:3 http://deb.debian.org/debian buster/main amd64 x11proto-composite-dev all 1:2018.4-4 [3,140 B]
+Get:4 http://deb.debian.org/debian buster/main amd64 libxcomposite-dev amd64 1:0.4.4-2 [20.1 kB]
+Fetched 50.1 kB in 1s (40.4 kB/s)
+Selecting previously unselected package x11proto-fixes-dev.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 154135 files and directories currently installed.)
+Preparing to unpack .../x11proto-fixes-dev_1%3a2018.4-4_all.deb ...
+Unpacking x11proto-fixes-dev (1:2018.4-4) ...
+Selecting previously unselected package libxfixes-dev:amd64.
+Preparing to unpack .../libxfixes-dev_1%3a5.0.3-1_amd64.deb ...
+Unpacking libxfixes-dev:amd64 (1:5.0.3-1) ...
+Selecting previously unselected package x11proto-composite-dev.
+Preparing to unpack .../x11proto-composite-dev_1%3a2018.4-4_all.deb ...
+Unpacking x11proto-composite-dev (1:2018.4-4) ...
+Selecting previously unselected package libxcomposite-dev:amd64.
+Preparing to unpack .../libxcomposite-dev_1%3a0.4.4-2_amd64.deb ...
+Unpacking libxcomposite-dev:amd64 (1:0.4.4-2) ...
+Setting up x11proto-composite-dev (1:2018.4-4) ...
+Setting up x11proto-fixes-dev (1:2018.4-4) ...
+Setting up libxfixes-dev:amd64 (1:5.0.3-1) ...
+Setting up libxcomposite-dev:amd64 (1:0.4.4-2) ...
+Processing triggers for man-db (2.8.5-2) ...
+rm -f spoon.o batt.o wifi.o cpu.o count.o temp.o date.o load.o file.o key.o netspeed.o strlcpy.o strlcat.o stub.o brightness.o mix.o xkblayout.o mpd.o spoon spoon-0.6.tar.gz
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c spoon.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c batt.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c wifi.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c cpu.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c count.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c temp.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c date.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c load.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c file.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c key.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c netspeed.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c strlcpy.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c strlcat.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c stub.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c brightness.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c mix.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c xkblayout.c
+
+2022-01-09_23:06:12 - setup-spoon
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  libxfixes-dev x11proto-composite-dev x11proto-fixes-dev
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  libxkbfile-dev
+0 upgraded, 1 newly installed, 0 to remove and 76 not upgraded.
+Need to get 87.3 kB of archives.
+After this operation, 339 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian buster/main amd64 libxkbfile-dev amd64 1:1.0.9-2+b11 [87.3 kB]
+Fetched 87.3 kB in 0s (732 kB/s)
+Selecting previously unselected package libxkbfile-dev:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 154277 files and directories currently installed.)
+Preparing to unpack .../libxkbfile-dev_1%3a1.0.9-2+b11_amd64.deb ...
+Unpacking libxkbfile-dev:amd64 (1:1.0.9-2+b11) ...
+Setting up libxkbfile-dev:amd64 (1:1.0.9-2+b11) ...
+rm -f spoon.o batt.o wifi.o cpu.o count.o temp.o date.o load.o file.o key.o netspeed.o strlcpy.o strlcat.o stub.o brightness.o mix.o xkblayout.o mpd.o spoon spoon-0.6.tar.gz
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c spoon.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c batt.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c wifi.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c cpu.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c count.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c temp.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c date.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c load.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c file.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c key.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c netspeed.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c strlcpy.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c strlcat.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c stub.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c brightness.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c mix.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c xkblayout.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c mpd.c
+
+2022-01-10_12:23:22 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'setup-dwm', to setup dwm,
+      - 'setup-dwmstatus', to setup dwmstatus,
+      - 'setup-st', to setup st,
+      - 'setup-spoon' to setup spoon (a dwm status setter),
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-10_12:23:26 - setup-dwm
+rm -f dwm drw.o dwm.o util.o dwm-6.2.tar.gz
+dwm build options:
+CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION="6.2" -DXINERAMA
+LDFLAGS  = -L/usr/X11R6/lib -lX11 -lXinerama -lfontconfig -lXft
+CC       = cc
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA drw.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA dwm.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA util.c
+cc -o dwm drw.o dwm.o util.o -L/usr/X11R6/lib -lX11 -lXinerama -lfontconfig -lXft
+mkdir -p /usr/local/bin
+cp -f dwm /usr/local/bin
+chmod 755 /usr/local/bin/dwm
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/6.2/g" < dwm.1 > /usr/local/share/man/man1/dwm.1
+chmod 644 /usr/local/share/man/man1/dwm.1
+update-alternatives: using /usr/local/bin/dwm to provide /usr/bin/x-window-manager (x-window-manager) in auto mode
+
+2022-01-10_12:31:58 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'setup-dwm', to setup dwm,
+      - 'setup-dwmstatus', to setup dwmstatus,
+      - 'setup-st', to setup st,
+      - 'setup-spoon' to setup spoon (a dwm status setter),
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-10_12:32:07 - setup-dwm
+rm -f dwm drw.o dwm.o util.o dwm-6.2.tar.gz
+dwm build options:
+CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION="6.2" -DXINERAMA
+LDFLAGS  = -L/usr/X11R6/lib -lX11 -lXinerama -lfontconfig -lXft
+CC       = cc
+cp config.def.h config.h
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA drw.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA dwm.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"6.2\" -DXINERAMA util.c
+cc -o dwm drw.o dwm.o util.o -L/usr/X11R6/lib -lX11 -lXinerama -lfontconfig -lXft
+mkdir -p /usr/local/bin
+cp -f dwm /usr/local/bin
+chmod 755 /usr/local/bin/dwm
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/6.2/g" < dwm.1 > /usr/local/share/man/man1/dwm.1
+chmod 644 /usr/local/share/man/man1/dwm.1
+
+2022-01-10_14:04:08 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'dwm', to setup dwm,
+      - 'dwmstatus', to setup dwmstatus,
+      - 'st', to setup st,
+      - 'spoon' to setup spoon (a dwm status setter),
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-10_14:04:10 - spoon
+Reading package lists...
+Building dependency tree...
+Reading state information...
+libxkbfile-dev is already the newest version (1:1.0.9-2+b11).
+The following packages were automatically installed and are no longer required:
+  libxfixes-dev x11proto-composite-dev x11proto-fixes-dev
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libadplug-2.2.1-0v5 libao-common libao4 libaudiofile1 libbinio1v5
+  libiso9660-11 libmikmod3 libmpdclient2 libsidplayfp4 libzzip-0-13
+Suggested packages:
+  adplug-utils libsndio6.1 sidplayfp avahi-daemon icecast2 mpd-client
+The following NEW packages will be installed:
+  libadplug-2.2.1-0v5 libao-common libao4 libaudiofile1 libbinio1v5
+  libiso9660-11 libmikmod3 libmpdclient2 libsidplayfp4 libzzip-0-13 mpd
+0 upgraded, 11 newly installed, 0 to remove and 76 not upgraded.
+Need to get 1,562 kB of archives.
+After this operation, 4,683 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Get:1 http://deb.debian.org/debian buster/main amd64 libbinio1v5 amd64 1.4+dfsg1-6 [23.2 kB]
+Get:2 http://deb.debian.org/debian buster/main amd64 libadplug-2.2.1-0v5 amd64 2.2.1+dfsg3-1 [173 kB]
+Get:3 http://deb.debian.org/debian buster/main amd64 libao-common all 1.2.2+20180113-1 [11.6 kB]
+Get:4 http://deb.debian.org/debian buster/main amd64 libao4 amd64 1.2.2+20180113-1 [39.8 kB]
+Get:5 http://deb.debian.org/debian buster/main amd64 libaudiofile1 amd64 0.3.6-5 [115 kB]
+Get:6 http://deb.debian.org/debian buster/main amd64 libiso9660-11 amd64 2.0.0-2 [164 kB]
+Get:7 http://deb.debian.org/debian buster/main amd64 libmikmod3 amd64 3.3.11.1-4 [132 kB]
+Get:8 http://deb.debian.org/debian buster/main amd64 libmpdclient2 amd64 2.16-1 [42.0 kB]
+Get:9 http://deb.debian.org/debian buster/main amd64 libsidplayfp4 amd64 1.8.8-1 [118 kB]
+Get:10 http://deb.debian.org/debian buster/main amd64 libzzip-0-13 amd64 0.13.62-3.2 [55.4 kB]
+Get:11 http://deb.debian.org/debian buster/main amd64 mpd amd64 0.21.5-3 [688 kB]
+Fetched 1,562 kB in 1s (1,973 kB/s)
+Selecting previously unselected package libbinio1v5:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 154291 files and directories currently installed.)
+Preparing to unpack .../00-libbinio1v5_1.4+dfsg1-6_amd64.deb ...
+Unpacking libbinio1v5:amd64 (1.4+dfsg1-6) ...
+Selecting previously unselected package libadplug-2.2.1-0v5.
+Preparing to unpack .../01-libadplug-2.2.1-0v5_2.2.1+dfsg3-1_amd64.deb ...
+Unpacking libadplug-2.2.1-0v5 (2.2.1+dfsg3-1) ...
+Selecting previously unselected package libao-common.
+Preparing to unpack .../02-libao-common_1.2.2+20180113-1_all.deb ...
+Unpacking libao-common (1.2.2+20180113-1) ...
+Selecting previously unselected package libao4:amd64.
+Preparing to unpack .../03-libao4_1.2.2+20180113-1_amd64.deb ...
+Unpacking libao4:amd64 (1.2.2+20180113-1) ...
+Selecting previously unselected package libaudiofile1:amd64.
+Preparing to unpack .../04-libaudiofile1_0.3.6-5_amd64.deb ...
+Unpacking libaudiofile1:amd64 (0.3.6-5) ...
+Selecting previously unselected package libiso9660-11:amd64.
+Preparing to unpack .../05-libiso9660-11_2.0.0-2_amd64.deb ...
+Unpacking libiso9660-11:amd64 (2.0.0-2) ...
+Selecting previously unselected package libmikmod3:amd64.
+Preparing to unpack .../06-libmikmod3_3.3.11.1-4_amd64.deb ...
+Unpacking libmikmod3:amd64 (3.3.11.1-4) ...
+Selecting previously unselected package libmpdclient2.
+Preparing to unpack .../07-libmpdclient2_2.16-1_amd64.deb ...
+Unpacking libmpdclient2 (2.16-1) ...
+Selecting previously unselected package libsidplayfp4:amd64.
+Preparing to unpack .../08-libsidplayfp4_1.8.8-1_amd64.deb ...
+Unpacking libsidplayfp4:amd64 (1.8.8-1) ...
+Selecting previously unselected package libzzip-0-13:amd64.
+Preparing to unpack .../09-libzzip-0-13_0.13.62-3.2_amd64.deb ...
+Unpacking libzzip-0-13:amd64 (0.13.62-3.2) ...
+Selecting previously unselected package mpd.
+Preparing to unpack .../10-mpd_0.21.5-3_amd64.deb ...
+Unpacking mpd (0.21.5-3) ...
+Setting up libaudiofile1:amd64 (0.3.6-5) ...
+Setting up libbinio1v5:amd64 (1.4+dfsg1-6) ...
+Setting up libiso9660-11:amd64 (2.0.0-2) ...
+Setting up libmikmod3:amd64 (3.3.11.1-4) ...
+Setting up libsidplayfp4:amd64 (1.8.8-1) ...
+Setting up libzzip-0-13:amd64 (0.13.62-3.2) ...
+Setting up libao-common (1.2.2+20180113-1) ...
+Setting up libadplug-2.2.1-0v5 (2.2.1+dfsg3-1) ...
+Setting up libmpdclient2 (2.16-1) ...
+Setting up libao4:amd64 (1.2.2+20180113-1) ...
+Setting up mpd (0.21.5-3) ...
+dpkg-statoverride: warning: deprecated --force option; use --force-all instead
+dpkg-statoverride: warning: deprecated --force option; use --force-all instead
+dpkg-statoverride: warning: deprecated --force option; use --force-all instead
+dpkg-statoverride: warning: deprecated --force option; use --force-all instead
+Created symlink /etc/systemd/user/default.target.wants/mpd.service → /usr/lib/systemd/user/mpd.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/mpd.service → /lib/systemd/system/mpd.service.
+Created symlink /etc/systemd/system/sockets.target.wants/mpd.socket → /lib/systemd/system/mpd.socket.
+Job for mpd.socket failed.
+See "systemctl status mpd.socket" and "journalctl -xe" for details.
+Processing triggers for libc-bin (2.28-10) ...
+Processing triggers for systemd (241-7~deb10u8) ...
+Processing triggers for man-db (2.8.5-2) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+rm -f spoon.o batt.o wifi.o cpu.o count.o temp.o date.o load.o file.o key.o netspeed.o strlcpy.o strlcat.o stub.o brightness.o mix.o xkblayout.o mpd.o spoon spoon-0.6.tar.gz
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c spoon.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c batt.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c wifi.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c cpu.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c count.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c temp.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c date.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c load.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c file.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c key.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c netspeed.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c strlcpy.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c strlcat.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c stub.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c brightness.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c mix.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c xkblayout.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c mpd.c
+
+2022-01-10_14:11:33 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'dwm', to setup dwm,
+      - 'dwmstatus', to setup dwmstatus,
+      - 'st', to setup st,
+      - 'spoon' to setup spoon (a dwm status setter),
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-10_14:11:35 - spoon
+Reading package lists...
+Building dependency tree...
+Reading state information...
+libxkbfile-dev is already the newest version (1:1.0.9-2+b11).
+The following additional packages will be installed:
+  libadplug-2.2.1-0v5 libao-common libao4 libaudiofile1 libbinio1v5
+  libiso9660-11 libmikmod3 libmpdclient2 libsidplayfp4 libzzip-0-13
+Suggested packages:
+  adplug-utils libsndio6.1 sidplayfp avahi-daemon icecast2 mpd-client
+The following NEW packages will be installed:
+  libadplug-2.2.1-0v5 libao-common libao4 libaudiofile1 libbinio1v5
+  libiso9660-11 libmikmod3 libmpdclient-dev libmpdclient2 libsidplayfp4
+  libzzip-0-13 mpd
+0 upgraded, 12 newly installed, 0 to remove and 76 not upgraded.
+Need to get 1,591 kB of archives.
+After this operation, 4,922 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Get:1 http://deb.debian.org/debian buster/main amd64 libbinio1v5 amd64 1.4+dfsg1-6 [23.2 kB]
+Get:2 http://deb.debian.org/debian buster/main amd64 libadplug-2.2.1-0v5 amd64 2.2.1+dfsg3-1 [173 kB]
+Get:3 http://deb.debian.org/debian buster/main amd64 libao-common all 1.2.2+20180113-1 [11.6 kB]
+Get:4 http://deb.debian.org/debian buster/main amd64 libao4 amd64 1.2.2+20180113-1 [39.8 kB]
+Get:5 http://deb.debian.org/debian buster/main amd64 libaudiofile1 amd64 0.3.6-5 [115 kB]
+Get:6 http://deb.debian.org/debian buster/main amd64 libiso9660-11 amd64 2.0.0-2 [164 kB]
+Get:7 http://deb.debian.org/debian buster/main amd64 libmikmod3 amd64 3.3.11.1-4 [132 kB]
+Get:8 http://deb.debian.org/debian buster/main amd64 libmpdclient2 amd64 2.16-1 [42.0 kB]
+Get:9 http://deb.debian.org/debian buster/main amd64 libsidplayfp4 amd64 1.8.8-1 [118 kB]
+Get:10 http://deb.debian.org/debian buster/main amd64 libzzip-0-13 amd64 0.13.62-3.2 [55.4 kB]
+Get:11 http://deb.debian.org/debian buster/main amd64 mpd amd64 0.21.5-3 [688 kB]
+Get:12 http://deb.debian.org/debian buster/main amd64 libmpdclient-dev amd64 2.16-1 [29.3 kB]
+Fetched 1,591 kB in 1s (2,587 kB/s)
+Selecting previously unselected package libbinio1v5:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 154285 files and directories currently installed.)
+Preparing to unpack .../00-libbinio1v5_1.4+dfsg1-6_amd64.deb ...
+Unpacking libbinio1v5:amd64 (1.4+dfsg1-6) ...
+Selecting previously unselected package libadplug-2.2.1-0v5.
+Preparing to unpack .../01-libadplug-2.2.1-0v5_2.2.1+dfsg3-1_amd64.deb ...
+Unpacking libadplug-2.2.1-0v5 (2.2.1+dfsg3-1) ...
+Selecting previously unselected package libao-common.
+Preparing to unpack .../02-libao-common_1.2.2+20180113-1_all.deb ...
+Unpacking libao-common (1.2.2+20180113-1) ...
+Selecting previously unselected package libao4:amd64.
+Preparing to unpack .../03-libao4_1.2.2+20180113-1_amd64.deb ...
+Unpacking libao4:amd64 (1.2.2+20180113-1) ...
+Selecting previously unselected package libaudiofile1:amd64.
+Preparing to unpack .../04-libaudiofile1_0.3.6-5_amd64.deb ...
+Unpacking libaudiofile1:amd64 (0.3.6-5) ...
+Selecting previously unselected package libiso9660-11:amd64.
+Preparing to unpack .../05-libiso9660-11_2.0.0-2_amd64.deb ...
+Unpacking libiso9660-11:amd64 (2.0.0-2) ...
+Selecting previously unselected package libmikmod3:amd64.
+Preparing to unpack .../06-libmikmod3_3.3.11.1-4_amd64.deb ...
+Unpacking libmikmod3:amd64 (3.3.11.1-4) ...
+Selecting previously unselected package libmpdclient2.
+Preparing to unpack .../07-libmpdclient2_2.16-1_amd64.deb ...
+Unpacking libmpdclient2 (2.16-1) ...
+Selecting previously unselected package libsidplayfp4:amd64.
+Preparing to unpack .../08-libsidplayfp4_1.8.8-1_amd64.deb ...
+Unpacking libsidplayfp4:amd64 (1.8.8-1) ...
+Selecting previously unselected package libzzip-0-13:amd64.
+Preparing to unpack .../09-libzzip-0-13_0.13.62-3.2_amd64.deb ...
+Unpacking libzzip-0-13:amd64 (0.13.62-3.2) ...
+Selecting previously unselected package mpd.
+Preparing to unpack .../10-mpd_0.21.5-3_amd64.deb ...
+Unpacking mpd (0.21.5-3) ...
+Selecting previously unselected package libmpdclient-dev.
+Preparing to unpack .../11-libmpdclient-dev_2.16-1_amd64.deb ...
+Unpacking libmpdclient-dev (2.16-1) ...
+Setting up libaudiofile1:amd64 (0.3.6-5) ...
+Setting up libbinio1v5:amd64 (1.4+dfsg1-6) ...
+Setting up libiso9660-11:amd64 (2.0.0-2) ...
+Setting up libmikmod3:amd64 (3.3.11.1-4) ...
+Setting up libsidplayfp4:amd64 (1.8.8-1) ...
+Setting up libzzip-0-13:amd64 (0.13.62-3.2) ...
+Setting up libao-common (1.2.2+20180113-1) ...
+Setting up libadplug-2.2.1-0v5 (2.2.1+dfsg3-1) ...
+Setting up libmpdclient2 (2.16-1) ...
+Setting up libao4:amd64 (1.2.2+20180113-1) ...
+Setting up libmpdclient-dev (2.16-1) ...
+Setting up mpd (0.21.5-3) ...
+Job for mpd.socket failed.
+See "systemctl status mpd.socket" and "journalctl -xe" for details.
+Processing triggers for libc-bin (2.28-10) ...
+Processing triggers for systemd (241-7~deb10u8) ...
+Processing triggers for man-db (2.8.5-2) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+rm -f spoon.o batt.o wifi.o cpu.o count.o temp.o date.o load.o file.o key.o netspeed.o strlcpy.o strlcat.o stub.o brightness.o mix.o xkblayout.o mpd.o spoon spoon-0.6.tar.gz
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c spoon.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c batt.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c wifi.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c cpu.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c count.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c temp.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c date.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c load.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c file.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c key.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c netspeed.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c strlcpy.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c strlcat.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c stub.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c brightness.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c mix.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c xkblayout.c
+cc -I/usr/local/include -DUSE_TINYALSA=0  -c mpd.c
+cc -o spoon spoon.o batt.o wifi.o cpu.o count.o temp.o date.o load.o file.o key.o netspeed.o strlcpy.o strlcat.o stub.o brightness.o mix.o xkblayout.o mpd.o  -lX11 -lasound -lxkbfile -lmpdclient
+mkdir -p /usr/local/bin
+cp -f spoon /usr/local/bin
+
+2022-01-10_14:48:59 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'dwm', to setup dwm,
+      - 'dwmstatus', to setup dwmstatus,
+      - 'st', to setup st,
+      - 'spoon' to setup spoon (a dwm status setter),
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-10_14:49:01 - st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_16:22:49 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'dwm', to setup dwm,
+      - 'dwmstatus', to setup dwmstatus,
+      - 'st', to setup st,
+      - 'spoon' to setup spoon (a dwm status setter),
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-10_16:22:51 - st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_16:23:20 - st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_16:41:45 - st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_16:45:04 - st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_16:57:48 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'dwm', to setup dwm,
+      - 'dwmstatus', to setup dwmstatus,
+      - 'st', to setup st,
+      - 'spoon' to setup spoon (a dwm status setter),
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-10_16:57:51 - st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_17:04:02 - 
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'dwm', to setup dwm,
+      - 'dwmstatus', to setup dwmstatus,
+      - 'st', to setup st,
+      - 'spoon' to setup spoon (a dwm status setter),
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-10_17:04:04 - st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_17:21:05 - st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_17:23:30 - st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_17:24:41 - st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_17:26:45 - st
+diff file does not exist /home/nico/dotfiles/setup/suckless-diffs/st-config.diff
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_17:27:41 - st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_17:28:09 - st
+diff file does not exist /home/nico/dotfiles/setup/suckless-diffs/st.diff
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_17:28:44 - st
+diff file does not exist /home/nico/dotfiles/setup/debian/suckless-diffs/st.diff
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_17:29:10 - st
+diff file exists /home/nico/dotfiles/setup/debian/suckless/st.diff
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_17:29:39 - st
+rm -f st st.o x.o st-0.8.5.tar.gz
+cp config.def.h config.h
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c st.c
+c99 -I/usr/X11R6/include  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.5\" -D_XOPEN_SOURCE=600  -O -c x.c
+c99 -o st st.o x.o -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft  `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` 
+mkdir -p /usr/local/bin
+cp -f st /usr/local/bin
+chmod 755 /usr/local/bin/st
+mkdir -p /usr/local/share/man/man1
+sed "s/VERSION/0.8.5/g" < st.1 > /usr/local/share/man/man1/st.1
+chmod 644 /usr/local/share/man/man1/st.1
+tic -sx st.info
+Please see the README file regarding the terminfo entry of st.
+
+2022-01-10_17:35:08 - spoo
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'dwm', to setup dwm,
+      - 'dwmstatus', to setup dwmstatus,
+      - 'st', to setup st,
+      - 'spoon' to setup spoon (a dwm status setter),
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-10_17:35:24 - spoo
+Usage: ./setup.sh [OPTION]
+      - 'check-packages-installed', to check if all the listed packages are installed.
+      - 'suckless-diffs', to generate suckless diffs,
+      - 'dwm', to setup dwm,
+      - 'dwmstatus', to setup dwmstatus,
+      - 'st', to setup st,
+      - 'spoon' to setup spoon (a dwm status setter),
+      - 'packages', to install packages.
+      - 'link', to generate symbolic links.
+      - 'setupapps', to setup the different apps.
+      - 'all', to execute everything.
+
+2022-01-10_17:35:36 - spoon
+TODO

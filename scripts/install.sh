@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPO_NAME="dotfiles"
-LOG_FILE="$HOME/$REPO_NAME/setup/log/debian_setup"
+LOG_FILE="$HOME/$REPO_NAME/log/debian_setup"
 # these directories should exist in this repo
 dirs=(
   ".config"
@@ -103,6 +103,7 @@ link_debian_files() {
     if [[ $file == "/"* ]]; then
       [[ -f $file ]] && sudo mv $file $file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
       sudo ln -sfF $HOME/$REPO_NAME$file $file
+    # TODO: revisit this. This is still pointing to /setup/debian
     else
       [[ -f $HOME/$file ]] && mv $HOME/$file $HOME/$file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
       ln -sf $HOME/$REPO_NAME/setup/debian/$file $HOME/$file
@@ -123,10 +124,11 @@ setup_tmux() {
 }
 
 # $1 is app name st | dwm | dmenu
+# $2 git repo url
 setup_suckless_app() {
-  diff="$HOME/dotfiles/setup/debian/suckless/$1.diff"
+  diff="$HOME/dotfiles/diffs/$1.diff"
 
-  [[ ! -d "$HOME/$1" ]] && git clone https://git.suckless.org/$1 $HOME/$1
+  [[ ! -d "$HOME/$1" ]] && git clone $2 $HOME/$1
 
   cd $HOME/$1
   rm -f config.h
@@ -168,7 +170,7 @@ setup_vim() {
 setup_xorg() {
   x_dir=/etc/X11
   xorg_conf_dir="$x_dir"/xorg.conf.d
-  xorg_files_dir=$HOME/$REPO_NAME/setup/debian/xorg.conf.d
+  xorg_files_dir=$HOME/$REPO_NAME/xorg.conf.d
 
   [[ ! -d "$x_dir" ]] && sudo mkdir -p "$xorg_conf_dir"
   [[ ! -d "$xorg_conf_dir" ]] && sudo mkdir "$xorg_conf_dir"
@@ -190,19 +192,17 @@ main() {
       generate_suckless_diffs
       ;;
     "dwm")
-      setup_suckless_app dwm
+      setup_suckless_app dwm "git://git.suckless.org/dwm"
       sudo update-alternatives --install /usr/bin/x-window-manager x-window-manager $(which dwm) 50
       ;;
+    # TODO: remove
     "dwmstatus")
-      setup_suckless_app dwmstatus
+      setup_suckless_app dwmstatus "git://git.suckless.org/dwmstatus"
       ;;
     "st")
-      setup_suckless_app st
+      setup_suckless_app st "git://git.suckless.org/st"
       # make it the default term
       sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $(which st) 50
-      ;;
-    "spoon")
-      setup_spoon
       ;;
     "packages")
       install_packages
@@ -215,13 +215,13 @@ main() {
       done
       ;;
     "setupapps")
+      # TODO: call this script with the proper arg instead of the function directly
       setup_xorg
       setup_tmux
       setup_vim
       setup_suckless_app dwm
       setup_suckless_app dwmstatus
       setup_suckless_app st
-      setup_spoon
       # set zsh as the default shell
       # NOTE: this requires a logout to take effect
       chsh -s $(which zsh)
@@ -239,19 +239,17 @@ main() {
       setup_suckless_app dwm
       setup_suckless_app dwmstatus
       setup_suckless_app st
-      setup_spoon
       # set zsh as the default shell
       # NOTE: this requires a logout to take effect
       chsh -s $(which zsh)
       ;;
     *)
-      echo -e "Usage: ./setup.sh [OPTION]
+      echo -e "Usage: ./install.sh [OPTION]
       - 'check-packages-installed', to check if all the listed packages are installed.
       - 'suckless-diffs', to generate suckless diffs,
       - 'dwm', to setup dwm,
       - 'dwmstatus', to setup dwmstatus,
       - 'st', to setup st,
-      - 'spoon' to setup spoon (a dwm status setter),
       - 'packages', to install packages.
       - 'link', to generate symbolic links.
       - 'setupapps', to setup the different apps.

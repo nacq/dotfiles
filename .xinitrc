@@ -2,7 +2,7 @@
 
 [[ -f "$HOME/.Xresources" ]] && xrdb -merge -I "$HOME" "$HOME/.Xresources"
 
-bash $HOME/dotfiles/setup/debian/setup-monitors.sh
+bash $HOME/dotfiles/scripts/monitors.sh
 
 [[ -f "$HOME/.Xmodmap" ]] && xmodmap "$HOME/.Xmodmap"
 

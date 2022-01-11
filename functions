@@ -1,0 +1,75 @@
+#!/usr/bin/bash
+
+change_mac() {
+  local CURRENT_ADDR=`ifconfig en0 | grep ether | awk '{print $2}'`
+  local NEW_ADDR=`openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`
+
+  sudo ifconfig en0 ether $NEW_ADDR
+
+  echo "Changed $CURRENT_ADDR for $NEW_ADDR"
+}
+
+change_brightness() {
+  local x=$1
+  [[ ! "$x" ]] && x=1
+
+  local b_file=/sys/class/backlight/acpi_video0/brightness
+  echo $(($(cat "$b_file") + $x)) | sudo tee "$b_file"
+}
+
+change_audio_output() {
+  case $1 in
+    "bt")
+      pacmd set-default-sink "bluez_sink.C4_14_11_24_BC_56.a2dp_sink"
+      ;;
+    "d")
+      pacmd set-default-sink "alsa_output.pci-0000_00_1f.3.analog-stereo"
+      ;;
+    *)
+      echo "Usage: change_audio_output [OPTION]\nValid options: 'bt', 'd'" && \
+      return 1
+      ;;
+  esac
+}
+
+change_node_version() {
+  if [[ -f "$(pwd)/package.json" ]]; then
+    nvm use 2> /dev/null || {
+      local version=$(grep engines "$(pwd)/package.json" -A 3 | grep \"node\": | awk '{ print $2 }' | sed s'/[",\,]//g')
+      [[ $version && $(node -v | sed s'/v//g') != $version ]] && nvm use $version
+    }
+  fi
+}
+
+close_lid() {
+  xrandr --output eDP-1 --off
+  [[ -f "$HOME/.xmodmaprc" ]] && source "$HOME/.xmodmaprc"
+}
+
+concat_videos() {
+  touch list.txt
+  ls -1 $1 >> list.txt
+  ffmpeg -f concat list.txt -c copy output.mp4
+}
+
+encrypt() {
+  if [[ $1 == *.gpg ]]; then
+    # remove the .gpg extension
+    local output_file=${1%.*}
+
+    gpg -d -o $output_file $1 && rm -f $1
+
+    [[ $output_file == *.gz ]] && tar xzf $output_file && rm -f $output_file
+
+    unset output_file
+  else
+    # symmetric: encrypt with a symmetric cipher using a passphrase
+    # no-symkey-cache: disable the cache of the passphrase
+
+    # in case of a directory, compress, encrypt it and remove the compressed file
+    [[ -d $1 ]] && tar czf $1.tar.gz $1 && gpg --symmetric --cipher-algo AES256 --no-symkey-cache $1.tar.gz && \
+      rm -rf $1 $1.tar.gz
+    # in case of a file, encrypt it and remove original file
+    [[ -f $1 ]] && gpg --symmetric --cipher-algo AES256 --no-symkey-cache $1 && rm $1
+  fi
+}
