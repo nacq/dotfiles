@@ -25,7 +25,11 @@ my shitty debian based dotfiles
 ├── aliases                             # aliases that I find useful
 ├── exports                             # to set env variables
 ├── functions                           # functions that I usually use. These will be sourced and be globally available
-├── .xinitrc                            # root level hidden files will be symliked in the home dir
+├── .config                             # root level hidden files will be symliked in the home dir
+│   └── share
+│       └── nvim
+│           └── init.vim
+├── .xinitrc
 ├── .Xmodmap
 ├── .Xresources
 └── .zshrc
