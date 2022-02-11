@@ -10,10 +10,10 @@ dirs=(
 )
 debian_files=(
   "/etc/bluetooth/main.conf"
-  "/etc/X11/xorg.conf.d/20-displaylink.conf"
-  "/etc/X11/xorg.conf.d/40-libinput.conf"
-  "/etc/udev/rules.d/90-monitor-hotplug.rules"
-  "/usr/local/bin/monitor-hotplug.sh"
+ # "/etc/X11/xorg.conf.d/20-displaylink.conf"
+ "/etc/X11/xorg.conf.d/40-libinput.conf"
+ # "/etc/udev/rules.d/90-monitor-hotplug.rules"
+ # "/usr/local/bin/monitor-hotplug.sh"
   "/usr/share/applications/brave-browser.desktop"
 )
 files=(
@@ -27,16 +27,20 @@ files=(
 )
 packages=(
   "alsa-utils"
-  "brave-browser"
+  "apt-file"
+  "build-essential"
   "curl"
   "feh"
+  "firefox-esr"
   "fzf"
   "git"
   "gnupg"
   "i3"
   "jq"
   "libnotify-bin" # system notifications
+  "make"
   "mesa-utils"
+  "neovim"
   "network-manager"
   "notify-osd" # system notifications
   "openvpn"
@@ -81,6 +85,7 @@ generate_nested_configs() {
 }
 
 install_packages() {
+  sudo apt update
   for package in "${packages[@]}"; do
     echo -e "Installing $package..."
     sudo apt install -y $package
@@ -135,6 +140,7 @@ setup_suckless_app() {
 }
 
 setup_dwm() {
+  sudo apt install libxft-dev libxinerama-dev
   setup_suckless_app dwm "git://git.suckless.org/dwm" && \
     sudo update-alternatives --install /usr/bin/x-window-manager x-window-manager $(which dwm) 50
 }
@@ -146,21 +152,24 @@ setup_st() {
 }
 
 setup_spoon() {
-  sudo apt install libxkbfile-dev && \
+  sudo apt install libxkbfile-dev libasound2-dev libdssialsacompat-dev && \
     setup_suckless_app spoon "git://git.codemadness.org/spoon"
 }
 
+setup_sxiv() {
+  sudo apt install libimlib2-dev libexif-dev && \
+    setup_suckless_app sxiv "https://github.com/nicolasacquaviva/sxiv"
+}
+
 setup_vim() {
-  sudo curl -Lo /opt/nvim-linux64.tar.gz \
-    https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz &&
-    cd /opt &&
-    sudo tar xvf nvim-linux64.tar.gz &&
-    sudo rm nvim-linux64.tar.gz
+  # CoC dependencies
+  sudo apt install nodejs npm
   [[ ! -d $HOME/.vim/plugged ]] && curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c "PlugInstall" -c "qa!"
   nvim -c "CocInstall coc-tsserver" -c "qa!"
   nvim -c "CocInstall coc-json" -c "qa!"
+  nvim -c "CocInstall coc-go" -c "qa!"
 }
 
 setup_xorg() {
@@ -198,18 +207,18 @@ main() {
       setup_dwm
       setup_st
       setup_spoon
+      setup_sxiv
       # set zsh as the default shell
       # NOTE: this requires a logout to take effect
       chsh -s $(which zsh)
       ;;
     "all")
-      bash "$HOME/dotfiles/scripts/install.sh packages"
-      bash "$HOME/dotfiles/scripts/install.sh link"
-      link_debian_files
+      $HOME/dotfiles/scripts/install.sh packages
+      $HOME/dotfiles/scripts/install.sh link
       for dir in "${dirs[@]}"; do
         generate_nested_configs $HOME/$REPO_NAME/$dir $HOME
       done
-      bash "$HOME/dotfiles/scripts/install.sh setupapps"
+      $HOME/dotfiles/scripts/install.sh setupapps
       ;;
     *)
       echo -e "Usage: ./install.sh [OPTION]
