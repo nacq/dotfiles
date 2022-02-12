@@ -5,22 +5,21 @@ export LANG=en_US.UTF-8
 export NVM_DIR="$HOME/.nvm"
 export EDITOR=$(which vim)
 
-if [[ $OSTYPE == linux* ]]; then
-  # https://ricostacruz.com/til/fractional-scaling-on-xorg-linux
-  export EDITOR="$(which nvim)"
-  # GDK_SCALE doesn't allow decimal values use GDK_DPI_SCALE instead
-  # export GDK_SCALE=1
-  export GDK_DPI_SCALE=1.4
+# https://ricostacruz.com/til/fractional-scaling-on-xorg-linux
+# https://wiki.archlinux.org/title/HiDPI
+export EDITOR="$(which nvim)"
+# GDK_SCALE doesn't allow decimal values use GDK_DPI_SCALE instead
+# export GDK_SCALE=1
+export GDK_DPI_SCALE=1.4
 
-  export GTK_SCALE=1
-  export GTK_DPI_SCALE=1
+export GTK_SCALE=1
+export GTK_DPI_SCALE=1
 
-  export QT_SCALE_FACTOR=1.5
-  export QT_DEVICE_PIXEL_RATIO=1
-  export QT_AUTO_SCREEN_SET_FACTOR=0
-  # the default time is too long, this is used when changing vim modes in zsh
-  export KEYTIMEOUT=1
+export QT_SCALE_FACTOR=1.5
+export QT_DEVICE_PIXEL_RATIO=1
+export QT_AUTO_SCREEN_SET_FACTOR=0
+# the default time is too long, this is used when changing vim modes in zsh
+export KEYTIMEOUT=1
 
-  export ANDROID_SDK=$HOME/Android/Sdk
-  export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-fi
+export ANDROID_SDK=$HOME/Android/Sdk
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk

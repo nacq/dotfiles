@@ -2,29 +2,9 @@
 
 REPO_NAME="dotfiles"
 LOG_FILE="$HOME/$REPO_NAME/log/debian_setup"
+# where suckless apps source code lives
+SUCKLESS_DIR="$HOME/suckless"
 
-# these directories should exist in this repo
-dirs=(
-  ".config"
-  ".gnupg"
-)
-debian_files=(
-  "/etc/bluetooth/main.conf"
- # "/etc/X11/xorg.conf.d/20-displaylink.conf"
- "/etc/X11/xorg.conf.d/40-libinput.conf"
- # "/etc/udev/rules.d/90-monitor-hotplug.rules"
- # "/usr/local/bin/monitor-hotplug.sh"
-  "/usr/share/applications/brave-browser.desktop"
-)
-files=(
-  ".Xmodmap"
-  ".Xresources"
-  ".gitconfig"
-  ".tmux.conf"
-  ".vimrc"
-  ".xinitrc"
-  ".zshrc"
-)
 packages=(
   "alsa-utils"
   "apt-file"
@@ -93,6 +73,15 @@ install_packages() {
 }
 
 link_files() {
+  local files=(
+    ".Xmodmap"
+    ".Xresources"
+    ".gitconfig"
+    ".tmux.conf"
+    ".vimrc"
+    ".xinitrc"
+    ".zshrc"
+  )
   for file in "${files[@]}"; do
     [[ -f $HOME/$file ]] && mv $HOME/$file $HOME/$file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
     ln -sf $HOME/$REPO_NAME/$file $HOME/$file
@@ -100,6 +89,11 @@ link_files() {
 }
 
 link_debian_files() {
+  local debian_files=(
+    "/etc/bluetooth/main.conf"
+   "/etc/X11/xorg.conf.d/40-libinput.conf"
+    "/usr/share/applications/brave-browser.desktop"
+  )
   for file in "${debian_files[@]}"; do
     if [[ $file == "/"* ]]; then
       [[ -f $file ]] && sudo mv $file $file-$(date +"%Y-%m-%d_%H:%M:%S").bkp
@@ -127,11 +121,13 @@ setup_tmux() {
 # $1 is app name st | dwm | dmenu
 # $2 git repo url
 setup_suckless_app() {
+  [[ ! -d "$SUCKLESS_DIR" ]] && mkdir "$SUCKLESS_DIR"
+
   diff="$HOME/dotfiles/diffs/$1.diff"
 
-  [[ ! -d "$HOME/$1" ]] && git clone $2 $HOME/$1
+  [[ ! -d "$SUCKLESS_DIR/$1" ]] && git clone $2 $SUCKLESS_DIR/$1
 
-  cd $HOME/$1
+  cd $SUCKLESS_DIR/$1
   rm -f config.h
 
   [[ -f "$diff" ]] && git apply "$diff"
@@ -151,9 +147,13 @@ setup_st() {
   sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $(which st) 50
 }
 
-setup_spoon() {
-  sudo apt install libxkbfile-dev libasound2-dev libdssialsacompat-dev && \
-    setup_suckless_app spoon "git://git.codemadness.org/spoon"
+setup_slock() {
+  sudo apt install libxrandr-dev && \
+    setup_suckless_app slock "git://git.suckless.org/slock"
+}
+
+setup_slstatus() {
+  setup_suckless_app slstatus "https://github.com/drkhsh/slstatus.git"
 }
 
 setup_sxiv() {
@@ -167,9 +167,16 @@ setup_vim() {
   [[ ! -d $HOME/.vim/plugged ]] && curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c "PlugInstall" -c "qa!"
-  nvim -c "CocInstall coc-tsserver" -c "qa!"
-  nvim -c "CocInstall coc-json" -c "qa!"
-  nvim -c "CocInstall coc-go" -c "qa!"
+
+  local coc_packages=(
+    "coc-tsserver"
+    "coc-json"
+    "coc-go"
+    "coc-clangd"
+  )
+  for coc_package in "${coc_packages[@]}"; do
+    nvim -c "CocInstall $coc_package" -c "qa!"
+  done
 }
 
 setup_xorg() {
@@ -205,8 +212,9 @@ main() {
       setup_tmux
       setup_vim
       setup_dwm
+      setup_slock
+      setup_slstatus
       setup_st
-      setup_spoon
       setup_sxiv
       # set zsh as the default shell
       # NOTE: this requires a logout to take effect
@@ -215,6 +223,11 @@ main() {
     "all")
       $HOME/dotfiles/scripts/install.sh packages
       $HOME/dotfiles/scripts/install.sh link
+      # these directories should exist in this repo
+      local dirs=(
+        ".config"
+        ".gnupg"
+      )
       for dir in "${dirs[@]}"; do
         generate_nested_configs $HOME/$REPO_NAME/$dir $HOME
       done

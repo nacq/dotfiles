@@ -10,6 +10,6 @@ bash $HOME/dotfiles/scripts/monitors.sh
 dunst &
 
 # start status monitor in background
-spoon 2>&1 >/dev/null &
+slstatus 2>&1 >/dev/null &
 
 exec dwm

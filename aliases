@@ -1,23 +1,14 @@
 #!/bin/sh
 
-alias cp="cp -iv"
-alias mv="mv -iv"
+alias afk="slock"
 alias ag="ag --hidden --ignore .git"
-alias vim="nvim"
+alias cp="cp -iv"
+alias ls="ls --color=always"
+alias mv="mv -iv"
+alias open="xdg-open"
+alias rm="rm -vI"
+alias scrot="scrot -s && mv *_scrot.png $HOME/screenshots/"
 alias tmux="tmux -2"
-
-if [[ $OSTYPE == linux* ]]; then
-  alias afk="i3lock -c 000000"
-  alias open="xdg-open"
-  alias rm="rm -vI"
-  alias uireload="xrdb -merge $HOME/.Xresources"
-  alias xclip="xclip -selection c"
-  alias ls="ls --color=always"
-  alias scrot="scrot -s && mv *_scrot.png $HOME/screenshots/"
-elif [[ $OSTYPE == darwin* ]]; then
-  alias python=python3
-  alias pip=pip3
-  alias ngrok=~/Applications/ngrok
-  alias rm="rm -vi"
-  alias ls="ls -G"
-fi
+alias uireload="xrdb -merge $HOME/.Xresources"
+alias vim="nvim"
+alias xclip="xclip -selection c"

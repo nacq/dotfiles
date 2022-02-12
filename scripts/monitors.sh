@@ -16,4 +16,4 @@
 #
 xrandr --output eDP-1 --auto --rotate normal \
   --output DP-1 --auto --rotate normal --above eDP-1 \
-  --output HDMI-2 --auto --rotate left --left-of DP-1 --scale 1x1
+  --output HDMI-2 --auto --rotate normal --left-of DP-1
