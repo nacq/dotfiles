@@ -11,10 +11,6 @@ my shitty debian based dotfiles
 ├── scripts                             # just bash scripts
 │   ├── install.sh
 │   └── monitors.sh
-├── setup                               # DEPRECATED
-│   └── macos
-│       ├── setup.sh
-│       └── yin_with_colors.itermcolors
 ├── usr                                 # same as the above /etc dir
 │   └── share
 │       └── applications
