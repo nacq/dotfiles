@@ -91,7 +91,8 @@ link_files() {
 link_debian_files() {
   local debian_files=(
     "/etc/bluetooth/main.conf"
-   "/etc/X11/xorg.conf.d/40-libinput.conf"
+    "/etc/X11/xorg.conf.d/40-libinput.conf"
+    "/etc/systemd/network/10-rename-wlp58s0.link"
     "/usr/share/applications/brave-browser.desktop"
   )
   for file in "${debian_files[@]}"; do
