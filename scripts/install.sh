@@ -93,6 +93,7 @@ link_debian_files() {
     "/etc/bluetooth/main.conf"
     "/etc/X11/xorg.conf.d/40-libinput.conf"
     "/etc/systemd/network/10-rename-wlp58s0.link"
+    "/etc/udev/rules.d/10-monitor-hotplug.rules"
     "/usr/share/applications/brave-browser.desktop"
   )
   for file in "${debian_files[@]}"; do

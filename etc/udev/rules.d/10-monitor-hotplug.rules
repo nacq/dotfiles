@@ -1,0 +1,1 @@
+ACTION=="change", SUBSYSTEM=="drm", ENV{HOTPLUG}=="1", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/nico/.Xauthority" RUN+="/home/nico/dotfiles/scripts/monitors.sh"
