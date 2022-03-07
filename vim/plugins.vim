@@ -10,7 +10,7 @@ Plug 'scrooloose/nerdcommenter'
 " https://github.com/junegunn/fzf.vim/issues/1008
 Plug 'junegunn/fzf', { 'dir': '~/.vim/plugged/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-" Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'nicolasacquaviva/vim-snipper'
 Plug 'nicolasacquaviva/vim-open-repo'
 
@@ -26,7 +26,7 @@ Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript.jsx', 'typescript.tsx'], 'branch': 'main' }
 
 " colorscheme
-Plug 'nicolasacquaviva/better-default'
+Plug 'nicolasacquaviva/vim-yin-yang'
 
 " lsp
 Plug 'neovim/nvim-lspconfig'
@@ -39,7 +39,7 @@ Plug 'L3MON4D3/LuaSnip'
 call plug#end()
 " ---------------------------------------------------------------------------------
 
-colorscheme betterdefault
+colorscheme yin
 
 function JsonBeautify()
   %!jq .

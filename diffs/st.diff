@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index 91ab8ca..9437adc 100644
+index 91ab8ca..feb8733 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -5,7 +5,7 @@
@@ -7,18 +7,51 @@ index 91ab8ca..9437adc 100644
   * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
   */
 -static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-+static char *font = "Liberation Mono:pixelsize=24:antialias=true:autohint=true";
++static char *font = "Liberation Mono:pixelsize=42:antialias=true:autohint=true";
  static int borderpx = 2;
  
  /*
-@@ -193,8 +193,8 @@ static Shortcut shortcuts[] = {
- 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
- 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
- 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
--	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
--	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
-+	{ TERMMOD,              XK_KP_Add,      zoom,           {.f = +1} },
-+	{ TERMMOD,              XK_KP_Subtract, zoom,           {.f = -1} },
- 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
- 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
- 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
+@@ -122,6 +122,34 @@ static const char *colorname[] = {
+ 	"#555555",
+ 	"gray90", /* default foreground colour */
+ 	"black", /* default background colour */
++
++    /* yin colors from yin-yang colorscheme */
++	"#080808", /* blackest - 232 */
++	"#1c1c1c", /* black - 234 */
++	"#262626", /* gray01 - 235 */
++	"#444444", /* gray02 - 238 */
++	"#4e4e4e", /* gray03 -239 */
++	"#585858", /* gray04 -240 */
++	"#666666", /* gray05 - 242 */
++	"#767676", /* gray06 - 243 */
++	"#808080", /* gray07 - 244 */
++	"#8a8a8a", /* gray08 - 245 */
++	"#949494", /* gray09 - 246 */
++	"#9e9e9e", /* gray10 - 247 */
++	"#a8a8a8", /* gray11 - 248 */
++	"#b2b2b2", /* gray12 - 249 */
++	"#bcbcbc", /* gray13 - 250 */
++	"#c6c6c6", /* gray14 - 251 */
++	"#e4e4e4", /* gray15 - 254 */
++	"#eeeeee", /* white - 255 */
++
++	"#5f5fd7", /* purple - 62 */
++	"#875f00", /* brown - 94 */
++	"#005f87", /* blue - 24 */
++	"#00afff", /* light blue - 39 */
++	"#00875f", /* green - 29 */
++	"#870000", /* red - 88 */
++	"#87005f", /* magenta - 89 */
+ };
+ 
+ 
+@@ -130,7 +158,7 @@ static const char *colorname[] = {
+  * foreground, background, cursor, reverse cursor
+  */
+ unsigned int defaultfg = 258;
+-unsigned int defaultbg = 259;
++unsigned int defaultbg = 234;
+ unsigned int defaultcs = 256;
+ static unsigned int defaultrcs = 257;
+ 
