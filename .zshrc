@@ -93,6 +93,7 @@ if [[ $OSTYPE == linux* ]]; then
       "/opt/nvim-linux64/bin"
       "$HOME/.deno/bin"
       "$HOME/.cargo/bin"
+      "$HOME/go/bin"
     )
     for entry in "${entries[@]}"; do
       path=($path $entry)

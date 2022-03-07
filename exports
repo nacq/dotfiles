@@ -23,3 +23,6 @@ export KEYTIMEOUT=1
 
 export ANDROID_SDK=$HOME/Android/Sdk
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+# some java applications were not opening properly without this
+# <https://unix.stackexchange.com/questions/368817/blank-android-studio-window-in-dwm
+export _JAVA_AWT_WM_NONREPARENTING=1
