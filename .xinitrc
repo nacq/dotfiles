@@ -2,14 +2,17 @@
 
 [[ -f "$HOME/.Xresources" ]] && xrdb -merge -I "$HOME" "$HOME/.Xresources"
 
-bash $HOME/dotfiles/scripts/monitors.sh
-
+# load keyboard conf
 [[ -f "$HOME/.Xmodmap" ]] && xmodmap "$HOME/.Xmodmap"
 
-# start notification system in background
+# configure monitors
+bash $HOME/dotfiles/scripts/monitors.sh
+
+# start notification system
 dunst &
 
-# start status monitor in background
+# start status monitor
 slstatus 2>&1 >/dev/null &
 
-exec dwm
+# start window manager
+dwm
