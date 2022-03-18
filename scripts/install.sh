@@ -11,16 +11,13 @@ packages=(
   "build-essential"
   "curl"
   "feh"
-  "firefox-esr"
   "fzf"
   "git"
   "gnupg"
-  "i3"
   "jq"
   "libnotify-bin" # system notifications
   "make"
   "mesa-utils"
-  "neovim"
   "network-manager"
   "notify-osd" # system notifications
   "openvpn"
