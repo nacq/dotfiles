@@ -8,6 +8,9 @@
 # configure monitors
 bash $HOME/dotfiles/scripts/monitors.sh
 
+# wallpapo
+[[ -f "$HOME/.fehbg" ]] && "$HOME/.fehbg" &
+
 # start notification system
 dunst &
 

@@ -3,11 +3,11 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export NVM_DIR="$HOME/.nvm"
-export EDITOR=$(which vim)
+export EDITOR=$(which nvim)
+export DISPLAY=:0
 
 # https://ricostacruz.com/til/fractional-scaling-on-xorg-linux
 # https://wiki.archlinux.org/title/HiDPI
-export EDITOR="$(which nvim)"
 # GDK_SCALE doesn't allow decimal values use GDK_DPI_SCALE instead
 # export GDK_SCALE=1
 export GDK_DPI_SCALE=1.4
