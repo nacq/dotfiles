@@ -15,7 +15,7 @@ bash $HOME/dotfiles/scripts/monitors.sh
 dunst &
 
 # start status monitor
-slstatus 2>&1 >/dev/null &
+dwmstatus 2>&1 >/dev/null &
 
 # start window manager
 dwm

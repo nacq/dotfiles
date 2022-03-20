@@ -127,7 +127,7 @@ setup_suckless_app() {
   [[ ! -d "$SUCKLESS_DIR/$1" ]] && git clone $2 $SUCKLESS_DIR/$1
 
   cd $SUCKLESS_DIR/$1
-  rm -f config.h
+  [[ -f config.h ]] && rm -f config.h
 
   [[ -f "$diff" ]] && git apply "$diff"
 
@@ -151,31 +151,13 @@ setup_slock() {
     setup_suckless_app slock "git://git.suckless.org/slock"
 }
 
-setup_slstatus() {
-  setup_suckless_app slstatus "https://github.com/drkhsh/slstatus.git"
+setup_dwmstatus() {
+  setup_suckless_app dwmstatus "git://git.suckless.org/dwmstatus"
 }
 
 setup_sxiv() {
   sudo apt install libimlib2-dev libexif-dev && \
     setup_suckless_app sxiv "https://github.com/nicolasacquaviva/sxiv"
-}
-
-setup_vim() {
-  # CoC dependencies
-  sudo apt install nodejs npm
-  [[ ! -d $HOME/.vim/plugged ]] && curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  nvim -c "PlugInstall" -c "qa!"
-
-  local coc_packages=(
-    "coc-tsserver"
-    "coc-json"
-    "coc-go"
-    "coc-clangd"
-  )
-  for coc_package in "${coc_packages[@]}"; do
-    nvim -c "CocInstall $coc_package" -c "qa!"
-  done
 }
 
 setup_xorg() {
@@ -209,7 +191,6 @@ main() {
     "setupapps")
       setup_xorg
       setup_tmux
-      setup_vim
       setup_dwm
       setup_slock
       setup_slstatus

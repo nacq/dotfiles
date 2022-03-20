@@ -1,0 +1,137 @@
+diff --git a/dwmstatus.c b/dwmstatus.c
+index d2a4b03..7c183c1 100644
+--- a/dwmstatus.c
++++ b/dwmstatus.c
+@@ -117,10 +117,9 @@ char *
+ getbattery(char *base)
+ {
+ 	char *co, status;
+-	int descap, remcap;
++	int cap;
+ 
+-	descap = -1;
+-	remcap = -1;
++	cap = -1;
+ 
+ 	co = readfile(base, "present");
+ 	if (co == NULL)
+@@ -131,22 +130,10 @@ getbattery(char *base)
+ 	}
+ 	free(co);
+ 
+-	co = readfile(base, "charge_full_design");
+-	if (co == NULL) {
+-		co = readfile(base, "energy_full_design");
+-		if (co == NULL)
+-			return smprintf("");
++	co = readfile(base, "capacity");
++	if (co != NULL) {
++		sscanf(co, "%d", &cap);
+ 	}
+-	sscanf(co, "%d", &descap);
+-	free(co);
+-
+-	co = readfile(base, "charge_now");
+-	if (co == NULL) {
+-		co = readfile(base, "energy_now");
+-		if (co == NULL)
+-			return smprintf("");
+-	}
+-	sscanf(co, "%d", &remcap);
+ 	free(co);
+ 
+ 	co = readfile(base, "status");
+@@ -158,10 +145,7 @@ getbattery(char *base)
+ 		status = '?';
+ 	}
+ 
+-	if (remcap < 0 || descap < 0)
+-		return smprintf("invalid");
+-
+-	return smprintf("%.0f%%%c", ((float)remcap / (float)descap) * 100, status);
++	return smprintf("%d%%%c", cap, status);
+ }
+ 
+ char *
+@@ -175,48 +159,59 @@ gettemperature(char *base, char *sensor)
+ 	return smprintf("%02.0f°C", atof(co) / 1000);
+ }
+ 
++char *
++run_command(const char *cmd)
++{
++	char buf[1024];
++	char *p;
++	FILE *fp;
++
++	if (!(fp = popen(cmd, "r"))) {
++		perror("popen");
++		return NULL;
++	}
++	p = fgets(buf, sizeof(buf) - 1, fp);
++	if (pclose(fp) < 0) {
++		perror("pclose");
++		return NULL;
++	}
++	if (!p) {
++		return NULL;
++	}
++	if ((p = strrchr(buf, '\n'))) {
++		p[0] = '\0';
++	}
++
++	return buf[0] ? buf : NULL;
++}
++
+ int
+ main(void)
+ {
+ 	char *status;
+-	char *avgs;
+ 	char *bat;
+ 	char *bat1;
+ 	char *tmar;
+-	char *tmutc;
+-	char *tmbln;
+-	char *t0, *t1, *t2;
++	char *vol;
+ 
+ 	if (!(dpy = XOpenDisplay(NULL))) {
+ 		fprintf(stderr, "dwmstatus: cannot open display.\n");
+ 		return 1;
+ 	}
+ 
+-	for (;;sleep(60)) {
+-		avgs = loadavg();
++	for (;;sleep(1)) {
+ 		bat = getbattery("/sys/class/power_supply/BAT0");
+ 		bat1 = getbattery("/sys/class/power_supply/BAT1");
+-		tmar = mktimes("%H:%M", tzargentina);
+-		tmutc = mktimes("%H:%M", tzutc);
+-		tmbln = mktimes("KW %W %a %d %b %H:%M %Z %Y", tzberlin);
+-		t0 = gettemperature("/sys/devices/virtual/hwmon/hwmon0", "temp1_input");
+-		t1 = gettemperature("/sys/devices/virtual/hwmon/hwmon2", "temp1_input");
+-		t2 = gettemperature("/sys/devices/virtual/hwmon/hwmon4", "temp1_input");
+-
+-		status = smprintf("T:%s|%s|%s L:%s B:%s|%s A:%s U:%s %s",
+-				t0, t1, t2, avgs, bat, bat1, tmar, tmutc,
+-				tmbln);
++		tmar = mktimes("%d/%m %H:%M", tzargentina);
++		vol = run_command("amixer get Master | grep 'Front Left: Playback' | awk '{ print $6 $5 }' | sed 's/\\[//g' | sed 's/\\]/ /' | sed 's/\\]//g'");
++
++		status = smprintf("bat: %s %s | vol: %s | %s",
++				bat, bat1, vol, tmar);
+ 		setstatus(status);
+ 
+-		free(t0);
+-		free(t1);
+-		free(t2);
+-		free(avgs);
+ 		free(bat);
+ 		free(bat1);
+ 		free(tmar);
+-		free(tmutc);
+-		free(tmbln);
+ 		free(status);
+ 	}
+ 
