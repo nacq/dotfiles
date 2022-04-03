@@ -28,10 +28,10 @@ compinit
 _comp_options+=(globdots)
 
 # git stuff in ps1
+# https://arjanvandergaag.nl/blog/customize-zsh-prompt-with-vcs-info.html
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '%{%F{green}%B%}●%{%b%f%}'
-zstyle ':vcs_info:*' unstagedstr '%{%F{red}%B%}●%{%b%f%}'
-# zstyle ':vcs_info:*' formats '%{%F{cyan}%}%45<…<%R%<</%{%f%}%{%F{green}%}(%25>…>%b%<<)%{%f%}%{%F{cyan}%}%S%{%f%}%c%u'
+zstyle ':vcs_info:*' stagedstr '%{%F{#00875f}%B%}●%{%b%f%}'
+zstyle ':vcs_info:*' unstagedstr '%{%F{#870000}%B%}●%{%b%f%}'
 zstyle ':vcs_info:git:*' formats '[%b%c%u] '
 zstyle ':vcs_info:git+post-backend:*' hooks git-remote-staged
 
@@ -69,18 +69,6 @@ setopt PROMPT_SUBST
 # vim mode
 bindkey -v
 
-# MacOS stuff
-if [[ $OSTYPE == darwin* ]]; then
-  # .zshrc is evaluated for every zsh process
-  # to avoid duplicated entries on the $PATH variable
-  # only set these variables if tmux is not running
-  if [[ -z $TMUX ]]; then
-    typeset -aU path
-    path=($path /usr/local/sbin)
-    path=($path /Users/$(whoami)/Library/Python/3.9/bin)
-  fi
-fi
-
 # Linux stuff
 if [[ $OSTYPE == linux* ]]; then
   PS1="%B%2~%b $ "
@@ -101,7 +89,6 @@ if [[ $OSTYPE == linux* ]]; then
   fi
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+local ret_status="%(?..(°ʖ͡°%)╭∩╮ %s)"
 
-PROMPT='${PWD/#$HOME/~} ${vcs_info_msg_0_}» '
+PROMPT='${PWD/#$HOME/~} ${vcs_info_msg_0_}${ret_status}» '
