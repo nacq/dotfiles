@@ -135,9 +135,24 @@ setup_suckless_app() {
 }
 
 setup_dwm() {
-  sudo apt install libxft-dev libxinerama-dev
+  sudo apt install -y libxft-dev libxinerama-dev
   setup_suckless_app dwm "git://git.suckless.org/dwm" && \
     sudo update-alternatives --install /usr/bin/x-window-manager x-window-manager $(which dwm) 50
+}
+
+setup_nvim() {
+  # there is an old version still in apt
+  # sudo apt install -y neovim
+  sudo curl -Lo /opt/nvim-linux64.tar.gz \
+    https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz &&
+    cd /opt &&
+    sudo tar xvf nvim-linux64.tar.gz &&
+    sudo rm nvim-linux64.tar.gz
+  # nvim plugin manager
+  [[ ! -d $HOME/.vim/plugged ]] && \
+    curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  nvim -c "PlugInstall" -c "qa!"
 }
 
 setup_st() {
@@ -147,7 +162,7 @@ setup_st() {
 }
 
 setup_slock() {
-  sudo apt install libxrandr-dev && \
+  sudo apt install -y libxrandr-dev && \
     setup_suckless_app slock "git://git.suckless.org/slock"
 }
 
@@ -156,7 +171,7 @@ setup_dwmstatus() {
 }
 
 setup_sxiv() {
-  sudo apt install libimlib2-dev libexif-dev && \
+  sudo apt install -y libimlib2-dev libexif-dev && \
     setup_suckless_app sxiv "https://github.com/nicolasacquaviva/sxiv"
 }
 
@@ -189,13 +204,16 @@ main() {
       link_debian_files
       ;;
     "setupapps")
-      setup_xorg
-      setup_tmux
       setup_dwm
+      setup_dwmstatus
+      setup_nvim
       setup_slock
       setup_slstatus
       setup_st
       setup_sxiv
+      setup_tmux
+      setup_xorg
+      sudo apt install -y firefox-esr
       # set zsh as the default shell
       # NOTE: this requires a logout to take effect
       chsh -s $(which zsh)

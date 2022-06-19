@@ -30,6 +30,10 @@ vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {f
 local servers = {
   'gopls',
   'tsserver',
+  -- to get this working, `npm i -g vscode-langservers-extracted`
+  -- ref: https://github.com/neovim/nvim-lspconfig/pull/1273/files#diff-abae925898033611bb8a6fe94b196d364c64999f6e6a12bb553486d88c62158dR108
+  -- note: it requires node 14+
+  'eslint',
 }
 
 for _, lsp in pairs(servers) do
