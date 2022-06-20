@@ -33,7 +33,7 @@ local servers = {
   -- to get this working, `npm i -g vscode-langservers-extracted`
   -- ref: https://github.com/neovim/nvim-lspconfig/pull/1273/files#diff-abae925898033611bb8a6fe94b196d364c64999f6e6a12bb553486d88c62158dR108
   -- note: it requires node 14+
-  'eslint',
+  -- 'eslint',
 }
 
 for _, lsp in pairs(servers) do
@@ -48,6 +48,8 @@ for _, lsp in pairs(servers) do
       vim.api.nvim_buf_set_keymap(0, 'n', '<leader>ii', '<cmd>lua vim.lsp.buf.implementation()<CR>', {noremap = true})
       vim.api.nvim_buf_set_keymap(0, 'n', '<leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>', {noremap = true})
       vim.api.nvim_buf_set_keymap(0, 'n', '<leader>ff', '<cmd>lua vim.lsp.buf.code_action()<CR>', {noremap = true})
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>en', '<cmd>lua vim.diagnostic.goto_next()<CR>', {noremap = true})
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>ep', '<cmd>lua vim.diagnostic.goto_prev()<CR>', {noremap = true})
     end
   }
 end
