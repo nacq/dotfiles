@@ -71,7 +71,7 @@ let g:go_gopls_enabled = 0
 " ---------------------------------------------------------------------------------
 " netrw
 let g:netrw_banner = 0
-let g:netrw_liststyle = 3
+let g:netrw_liststyle = 1
 
 function RevealInNetrw()
   let current_filename = expand("%:t")
