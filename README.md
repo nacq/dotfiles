@@ -73,6 +73,7 @@ dwm
 |super-j                | focus next window                              |
 |super-k                | focus previous window                          |
 |super-l                | increase window size to the right              |
+|super-shift-l          | lock screen                                    |
 |super-space            | open dmenu                                     |
 |super-shift-a          | volume down                                    |
 |super-shift-d          | mute                                           |
