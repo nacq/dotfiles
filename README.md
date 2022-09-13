@@ -53,6 +53,7 @@ tmux (leader ctrl-b)
 |leader - ctrl-s        | save session                  |
 |leader - ctrl-t        | show time                     |
 |leader - ctrl-x        | kill current split            |
+|leader - space         | swap splits pos v2h / h2v     |
 ```
 
 dwm
