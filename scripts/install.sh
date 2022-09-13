@@ -8,6 +8,7 @@ SUCKLESS_DIR="$HOME/suckless"
 packages=(
   "alsa-utils"
   "apt-file"
+  "at" # schedule commands
   "build-essential"
   "curl"
   "feh"

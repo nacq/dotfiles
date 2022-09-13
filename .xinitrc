@@ -12,7 +12,7 @@ bash $HOME/dotfiles/scripts/monitors.sh
 [[ -f "$HOME/.fehbg" ]] && "$HOME/.fehbg" &
 
 # start notification system
-dunst &
+/usr/lib/notification-daemon/notification-daemon &
 
 # start status monitor
 dwmstatus 2>&1 >/dev/null &
