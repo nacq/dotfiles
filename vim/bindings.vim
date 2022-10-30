@@ -24,8 +24,8 @@ map <C-f> :Files <CR>
 map <C-g> :OpenRepo <CR>
 map <leader>tt :tabnew <CR>
 map <leader>tc :tabclose <CR>
-map <leader>ff :CocFix <CR>
 map <leader>ss :sort <CR>
+map <leader>ll :call AddLog() <CR>
 
 " This is only availale in the quickfix window, owing to the filetype
 " restriction on the autocmd (see below).
