@@ -5,7 +5,12 @@ call plug#begin('~/.vim/plugged')
 " utils
 Plug 'mattn/emmet-vim', { 'for': ['html', 'jsx', 'javascript.jsx', 'tsx', 'typescript.tsx', 'typescriptreact']}
 Plug 'scrooloose/nerdcommenter'
-Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
+" Plug 'junegunn/fzf', { 'do': { ->fzf#install() } }
+" changed the post install hook bc it suddenly stopped working
+" https://github.com/junegunn/fzf.vim/issues/1008
+Plug 'junegunn/fzf', { 'dir': '~/.vim/plugged/fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'nicolasacquaviva/vim-snipper'
 Plug 'nicolasacquaviva/vim-open-repo'
 
@@ -21,11 +26,6 @@ Plug 'nicolasacquaviva/vim-yin-yang'
 
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-
-" telescope
-Plug 'nvim-lua/plenary.nvim'
-Plug 'kelly-lin/telescope-ag'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
 " lsp
 Plug 'neovim/nvim-lspconfig'
