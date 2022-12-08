@@ -19,8 +19,7 @@ cnoreabbrev Gst Git
 
 map <C-n> :Explore <CR>
 map <C-k> :call RevealInNetrw() <CR>
-map <C-p> :GFiles <CR>
-map <C-f> :Files <CR>
+map <C-p> :Telescope find_files <CR>
 map <C-g> :OpenRepo <CR>
 map <leader>tt :tabnew <CR>
 map <leader>tc :tabclose <CR>
