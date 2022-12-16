@@ -1,5 +1,5 @@
 diff --git a/dwmstatus.c b/dwmstatus.c
-index d2a4b03..7c183c1 100644
+index d2a4b03..764231a 100644
 --- a/dwmstatus.c
 +++ b/dwmstatus.c
 @@ -117,10 +117,9 @@ char *
@@ -53,14 +53,14 @@ index d2a4b03..7c183c1 100644
  }
  
  char *
-@@ -175,48 +159,59 @@ gettemperature(char *base, char *sensor)
+@@ -175,48 +159,63 @@ gettemperature(char *base, char *sensor)
  	return smprintf("%02.0f°C", atof(co) / 1000);
  }
  
 +char *
-+run_command(const char *cmd)
++run_command(const char *cmd, char *buf)
 +{
-+	char buf[1024];
++	/* char buf[1024]; */
 +	char *p;
 +	FILE *fp;
 +
@@ -94,7 +94,8 @@ index d2a4b03..7c183c1 100644
 -	char *tmutc;
 -	char *tmbln;
 -	char *t0, *t1, *t2;
-+	char *vol;
++	char vol[1024];
++	char ssid[1024];
  
  	if (!(dpy = XOpenDisplay(NULL))) {
  		fprintf(stderr, "dwmstatus: cannot open display.\n");
@@ -117,10 +118,13 @@ index d2a4b03..7c183c1 100644
 -				t0, t1, t2, avgs, bat, bat1, tmar, tmutc,
 -				tmbln);
 +		tmar = mktimes("%d/%m %H:%M", tzargentina);
-+		vol = run_command("amixer get Master | grep 'Front Left: Playback' | awk '{ print $6 $5 }' | sed 's/\\[//g' | sed 's/\\]/ /' | sed 's/\\]//g'");
++		run_command(
++			"amixer get Master | grep 'Front Left: Playback' | awk '{ print $6 $5 }' | sed 's/\\[//g' | sed 's/\\]/ /' | sed 's/\\]//g'",
++			vol
++		);
++		run_command("nmcli connection | grep wlan0 | awk '{ print $1 }'", ssid);
 +
-+		status = smprintf("bat: %s %s | vol: %s | %s",
-+				bat, bat1, vol, tmar);
++		status = smprintf("ssid: %s | bat: %s %s | vol: %s | %s", ssid, bat, bat1, vol, tmar);
  		setstatus(status);
  
 -		free(t0);
