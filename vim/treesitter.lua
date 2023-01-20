@@ -1,4 +1,7 @@
-require'nvim-treesitter.configs'.setup {
+local configs = require'nvim-treesitter.configs'
+local parsers = require'nvim-treesitter.parsers'
+
+configs.setup {
   -- A list of parser names, or "all"
   ensure_installed = {
           "diff",
@@ -46,10 +49,15 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = true,
   },
+
+  indent = {
+    enable = true
+  }
 }
 
-require'parser_config'.get_parser_configs().tsx.filetype_to_parsername = {
+parsers.get_parser_configs().tsx.filetype_to_parsername = {
         "javascript",
-        "typescript.tsx"
+        "javascriptreact",
+        "typescript.tsx",
+        "typescriptreact"
 }
-
