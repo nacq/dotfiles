@@ -11,7 +11,10 @@ setopt autocd
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
-setopt inc_append_history extended_history nosharehistory
+
+# setopt inc_append_history
+setopt share_history
+setopt extended_history
 autoload -U history-search-end
 # "smart history"
 zle -N history-beginning-search-backward-end history-search-end
