@@ -244,4 +244,5 @@ main() {
   esac
 }
 
+[[ -f "$LOG_FILE" ]] || touch "$LOG_FILE"
 main $1 | tee -a "$LOG_FILE"
