@@ -1,8 +1,8 @@
 diff --git a/dwmstatus.c b/dwmstatus.c
-index d2a4b03..764231a 100644
+index 1b53292..4851175 100644
 --- a/dwmstatus.c
 +++ b/dwmstatus.c
-@@ -117,10 +117,9 @@ char *
+@@ -119,10 +119,9 @@ char *
  getbattery(char *base)
  {
  	char *co, status;
@@ -15,7 +15,7 @@ index d2a4b03..764231a 100644
  
  	co = readfile(base, "present");
  	if (co == NULL)
-@@ -131,22 +130,10 @@ getbattery(char *base)
+@@ -133,22 +132,10 @@ getbattery(char *base)
  	}
  	free(co);
  
@@ -41,7 +41,7 @@ index d2a4b03..764231a 100644
  	free(co);
  
  	co = readfile(base, "status");
-@@ -158,10 +145,7 @@ getbattery(char *base)
+@@ -160,10 +147,7 @@ getbattery(char *base)
  		status = '?';
  	}
  
@@ -53,8 +53,8 @@ index d2a4b03..764231a 100644
  }
  
  char *
-@@ -175,48 +159,63 @@ gettemperature(char *base, char *sensor)
- 	return smprintf("%02.0f°C", atof(co) / 1000);
+@@ -198,50 +182,69 @@ execscript(char *cmd)
+ 	return smprintf("%s", retval);
  }
  
 +char *
@@ -89,11 +89,14 @@ index d2a4b03..764231a 100644
  	char *status;
 -	char *avgs;
  	char *bat;
- 	char *bat1;
++	char *bat1;
  	char *tmar;
 -	char *tmutc;
 -	char *tmbln;
--	char *t0, *t1, *t2;
+-	char *t0;
+-	char *t1;
+ 	char *kbmap;
+ 	char *surfs;
 +	char vol[1024];
 +	char ssid[1024];
  
@@ -102,37 +105,38 @@ index d2a4b03..764231a 100644
  		return 1;
  	}
  
--	for (;;sleep(60)) {
+-	for (;;sleep(30)) {
 -		avgs = loadavg();
 +	for (;;sleep(1)) {
  		bat = getbattery("/sys/class/power_supply/BAT0");
- 		bat1 = getbattery("/sys/class/power_supply/BAT1");
 -		tmar = mktimes("%H:%M", tzargentina);
 -		tmutc = mktimes("%H:%M", tzutc);
 -		tmbln = mktimes("KW %W %a %d %b %H:%M %Z %Y", tzberlin);
--		t0 = gettemperature("/sys/devices/virtual/hwmon/hwmon0", "temp1_input");
--		t1 = gettemperature("/sys/devices/virtual/hwmon/hwmon2", "temp1_input");
--		t2 = gettemperature("/sys/devices/virtual/hwmon/hwmon4", "temp1_input");
--
--		status = smprintf("T:%s|%s|%s L:%s B:%s|%s A:%s U:%s %s",
--				t0, t1, t2, avgs, bat, bat1, tmar, tmutc,
++		bat1 = getbattery("/sys/class/power_supply/BAT1");
+ 		kbmap = execscript("setxkbmap -query | grep layout | cut -d':' -f 2- | tr -d ' '");
+ 		surfs = execscript("surf-status");
+-		t0 = gettemperature("/sys/devices/virtual/thermal/thermal_zone0", "temp");
+-		t1 = gettemperature("/sys/devices/virtual/thermal/thermal_zone1", "temp");
+ 
+-		status = smprintf("S:%s K:%s T:%s|%s L:%s B:%s A:%s U:%s %s",
+-				surfs, kbmap, t0, t1, avgs, bat, tmar, tmutc,
 -				tmbln);
-+		tmar = mktimes("%d/%m %H:%M", tzargentina);
-+		run_command(
-+			"amixer get Master | grep 'Front Left: Playback' | awk '{ print $6 $5 }' | sed 's/\\[//g' | sed 's/\\]/ /' | sed 's/\\]//g'",
-+			vol
-+		);
++	tmar = mktimes("%d/%m %H:%M", tzargentina);
++	run_command(
++		"amixer get Master | grep 'Front Left: Playback' | awk '{ print $6 $5 }' | sed 's/\\[//g' | sed 's/\\]/ /' | sed 's/\\]//g'",
++		vol
++	);
 +		run_command("nmcli connection | grep wlan0 | awk '{ print $1 }'", ssid);
 +
 +		status = smprintf("ssid: %s | bat: %s %s | vol: %s | %s", ssid, bat, bat1, vol, tmar);
  		setstatus(status);
  
+ 		free(surfs);
+ 		free(kbmap);
 -		free(t0);
 -		free(t1);
--		free(t2);
 -		free(avgs);
  		free(bat);
- 		free(bat1);
  		free(tmar);
 -		free(tmutc);
 -		free(tmbln);

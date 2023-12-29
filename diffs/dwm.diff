@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index a2ac963..ccf71a5 100644
+index 9efa774..23e66a0 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -5,21 +5,44 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -97,7 +97,7 @@ index a2ac963..ccf71a5 100644
 +static const char *volumedown[] = { "amixer", "set", "Master", "5%-", NULL };
 +static const char *lockscreen[] = { "slock", NULL };
  
- static Key keys[] = {
+ static const Key keys[] = {
  	/* modifier                     key        function        argument */
 -	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 +	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
@@ -108,7 +108,7 @@ index a2ac963..ccf71a5 100644
  	{ MODKEY,                       XK_b,      togglebar,      {0} },
  	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
  	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-@@ -71,20 +111,22 @@ static Key keys[] = {
+@@ -71,20 +111,22 @@ static const Key keys[] = {
  	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
  	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
  	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
@@ -129,7 +129,7 @@ index a2ac963..ccf71a5 100644
  	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
  	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-+    { ControlMask|ShiftMask,        XK_3,      spawn,          SHCMD("scrot")},
++	{ ControlMask|ShiftMask,        XK_3,      spawn,          SHCMD("scrot")},
  	TAGKEYS(                        XK_1,                      0)
  	TAGKEYS(                        XK_2,                      1)
  	TAGKEYS(                        XK_3,                      2)

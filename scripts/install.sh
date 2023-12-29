@@ -120,12 +120,14 @@ setup_tmux() {
 
 # $1 is app name st | dwm | dmenu
 # $2 git repo url
+# $3 commit to lock version on
 setup_suckless_app() {
   [[ ! -d "$SUCKLESS_DIR" ]] && mkdir "$SUCKLESS_DIR"
 
   diff="$HOME/dotfiles/diffs/$1.diff"
 
   [[ ! -d "$SUCKLESS_DIR/$1" ]] && git clone $2 $SUCKLESS_DIR/$1
+  [[ ! -z "$3" ]] && git co "$3"
 
   cd $SUCKLESS_DIR/$1
   [[ -f config.h ]] && rm -f config.h
@@ -137,7 +139,7 @@ setup_suckless_app() {
 
 setup_dwm() {
   sudo apt install -y libxft-dev libxinerama-dev
-  setup_suckless_app dwm "git://git.suckless.org/dwm" && \
+  setup_suckless_app dwm "git://git.suckless.org/dwm" "9f8855343c881bdc01b9fff5b956537ba1106b76" && \
     sudo update-alternatives --install /usr/bin/x-window-manager x-window-manager $(which dwm) 50
 }
 
@@ -157,18 +159,18 @@ setup_nvim() {
 }
 
 setup_st() {
-  setup_suckless_app st "git://git.suckless.org/st"
+  setup_suckless_app st "git://git.suckless.org/st" "9846a56bd7fdc86bf788db04bbbcbde7b7eb9952"
   # make it the default term
   sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $(which st) 50
 }
 
 setup_slock() {
   sudo apt install -y libxrandr-dev && \
-    setup_suckless_app slock "git://git.suckless.org/slock"
+    setup_suckless_app slock "git://git.suckless.org/slock" "a34d8fb4327bbb1afd92e7527c53fcaad547a495"
 }
 
 setup_dwmstatus() {
-  setup_suckless_app dwmstatus "git://git.suckless.org/dwmstatus"
+  setup_suckless_app dwmstatus "git://git.suckless.org/dwmstatus" "384bee02eac5cc189ed382f621bb8151a4e9872b"
 }
 
 setup_sxiv() {
