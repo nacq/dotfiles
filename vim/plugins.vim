@@ -11,8 +11,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.vim/plugged/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'nicolasacquaviva/vim-snipper'
-Plug 'nicolasacquaviva/vim-open-repo'
+Plug 'nacq/vim-snipper'
+Plug 'nacq/vim-open-repo'
 
 " git stuff
 Plug 'tpope/vim-fugitive'
@@ -23,7 +23,7 @@ Plug 'junegunn/gv.vim'
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript.jsx', 'typescript.tsx'], 'branch': 'main' }
 
 " colorscheme
-Plug 'nicolasacquaviva/vim-yin-yang'
+Plug 'nacq/vim-yin-yang'
 
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }

@@ -12,6 +12,7 @@ packages=(
   "build-essential"
   "curl"
   "feh"
+  "fonts-noto-color-emoji" # to have emojis
   "fzf"
   "git"
   "gnupg"
@@ -175,7 +176,7 @@ setup_dwmstatus() {
 
 setup_sxiv() {
   sudo apt install -y libimlib2-dev libexif-dev && \
-    setup_suckless_app sxiv "https://github.com/nicolasacquaviva/sxiv"
+    setup_suckless_app sxiv "https://github.com/nacq/sxiv"
 }
 
 setup_xorg() {
